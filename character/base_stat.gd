@@ -1,7 +1,16 @@
-extends RefCounted
+extends Resource
 class_name BaseStat
 
 signal stat_level_up(amount: int)
+
+enum StatNames {
+	STRENGTH,
+	DEXTERITY,
+	CONSTITUTION,
+	WILLPOWER,
+	INTELLIGENCE,
+	PERCEPTION,
+}
 
 const MIN_STAT: int = 1
 const MAX_STAT: int = 9999
@@ -10,8 +19,10 @@ const MIN_EXP: int = 0
 const MAX_EXP: int = 9999
 const EXP_FACTOR: int = 10
 
+@export var stat_name: StatNames
+
 var _stat_value: int = MIN_STAT
-var stat_value: int:
+@export var stat_value: int:
 	get:
 		return _stat_value
 	set(value):
