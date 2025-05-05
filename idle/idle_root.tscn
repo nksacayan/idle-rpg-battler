@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck1g4iur8g4s0"]
+[gd_scene load_steps=6 format=3 uid="uid://ck1g4iur8g4s0"]
 
 [ext_resource type="Script" uid="uid://c4qxtkqineven" path="res://idle/idle_root.gd" id="1_roj8e"]
+[ext_resource type="PackedScene" uid="uid://dku41aq6shhlq" path="res://idle/ui/character_grid/character_grid.tscn" id="2_d21yq"]
 [ext_resource type="PackedScene" uid="uid://dgf36tg3fjidd" path="res://idle/tasks/task_runner/task_runner.tscn" id="2_vr2id"]
 [ext_resource type="PackedScene" uid="uid://bxqp676a6modj" path="res://idle/tasks/task_library/task_library.tscn" id="3_lk06g"]
 [ext_resource type="PackedScene" uid="uid://bm8fwlgbiplyw" path="res://character/character_library.tscn" id="5_d21yq"]
@@ -8,27 +9,9 @@
 [node name="IdleRoot" type="Node"]
 script = ExtResource("1_roj8e")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="MainUILayer" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
-layout_mode = 2
-
-[node name="CharacterGrid" type="GridContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-columns = 8
-
-[node name="NewCharacterButton" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "New Character"
+[node name="CharacterGrid" parent="MainUILayer" instance=ExtResource("2_d21yq")]
 
 [node name="TaskRunner" parent="." instance=ExtResource("2_vr2id")]
 
@@ -36,4 +19,4 @@ text = "New Character"
 
 [node name="CharacterLibrary" parent="." instance=ExtResource("5_d21yq")]
 
-[connection signal="button_down" from="CanvasLayer/PanelContainer/VBoxContainer/NewCharacterButton" to="CharacterLibrary" method="create_new_character"]
+[connection signal="create_new_character_signal" from="MainUILayer/CharacterGrid" to="CharacterLibrary" method="create_new_character"]
