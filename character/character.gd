@@ -1,8 +1,8 @@
-extends RefCounted
+extends Resource
 class_name Character
 
-var character_name: String
-var character_stats: CharacterStats
+@export var character_name: String
+@export var character_stats: CharacterStats
 
 func _init(p_character_name: String):
 	character_name = p_character_name
