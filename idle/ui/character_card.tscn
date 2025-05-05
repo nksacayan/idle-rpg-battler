@@ -1,15 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6kfwc5hgn15m"]
+[gd_scene load_steps=8 format=3 uid="uid://c6kfwc5hgn15m"]
 
 [ext_resource type="Script" uid="uid://crayln8swh2ji" path="res://idle/ui/character_card.gd" id="1_e2ufx"]
 [ext_resource type="Texture2D" uid="uid://c54tbr51xr1gb" path="res://icon.svg" id="1_kdwyl"]
+[ext_resource type="Script" uid="uid://bxtkh63ssakrm" path="res://character/base_stat.gd" id="2_tbopg"]
+[ext_resource type="Script" uid="uid://cn62yl3605gq2" path="res://character/character.gd" id="3_unaki"]
 
-[node name="CharacterCard" type="PanelContainer"]
+[sub_resource type="Resource" id="Resource_qy1oi"]
+script = ExtResource("2_tbopg")
+stat_name = 0
+stat_value = 0
+metadata/_custom_type_script = "uid://bxtkh63ssakrm"
+
+[sub_resource type="Resource" id="Resource_ac0l1"]
+script = ExtResource("2_tbopg")
+stat_name = 1
+stat_value = 23
+metadata/_custom_type_script = "uid://bxtkh63ssakrm"
+
+[sub_resource type="Resource" id="Resource_ufonn"]
+script = ExtResource("3_unaki")
+character_name = "test guy"
+base_stats = Array[ExtResource("2_tbopg")]([SubResource("Resource_qy1oi"), SubResource("Resource_ac0l1")])
+metadata/_custom_type_script = "uid://cn62yl3605gq2"
+
+[node name="CharacterCard" type="PanelContainer" node_paths=PackedStringArray("character_name_label", "character_stats_label")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e2ufx")
+character_name_label = NodePath("VBoxContainer/CharacterNameLabel")
+character_stats_label = NodePath("VBoxContainer/CharacterStats")
+character = SubResource("Resource_ufonn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
