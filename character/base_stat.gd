@@ -44,3 +44,6 @@ var stat_exp: int:
 			value %= required_exp
 			stat_level_up.emit(num_levels)
 		_stat_exp = clamp(value, MIN_EXP, MAX_EXP)
+
+func _init(p_stat_name: StatNames = StatNames.STRENGTH) -> void:
+	stat_name = p_stat_name

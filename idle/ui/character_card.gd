@@ -12,5 +12,5 @@ func update_ui():
 
 func update_character_stats_label():
 	character_stats_label.text = ""
-	for stat: CharacterStats.StatNames in CharacterStats.StatNames.values():
-		character_stats_label.text += CHARACTER_STAT_TEMPLATE % [CharacterStats.StatNames.keys()[stat], character.character_stats.base_stats[stat]]
+	for stat: BaseStat.StatNames in BaseStat.StatNames.values():
+		character_stats_label.text += CHARACTER_STAT_TEMPLATE % [BaseStat.StatNames.keys()[stat], character.character_stats.base_stats[stat]]

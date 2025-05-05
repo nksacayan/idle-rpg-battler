@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck1g4iur8g4s0"]
+[gd_scene load_steps=9 format=3 uid="uid://ck1g4iur8g4s0"]
 
 [ext_resource type="Script" uid="uid://c4qxtkqineven" path="res://idle/idle_root.gd" id="1_roj8e"]
 [ext_resource type="PackedScene" uid="uid://dku41aq6shhlq" path="res://idle/ui/character_grid/character_grid.tscn" id="2_d21yq"]
 [ext_resource type="PackedScene" uid="uid://dgf36tg3fjidd" path="res://idle/tasks/task_runner/task_runner.tscn" id="2_vr2id"]
 [ext_resource type="PackedScene" uid="uid://bxqp676a6modj" path="res://idle/tasks/task_library/task_library.tscn" id="3_lk06g"]
 [ext_resource type="PackedScene" uid="uid://bm8fwlgbiplyw" path="res://character/character_library.tscn" id="5_d21yq"]
+[ext_resource type="Script" uid="uid://cn62yl3605gq2" path="res://character/character.gd" id="6_qo4lx"]
+[ext_resource type="Script" uid="uid://bxtkh63ssakrm" path="res://character/base_stat.gd" id="7_33u5k"]
+
+[sub_resource type="Resource" id="Resource_jf6qj"]
+script = ExtResource("6_qo4lx")
+character_name = "kevin"
+base_stats = Array[ExtResource("7_33u5k")]([])
+metadata/_custom_type_script = "uid://cn62yl3605gq2"
 
 [node name="IdleRoot" type="Node"]
 script = ExtResource("1_roj8e")
@@ -18,5 +26,6 @@ script = ExtResource("1_roj8e")
 [node name="TaskLibrary" parent="." instance=ExtResource("3_lk06g")]
 
 [node name="CharacterLibrary" parent="." instance=ExtResource("5_d21yq")]
+character_library = Array[ExtResource("6_qo4lx")]([SubResource("Resource_jf6qj")])
 
 [connection signal="create_new_character_signal" from="MainUILayer/CharacterGrid" to="CharacterLibrary" method="create_new_character"]
