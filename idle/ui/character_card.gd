@@ -1,4 +1,5 @@
 extends PanelContainer
+class_name CharacterCard
 
 @export var character_name_label: Label
 @export var character_stats_label: Label

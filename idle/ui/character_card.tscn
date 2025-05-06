@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6kfwc5hgn15m"]
+[gd_scene load_steps=2 format=3 uid="uid://c6kfwc5hgn15m"]
 
 [ext_resource type="Script" uid="uid://crayln8swh2ji" path="res://idle/ui/character_card.gd" id="1_e2ufx"]
-[ext_resource type="Texture2D" uid="uid://c54tbr51xr1gb" path="res://icon.svg" id="1_kdwyl"]
 
 [node name="CharacterCard" type="PanelContainer" node_paths=PackedStringArray("character_name_label", "character_stats_label")]
 anchors_preset = 15
@@ -20,10 +19,6 @@ layout_mode = 2
 layout_mode = 2
 text = "Character"
 horizontal_alignment = 1
-
-[node name="CharacterIcon" type="TextureRect" parent="VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_kdwyl")
 
 [node name="CharacterStats" type="Label" parent="VBoxContainer"]
 layout_mode = 2

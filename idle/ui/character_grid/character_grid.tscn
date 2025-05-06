@@ -1,21 +1,82 @@
-[gd_scene load_steps=2 format=3 uid="uid://dku41aq6shhlq"]
+[gd_scene load_steps=14 format=3 uid="uid://dku41aq6shhlq"]
 
 [ext_resource type="Script" uid="uid://defqewdgy7i5t" path="res://idle/ui/character_grid/character_grid.gd" id="1_rc581"]
+[ext_resource type="PackedScene" uid="uid://c6kfwc5hgn15m" path="res://idle/ui/character_card.tscn" id="2_agl0l"]
+[ext_resource type="Script" uid="uid://cn62yl3605gq2" path="res://character/character.gd" id="3_dcap2"]
+[ext_resource type="Script" uid="uid://bxtkh63ssakrm" path="res://character/base_stat.gd" id="4_l33ty"]
 
-[node name="CharacterGrid" type="PanelContainer" node_paths=PackedStringArray("character_name_edit")]
+[sub_resource type="Resource" id="Resource_8tkdj"]
+script = ExtResource("4_l33ty")
+stat_name = 0
+stat_value = 0
+metadata/_custom_type_script = "uid://bxtkh63ssakrm"
+
+[sub_resource type="Resource" id="Resource_8mqf6"]
+script = ExtResource("4_l33ty")
+stat_name = 1
+stat_value = 5
+metadata/_custom_type_script = "uid://bxtkh63ssakrm"
+
+[sub_resource type="Resource" id="Resource_8dj1e"]
+script = ExtResource("3_dcap2")
+character_name = "dava"
+base_stats = Array[ExtResource("4_l33ty")]([SubResource("Resource_8tkdj"), SubResource("Resource_8mqf6")])
+metadata/_custom_type_script = "uid://cn62yl3605gq2"
+
+[sub_resource type="Resource" id="Resource_gjo2q"]
+script = ExtResource("4_l33ty")
+stat_name = 0
+stat_value = 0
+metadata/_custom_type_script = "uid://bxtkh63ssakrm"
+
+[sub_resource type="Resource" id="Resource_k24ur"]
+script = ExtResource("4_l33ty")
+stat_name = 1
+stat_value = 0
+metadata/_custom_type_script = "uid://bxtkh63ssakrm"
+
+[sub_resource type="Resource" id="Resource_2yynb"]
+script = ExtResource("4_l33ty")
+stat_name = 2
+stat_value = 0
+metadata/_custom_type_script = "uid://bxtkh63ssakrm"
+
+[sub_resource type="Resource" id="Resource_vmqu8"]
+script = ExtResource("4_l33ty")
+stat_name = 3
+stat_value = 0
+metadata/_custom_type_script = "uid://bxtkh63ssakrm"
+
+[sub_resource type="Resource" id="Resource_b12bk"]
+script = ExtResource("4_l33ty")
+stat_name = 4
+stat_value = 0
+metadata/_custom_type_script = "uid://bxtkh63ssakrm"
+
+[sub_resource type="Resource" id="Resource_4yfbi"]
+script = ExtResource("3_dcap2")
+character_name = "ffss"
+base_stats = Array[ExtResource("4_l33ty")]([SubResource("Resource_gjo2q"), SubResource("Resource_k24ur"), SubResource("Resource_2yynb"), SubResource("Resource_vmqu8"), SubResource("Resource_b12bk")])
+metadata/_custom_type_script = "uid://cn62yl3605gq2"
+
+[node name="CharacterGrid" type="PanelContainer" node_paths=PackedStringArray("character_name_edit", "grid_container")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rc581")
+character_card_scene = ExtResource("2_agl0l")
 character_name_edit = NodePath("VBoxContainer/LineEdit")
+grid_container = NodePath("VBoxContainer/GridContainer")
+characters = Array[ExtResource("3_dcap2")]([SubResource("Resource_8dj1e"), SubResource("Resource_4yfbi")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
+columns = 4
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
