@@ -5,7 +5,8 @@ extends PanelContainer
 
 const CHARACTER_STAT_TEMPLATE = "%s: %d\n"
 
-@export var character: Character
+var character: Character
+
 
 func _ready():
 	update_ui()
