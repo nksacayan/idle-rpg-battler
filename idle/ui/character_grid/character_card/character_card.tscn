@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6kfwc5hgn15m"]
 
-[ext_resource type="Script" uid="uid://crayln8swh2ji" path="res://idle/ui/character_card.gd" id="1_e2ufx"]
+[ext_resource type="Script" uid="uid://crayln8swh2ji" path="res://idle/ui/character_grid/character_card/character_card.gd" id="1_e2ufx"]
 
 [node name="CharacterCard" type="PanelContainer" node_paths=PackedStringArray("character_name_label", "character_stats_label")]
 anchors_preset = 15
