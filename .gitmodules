@@ -1,3 +1,6 @@
 [submodule "common/nks-common-godot"]
 	path = common/nks-common-godot
 	url = git@github.com:nksacayan/nks-common-godot.git
+[submodule "nks-common-godot"]
+	path = nks-common-godot
+	url = git@github.com:nksacayan/nks-common-godot.git
