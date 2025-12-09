@@ -18,5 +18,5 @@ func update_ui():
 
 func update_character_stats_label():
 	character_stats_label.text = ""
-	for stat: BaseStat in character.base_stats:
-		character_stats_label.text += CHARACTER_STAT_TEMPLATE % [BaseStat.StatNames.keys()[stat.stat_name], stat.stat_value]
+	for stat: BaseStatNks in character.base_stats:
+		character_stats_label.text += CHARACTER_STAT_TEMPLATE % [BaseStatNks.StatNames.keys()[stat.stat_name], stat.stat_value]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://dku41aq6shhlq"]
 
 [ext_resource type="Script" uid="uid://defqewdgy7i5t" path="res://idle/ui/character_grid/character_grid.gd" id="1_rc581"]
-[ext_resource type="PackedScene" path="res://idle/ui/character_grid/character_card/character_card.tscn" id="2_agl0l"]
+[ext_resource type="PackedScene" uid="uid://d1u6j6ku4g17s" path="res://idle/ui/character_grid/character_card/character_card.tscn" id="2_agl0l"]
 [ext_resource type="Script" uid="uid://cn62yl3605gq2" path="res://character/character.gd" id="3_dcap2"]
-[ext_resource type="Script" uid="uid://bxtkh63ssakrm" path="res://character/base_stat.gd" id="4_l33ty"]
+[ext_resource type="Script" uid="uid://bxtkh63ssakrm" path="res://nks-common-godot/base_stats/base_stat_nks.gd" id="4_l33ty"]
 
 [sub_resource type="Resource" id="Resource_8tkdj"]
 script = ExtResource("4_l33ty")
