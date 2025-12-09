@@ -20,4 +20,3 @@ script = ExtResource("1_roj8e")
 [node name="CharacterLibrary" parent="." instance=ExtResource("5_d21yq")]
 
 [connection signal="create_new_character_signal" from="MainUILayer/CharacterGrid" to="CharacterLibrary" method="add_character"]
-[connection signal="character_added" from="CharacterLibrary" to="MainUILayer/CharacterGrid" method="add_character_to_grid"]
