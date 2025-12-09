@@ -11,7 +11,7 @@ func add_character(p_character: Variant) -> void:
 	elif p_character is String:
 		new_character = Character.new(p_character)
 	else:
-		# push_error("Bad type provided to " + get_class() + "::" + UtilNks.get_function_name())
+		push_error("Bad type provided to " + get_class() + "::" + UtilsNks.get_function_name())
 		return
 
 	_character_library.append(new_character)
