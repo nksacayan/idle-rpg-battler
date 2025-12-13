@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgf36tg3fjidd"]
-
-[ext_resource type="Script" uid="uid://dm6pen4aufvyt" path="res://idle/tasks/task_runner/task_runner.gd" id="1_krpp4"]
-
-[node name="TaskRunner" type="Node"]
-script = ExtResource("1_krpp4")

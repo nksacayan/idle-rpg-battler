@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Task" load_steps=2 format=3 uid="uid://bf7g5jy4qfk8b"]
-
-[ext_resource type="Script" uid="uid://dmk8drde5fdh8" path="res://idle/tasks/task.gd" id="1_7k7sa"]
-
-[resource]
-script = ExtResource("1_7k7sa")
-task_name = "Train Strength"
-stats_and_exp = Dictionary[int, int]({})
-metadata/_custom_type_script = "uid://dmk8drde5fdh8"

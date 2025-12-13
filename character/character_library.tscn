@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm8fwlgbiplyw"]
-
-[ext_resource type="Script" uid="uid://imiwuacboccq" path="res://character/character_library.gd" id="1_stlk3"]
-
-[node name="CharacterLibrary" type="Node"]
-script = ExtResource("1_stlk3")

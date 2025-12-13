@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="idle-rpg-battler"
-run/main_scene="uid://ck1g4iur8g4s0"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

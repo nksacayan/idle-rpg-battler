@@ -1,9 +1,0 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxqp676a6modj"]
-
-[ext_resource type="Script" uid="uid://c1uge4x85yn73" path="res://idle/tasks/task_library/task_library.gd" id="1_dwg52"]
-[ext_resource type="Script" uid="uid://dmk8drde5fdh8" path="res://idle/tasks/task.gd" id="2_ajyag"]
-[ext_resource type="Resource" uid="uid://bf7g5jy4qfk8b" path="res://idle/tasks/task_resources/train_strength.tres" id="3_my0n4"]
-
-[node name="TaskLibrary" type="Node"]
-script = ExtResource("1_dwg52")
-task_library = Array[ExtResource("2_ajyag")]([ExtResource("3_my0n4")])
