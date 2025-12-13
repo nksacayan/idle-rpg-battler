@@ -2,6 +2,7 @@ Current Goal:
 Set a character to a task
 
 What was I doing last:
-
+Debating character stat implementation with common
+- Probably fine to leave it game specific idk how i feel about it rn
 
 What's broken:
