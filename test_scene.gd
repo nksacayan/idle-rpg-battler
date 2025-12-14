@@ -1,12 +1,10 @@
 extends Node2D
 
-var test_character := Character.new()
+@export var test_definitions: Array[CharacterStatDefinition]
+var test_character: Character
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Character.character_stat_definitions = test_definitions
+	test_character = Character.new();
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

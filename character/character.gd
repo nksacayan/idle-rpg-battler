@@ -1,25 +1,25 @@
 extends RefCounted
 class_name Character
 
-static var character_stat_definitions: Array[CharacterStatDefinition]
+# Character definition resources must be provided by some sort of manager
+# before first init
+static var _character_stat_definitions: Array[CharacterStatDefinition]
+static var character_stat_definitions: Array[CharacterStatDefinition]:
+	get:
+		if _character_stat_definitions.is_empty():
+			push_error("Static character stat definitions are empty")
+			return []
+		return _character_stat_definitions
+	set(value):
+		if !_character_stat_definitions.is_empty():
+			push_error("Static character stat definitions have already been provided")
+			return
+		_character_stat_definitions = value
 
 var character_name: String
 var character_stats: Array[CharacterStat]
 
 var health := Health.new()
-
-# Note: Not a fan of this way of static initializing, but it's the simplest
-# Wanted to have something more configurable in the editor with exported definitions
-# but doing that complicated the architecture
-static func _static_init() -> void:
-	character_stat_definitions = [
-		preload("res://character/stat_definitions/strength.tres"),
-		preload("res://character/stat_definitions/dexterity.tres"),
-		preload("res://character/stat_definitions/constitution.tres"),
-		preload("res://character/stat_definitions/wisdom.tres"),
-		preload("res://character/stat_definitions/intelligence.tres"),
-		preload("res://character/stat_definitions/charisma.tres"),
-	]
 
 func _init(p_character_name := "default_character_name") -> void:
 	character_name = p_character_name

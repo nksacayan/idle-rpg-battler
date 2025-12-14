@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckidwolg50glj"]
+[gd_scene load_steps=9 format=3 uid="uid://ckidwolg50glj"]
 
 [ext_resource type="Script" uid="uid://brpg0s1m726a6" path="res://test_scene.gd" id="1_mncer"]
+[ext_resource type="Script" uid="uid://bgicgklmd7bul" path="res://nks-common-godot/character/character_stats/character_stat_definition/character_stat_definition.gd" id="2_5uqhi"]
+[ext_resource type="Resource" uid="uid://cep6pqwc024qu" path="res://character/stat_definitions/charisma.tres" id="3_b3dy1"]
+[ext_resource type="Resource" uid="uid://dul8uw578b87q" path="res://character/stat_definitions/constitution.tres" id="4_rxm5d"]
+[ext_resource type="Resource" uid="uid://3d05mvt4mweu" path="res://character/stat_definitions/dexterity.tres" id="5_7tcvf"]
+[ext_resource type="Resource" uid="uid://c0t2bc1x0nxgn" path="res://character/stat_definitions/intelligence.tres" id="6_exllb"]
+[ext_resource type="Resource" uid="uid://bs6hm5snbbr73" path="res://character/stat_definitions/strength.tres" id="7_lc3a7"]
+[ext_resource type="Resource" uid="uid://c6tpusdw37s0x" path="res://character/stat_definitions/wisdom.tres" id="8_c8rvf"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_mncer")
+test_definitions = Array[ExtResource("2_5uqhi")]([ExtResource("3_b3dy1"), ExtResource("4_rxm5d"), ExtResource("5_7tcvf"), ExtResource("6_exllb"), ExtResource("7_lc3a7"), ExtResource("8_c8rvf")])
