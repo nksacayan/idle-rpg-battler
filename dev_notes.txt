@@ -1,1 +1,5 @@
-WENT NUCLEAR BABY
+Currently Working On:
+	Make character stats not rely on absolute paths
+	
+Pressing Todo:
+	
