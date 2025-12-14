@@ -8,7 +8,6 @@ static var character_stat_definitions: Array[CharacterStatDefinition]:
 	get:
 		if _character_stat_definitions.is_empty():
 			push_error("Static character stat definitions are empty")
-			return []
 		return _character_stat_definitions
 	set(value):
 		if !_character_stat_definitions.is_empty():
@@ -18,8 +17,6 @@ static var character_stat_definitions: Array[CharacterStatDefinition]:
 
 var character_name: String
 var character_stats: Array[CharacterStat]
-
-var health := Health.new()
 
 func _init(p_character_name := "default_character_name") -> void:
 	character_name = p_character_name

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bg3bk1mqq0ecb"]
+
+[node name="MainUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MainPanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreateCharacterRow" type="HBoxContainer" parent="MainPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="MainPanelContainer/CreateCharacterRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "Character Name"
+alignment = 1
+
+[node name="Button" type="Button" parent="MainPanelContainer/CreateCharacterRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create Character"

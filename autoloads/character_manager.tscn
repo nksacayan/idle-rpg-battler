@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxslgb0ebe0jh"]
+
+[ext_resource type="Script" uid="uid://c1w0ha25f0gt3" path="res://autoloads/character_manager.gd" id="1_urjug"]
+
+[node name="CharacterManager" type="Node"]
+script = ExtResource("1_urjug")

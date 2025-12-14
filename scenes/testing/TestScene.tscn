@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ckidwolg50glj"]
 
-[ext_resource type="Script" uid="uid://brpg0s1m726a6" path="res://test_scene.gd" id="1_mncer"]
+[ext_resource type="Script" uid="uid://brpg0s1m726a6" path="res://scenes/testing/test_scene.gd" id="1_mncer"]
 [ext_resource type="Script" uid="uid://bgicgklmd7bul" path="res://nks-common-godot/character/character_stats/character_stat_definition/character_stat_definition.gd" id="2_5uqhi"]
 [ext_resource type="Resource" uid="uid://cep6pqwc024qu" path="res://character/stat_definitions/charisma.tres" id="3_b3dy1"]
 [ext_resource type="Resource" uid="uid://dul8uw578b87q" path="res://character/stat_definitions/constitution.tres" id="4_rxm5d"]
