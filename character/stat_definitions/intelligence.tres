@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StatDefinition" load_steps=2 format=3 uid="uid://c0t2bc1x0nxgn"]
+
+[ext_resource type="Script" uid="uid://bgicgklmd7bul" path="res://nks-common-godot/character/character_stats/character_stat_definition/character_stat_definition.gd" id="1_osqc4"]
+
+[resource]
+script = ExtResource("1_osqc4")
+name = "intelligence"
+max_value = 999
+metadata/_custom_type_script = "uid://bgicgklmd7bul"
