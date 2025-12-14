@@ -1,4 +1,4 @@
-extends RefCounted
+extends Resource
 class_name Character
 
 # Character definition resources must be provided by some sort of manager
