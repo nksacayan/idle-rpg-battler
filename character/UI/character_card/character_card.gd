@@ -11,7 +11,14 @@ extends PanelContainer
 @onready var charisma_label: Label = %CharismaLabel
 
 func _ready() -> void:
-	pass # Replace with function body.
+	_update_labels()
+	
 
 func _update_labels() -> void:
 	character_name_label.text = character.character_name
+	strength_label.text = "Strength: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.strength_definition).value)
+	dexterity_label.text = "Dexterity: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.dexterity_definition).value)
+	constitution_label.text = "Constitution: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.constitution_definition).value)
+	wisdom_label.text = "Wisdom: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.wisdom_definition).value)
+	intelligence_label.text = "Intelligence: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.intelligence_definition).value)
+	charisma_label.text = "Charisma: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.charisma_definition).value)
