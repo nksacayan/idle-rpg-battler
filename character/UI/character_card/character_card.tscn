@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://jpdt27qwgk5h"]
+[gd_scene load_steps=2 format=3 uid="uid://jpdt27qwgk5h"]
+
+[ext_resource type="Script" uid="uid://c4q3ogogj70c" path="res://character/UI/character_card/character_card.gd" id="1_jo75j"]
 
 [node name="CharacterCard" type="PanelContainer"]
 anchors_preset = 15
@@ -8,3 +10,50 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_jo75j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="CharacterNameLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Character Name"
+horizontal_alignment = 1
+
+[node name="StrengthLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Strength: x"
+horizontal_alignment = 1
+
+[node name="DexterityLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Dexterity: x"
+horizontal_alignment = 1
+
+[node name="ConstitutionLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Constitution: x"
+horizontal_alignment = 1
+
+[node name="WisdomLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Wisdom: x"
+horizontal_alignment = 1
+
+[node name="IntelligenceLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Intelligence: x"
+horizontal_alignment = 1
+
+[node name="CharismaLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Charisma: x"
+horizontal_alignment = 1

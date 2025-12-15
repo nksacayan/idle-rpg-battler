@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-CharacterManagerAutoload="*res://autoloads/character_manager.tscn"
+CharacterManagerAutoload="*res://autoloads/character_manager/character_manager.tscn"
+CharacterStatDefinitionRegistryAutoload="*res://autoloads/character_stat_definition_registry/CharacterStatDefinitionRegistry.tscn"
 
 [display]
 

@@ -1,0 +1,2 @@
+Could possibly be abstracted down the road for any character that uses stat definitions?
+Maybe not tho idk could be specific per project. A template or base at the very least

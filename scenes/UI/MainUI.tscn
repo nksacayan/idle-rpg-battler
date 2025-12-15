@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bg3bk1mqq0ecb"]
+[gd_scene load_steps=2 format=3 uid="uid://bg3bk1mqq0ecb"]
+
+[ext_resource type="Script" uid="uid://db81omj2p06it" path="res://scenes/UI/create_character_row.gd" id="1_sb5dd"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -18,10 +20,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CreateCharacterRow" type="HBoxContainer" parent="MainPanelContainer"]
+[node name="CreateCharacterRow" type="HBoxContainer" parent="MainPanelContainer" node_paths=PackedStringArray("character_name_line")]
 layout_mode = 2
 size_flags_vertical = 8
 alignment = 1
+script = ExtResource("1_sb5dd")
+character_name_line = NodePath("LineEdit")
 
 [node name="LineEdit" type="LineEdit" parent="MainPanelContainer/CreateCharacterRow"]
 layout_mode = 2
@@ -34,3 +38,5 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Create Character"
+
+[connection signal="pressed" from="MainPanelContainer/CreateCharacterRow/Button" to="MainPanelContainer/CreateCharacterRow" method="call_create_character"]
