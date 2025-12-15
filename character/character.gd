@@ -18,7 +18,7 @@ static var character_stat_definitions: Array[CharacterStatDefinition]:
 var character_name: String
 var character_stats: Array[CharacterStat]
 
-func _init(p_character_name := "default_character_name") -> void:
+func _init(p_character_name: String = "default_character_name") -> void:
 	character_name = p_character_name
 	_init_character_stats()
 
