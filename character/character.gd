@@ -4,6 +4,7 @@ class_name Character
 
 @export var character_name: String
 @export var stats: Array[CharacterStat]
+@export var stat_exps: Array[CharacterStatExp]
 
 
 func _init(p_character_name: String = "default_character_name") -> void:
@@ -13,7 +14,9 @@ func _init(p_character_name: String = "default_character_name") -> void:
 # Is tightly coupled to the registry but is simpler and more efficient
 func _init_stats() -> void:
 	for definition in CharacterStatDefinitionRegistryAutoload.definitions:
-		stats.append(CharacterStat.new(definition))
+		var new_stat = CharacterStat.new(definition)
+		stats.append(new_stat)
+		stat_exps.append(CharacterStatExp.new(new_stat))
 
 func get_stat(p_stat_definition: CharacterStatDefinition) -> CharacterStat:
 	var filtered_stats := stats.filter(func(stat: CharacterStat) -> bool:
