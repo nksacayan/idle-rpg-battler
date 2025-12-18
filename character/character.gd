@@ -30,3 +30,16 @@ func get_stat(p_stat_definition: CharacterStatDefinition) -> CharacterStat:
 		push_error("Returned no matching stats")
 
 	return filtered_stats[0]
+
+func get_stat_exp(p_stat_definition: CharacterStatDefinition) -> CharacterStatExp:
+	var filtered := stat_exps.filter(func(stat_exp: CharacterStatExp) -> bool:
+		return stat_exp.managed_stat.definition == p_stat_definition
+	)
+
+	# Intended that there is only one stat that matches definition, otherwise copies exist
+	if filtered.size() > 1:
+		push_error("Returned multiple of the same stat exp")
+	elif filtered.size() <= 0:
+		push_error("Returned no matching stat exp")
+
+	return filtered[0]

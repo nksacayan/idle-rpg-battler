@@ -3,6 +3,7 @@ class_name CharacterCard
 
 @export var character: Character
 
+# TODO: Make this render dynamically per stats on a character
 @onready var character_name_label: Label = %CharacterNameLabel
 @onready var strength_label: Label = %StrengthLabel
 @onready var dexterity_label: Label = %DexterityLabel

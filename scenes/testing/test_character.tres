@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Character" load_steps=15 format=3 uid="uid://pqknd1yu1lyt"]
+[gd_resource type="Resource" script_class="Character" load_steps=22 format=3 uid="uid://pqknd1yu1lyt"]
 
 [ext_resource type="Script" uid="uid://1dqqlynfmtl7" path="res://character/character.gd" id="1_427hj"]
+[ext_resource type="Script" uid="uid://bq8ljf0xn6672" path="res://nks-common-godot/character/character_stats/character_stat_exp/character_stat_exp.gd" id="2_ia4ra"]
 [ext_resource type="Script" uid="uid://buoxfhq1ai48r" path="res://nks-common-godot/character/character_stats/character_stat.gd" id="2_ijv60"]
 [ext_resource type="Resource" uid="uid://bs6hm5snbbr73" path="res://autoloads/character_stat_definition_registry/stat_definitions/strength.tres" id="3_7w5ki"]
 [ext_resource type="Resource" uid="uid://3d05mvt4mweu" path="res://autoloads/character_stat_definition_registry/stat_definitions/dexterity.tres" id="4_ia4ra"]
@@ -15,11 +16,21 @@ definition = ExtResource("3_7w5ki")
 value = 1
 metadata/_custom_type_script = "uid://buoxfhq1ai48r"
 
+[sub_resource type="Resource" id="Resource_kpq8k"]
+script = ExtResource("2_ia4ra")
+managed_stat = SubResource("Resource_ijv60")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
+
 [sub_resource type="Resource" id="Resource_8ew87"]
 script = ExtResource("2_ijv60")
 definition = ExtResource("4_ia4ra")
 value = 1
 metadata/_custom_type_script = "uid://buoxfhq1ai48r"
+
+[sub_resource type="Resource" id="Resource_tr1ii"]
+script = ExtResource("2_ia4ra")
+managed_stat = SubResource("Resource_8ew87")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
 
 [sub_resource type="Resource" id="Resource_lhp5t"]
 script = ExtResource("2_ijv60")
@@ -27,11 +38,21 @@ definition = ExtResource("5_kpq8k")
 value = 1
 metadata/_custom_type_script = "uid://buoxfhq1ai48r"
 
+[sub_resource type="Resource" id="Resource_mn44b"]
+script = ExtResource("2_ia4ra")
+managed_stat = SubResource("Resource_lhp5t")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
+
 [sub_resource type="Resource" id="Resource_47r0g"]
 script = ExtResource("2_ijv60")
 definition = ExtResource("6_tr1ii")
 value = 1
 metadata/_custom_type_script = "uid://buoxfhq1ai48r"
+
+[sub_resource type="Resource" id="Resource_acwx3"]
+script = ExtResource("2_ia4ra")
+managed_stat = SubResource("Resource_47r0g")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
 
 [sub_resource type="Resource" id="Resource_6nqxi"]
 script = ExtResource("2_ijv60")
@@ -39,14 +60,25 @@ definition = ExtResource("7_mn44b")
 value = 1
 metadata/_custom_type_script = "uid://buoxfhq1ai48r"
 
+[sub_resource type="Resource" id="Resource_ajtld"]
+script = ExtResource("2_ia4ra")
+managed_stat = SubResource("Resource_6nqxi")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
+
 [sub_resource type="Resource" id="Resource_d28qs"]
 script = ExtResource("2_ijv60")
 definition = ExtResource("8_acwx3")
 value = 1
 metadata/_custom_type_script = "uid://buoxfhq1ai48r"
 
+[sub_resource type="Resource" id="Resource_l5ynb"]
+script = ExtResource("2_ia4ra")
+managed_stat = SubResource("Resource_d28qs")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
+
 [resource]
 script = ExtResource("1_427hj")
 character_name = "Test Character"
 stats = Array[ExtResource("2_ijv60")]([SubResource("Resource_ijv60"), SubResource("Resource_8ew87"), SubResource("Resource_lhp5t"), SubResource("Resource_47r0g"), SubResource("Resource_6nqxi"), SubResource("Resource_d28qs")])
+stat_exps = Array[ExtResource("2_ia4ra")]([SubResource("Resource_kpq8k"), SubResource("Resource_tr1ii"), SubResource("Resource_mn44b"), SubResource("Resource_acwx3"), SubResource("Resource_ajtld"), SubResource("Resource_l5ynb")])
 metadata/_custom_type_script = "uid://1dqqlynfmtl7"
