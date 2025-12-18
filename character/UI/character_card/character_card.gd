@@ -14,7 +14,13 @@ class_name CharacterCard
 
 func _ready() -> void:
 	_update_labels()
-	
+	_subscribe_to_character_stat_changed()
+
+# TODO: This update is not performant, might need to optimize down the road when we have lots of characters
+func _subscribe_to_character_stat_changed() -> void:
+	for stat in character.stats:
+		# Ignoring emitted value for now, will need to optimize
+		stat.value_changed.connect(_update_labels.unbind(1))
 
 func _update_labels() -> void:
 	character_name_label.text = character.character_name
