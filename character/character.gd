@@ -2,8 +2,8 @@ extends Resource
 class_name Character
 
 
-var character_name: String
-var stats: Array[CharacterStat]
+@export var character_name: String
+@export var stats: Array[CharacterStat]
 
 
 func _init(p_character_name: String = "default_character_name") -> void:

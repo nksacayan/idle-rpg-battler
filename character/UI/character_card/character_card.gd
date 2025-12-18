@@ -1,4 +1,5 @@
 extends PanelContainer
+class_name CharacterCard
 
 @export var character: Character
 
@@ -9,6 +10,7 @@ extends PanelContainer
 @onready var wisdom_label: Label = %WisdomLabel
 @onready var intelligence_label: Label = %IntelligenceLabel
 @onready var charisma_label: Label = %CharismaLabel
+
 
 func _ready() -> void:
 	_update_labels()
