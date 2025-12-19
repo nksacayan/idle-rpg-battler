@@ -3,7 +3,9 @@ class_name Character
 
 
 @export var character_name: String
+# Don't modify stats directly for progression, use exp
 @export var stats: Array[CharacterStat]
+# stat exp trackers will manage stat progression.
 @export var stat_exps: Array[CharacterStatExp]
 
 
