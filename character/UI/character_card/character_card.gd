@@ -33,3 +33,9 @@ func _update_labels() -> void:
 	wisdom_label.text = "Wisdom: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.wisdom_definition).value)
 	intelligence_label.text = "Intelligence: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.intelligence_definition).value)
 	charisma_label.text = "Charisma: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.charisma_definition).value)
+
+func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+	return data is TaskDefinition
+
+func _drop_data(_at_position: Vector2, data: Variant) -> void:
+	CharacterTaskManagerAutoload.create_character_task(character, data as TaskDefinition)
