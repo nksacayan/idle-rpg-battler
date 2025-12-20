@@ -1,6 +1,8 @@
 extends PanelContainer
 class_name CharacterCard
 
+# export for testability, not necessary for function as it shouldn't be
+# instantiated without a character
 @export var character: Character
 
 # TODO: Make this render dynamically per stats on a character

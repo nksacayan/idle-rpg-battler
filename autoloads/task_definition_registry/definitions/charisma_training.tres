@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TaskDefinition" load_steps=3 format=3 uid="uid://dyl38ao05fsrh"]
+
+[ext_resource type="Resource" uid="uid://bs6hm5snbbr73" path="res://autoloads/character_stat_definition_registry/stat_definitions/strength.tres" id="1_f27qj"]
+[ext_resource type="Script" uid="uid://c342rkqm6wre2" path="res://tasks/task_definition.gd" id="2_bnrpw"]
+
+[resource]
+script = ExtResource("2_bnrpw")
+task_name = "strength training"
+related_stat = ExtResource("1_f27qj")
+exp_reward = 1
+metadata/_custom_type_script = "uid://c342rkqm6wre2"

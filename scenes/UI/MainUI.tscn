@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg3bk1mqq0ecb"]
+[gd_scene load_steps=6 format=3 uid="uid://bg3bk1mqq0ecb"]
 
 [ext_resource type="Script" uid="uid://b1gvtddnqdwhn" path="res://scenes/UI/character_grid.gd" id="1_h4gv2"]
 [ext_resource type="Script" uid="uid://db81omj2p06it" path="res://scenes/UI/create_character_row.gd" id="1_sb5dd"]
 [ext_resource type="PackedScene" uid="uid://jpdt27qwgk5h" path="res://character/UI/character_card/character_card.tscn" id="2_dfsol"]
+[ext_resource type="Script" uid="uid://ct81h7aenxgf0" path="res://scenes/UI/task_container.gd" id="4_t73sy"]
+[ext_resource type="PackedScene" uid="uid://bo0o58e5ebvw8" path="res://tasks/UI/TaskCard.tscn" id="5_li70l"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -22,33 +24,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanelContainer"]
 layout_mode = 2
 
-[node name="CharacterGrid" type="GridContainer" parent="MainPanelContainer/VBoxContainer"]
+[node name="CharacterContainer" type="VBoxContainer" parent="MainPanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="CharacterGrid" type="GridContainer" parent="MainPanelContainer/HBoxContainer/CharacterContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 columns = 3
 script = ExtResource("1_h4gv2")
 character_card_scene = ExtResource("2_dfsol")
 
-[node name="CreateCharacterRow" type="HBoxContainer" parent="MainPanelContainer/VBoxContainer" node_paths=PackedStringArray("character_name_line")]
+[node name="CreateCharacterRow" type="HBoxContainer" parent="MainPanelContainer/HBoxContainer/CharacterContainer" node_paths=PackedStringArray("character_name_line")]
 layout_mode = 2
 size_flags_vertical = 8
 alignment = 1
 script = ExtResource("1_sb5dd")
 character_name_line = NodePath("LineEdit")
 
-[node name="LineEdit" type="LineEdit" parent="MainPanelContainer/VBoxContainer/CreateCharacterRow"]
+[node name="LineEdit" type="LineEdit" parent="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 placeholder_text = "Character Name"
 alignment = 1
 
-[node name="Button" type="Button" parent="MainPanelContainer/VBoxContainer/CreateCharacterRow"]
+[node name="Button" type="Button" parent="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Create Character"
 
-[connection signal="pressed" from="MainPanelContainer/VBoxContainer/CreateCharacterRow/Button" to="MainPanelContainer/VBoxContainer/CreateCharacterRow" method="call_create_character"]
+[node name="TaskContainer" type="VBoxContainer" parent="MainPanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_t73sy")
+task_card_scene = ExtResource("5_li70l")
+
+[connection signal="pressed" from="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow/Button" to="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow" method="_on_button_pressed"]

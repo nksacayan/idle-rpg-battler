@@ -1,0 +1,14 @@
+[gd_scene load_steps=9 format=3 uid="uid://lirq230aq03n"]
+
+[ext_resource type="Script" uid="uid://bw6kjl321strj" path="res://autoloads/task_definition_registry/task_definition_registry.gd" id="1_ewouj"]
+[ext_resource type="Script" uid="uid://c342rkqm6wre2" path="res://tasks/task_definition.gd" id="2_wah0t"]
+[ext_resource type="Resource" uid="uid://dyl38ao05fsrh" path="res://autoloads/task_definition_registry/definitions/charisma_training.tres" id="3_0js42"]
+[ext_resource type="Resource" uid="uid://bjkcbn3po0brx" path="res://autoloads/task_definition_registry/definitions/constitution_training.tres" id="4_6ql28"]
+[ext_resource type="Resource" uid="uid://dgltjc2wqhadw" path="res://autoloads/task_definition_registry/definitions/dexterity_training.tres" id="5_pcp4m"]
+[ext_resource type="Resource" uid="uid://dl17fnoocn7fc" path="res://autoloads/task_definition_registry/definitions/intelligence_training.tres" id="6_kljf7"]
+[ext_resource type="Resource" uid="uid://ck26cjfnmvb2v" path="res://autoloads/task_definition_registry/definitions/strength_training.tres" id="7_sprjg"]
+[ext_resource type="Resource" uid="uid://yftxwspqfr2l" path="res://autoloads/task_definition_registry/definitions/wisdom_training.tres" id="8_sjn6r"]
+
+[node name="TaskDefinitionRegistry" type="Node"]
+script = ExtResource("1_ewouj")
+_definitions = Array[ExtResource("2_wah0t")]([ExtResource("3_0js42"), ExtResource("4_6ql28"), ExtResource("5_pcp4m"), ExtResource("6_kljf7"), ExtResource("7_sprjg"), ExtResource("8_sjn6r")])
