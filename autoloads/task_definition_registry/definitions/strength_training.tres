@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="TaskDefinition" load_steps=3 format=3 uid="uid://ck26cjfnmvb2v"]
 
 [ext_resource type="Script" uid="uid://c342rkqm6wre2" path="res://tasks/task_definition.gd" id="1_5d485"]
-[ext_resource type="Resource" uid="uid://cep6pqwc024qu" path="res://autoloads/character_stat_definition_registry/stat_definitions/charisma.tres" id="1_qi5rf"]
+[ext_resource type="Resource" uid="uid://bs6hm5snbbr73" path="res://autoloads/character_stat_definition_registry/stat_definitions/strength.tres" id="1_qi5rf"]
 
 [resource]
 script = ExtResource("1_5d485")
-task_name = "charisma training"
+task_name = "strength training"
 related_stat = ExtResource("1_qi5rf")
 exp_reward = 1
 metadata/_custom_type_script = "uid://c342rkqm6wre2"

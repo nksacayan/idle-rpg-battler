@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="TaskDefinition" load_steps=3 format=3 uid="uid://bjkcbn3po0brx"]
 
-[ext_resource type="Resource" uid="uid://bs6hm5snbbr73" path="res://autoloads/character_stat_definition_registry/stat_definitions/strength.tres" id="1_vdtyn"]
+[ext_resource type="Resource" uid="uid://dul8uw578b87q" path="res://autoloads/character_stat_definition_registry/stat_definitions/constitution.tres" id="1_vdtyn"]
 [ext_resource type="Script" uid="uid://c342rkqm6wre2" path="res://tasks/task_definition.gd" id="2_h01lq"]
 
 [resource]
 script = ExtResource("2_h01lq")
-task_name = "strength training"
+task_name = "constitution training"
 related_stat = ExtResource("1_vdtyn")
 exp_reward = 1
 metadata/_custom_type_script = "uid://c342rkqm6wre2"

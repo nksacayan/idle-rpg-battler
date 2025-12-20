@@ -57,3 +57,17 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Charisma: x"
 horizontal_alignment = 1
+
+[node name="TaskLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Task: None"
+horizontal_alignment = 1
+
+[node name="TaskProgressBar" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Clear Task"
