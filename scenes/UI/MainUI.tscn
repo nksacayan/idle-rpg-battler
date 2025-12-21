@@ -64,4 +64,5 @@ size_flags_horizontal = 3
 script = ExtResource("4_t73sy")
 task_card_scene = ExtResource("5_li70l")
 
+[connection signal="text_submitted" from="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow/LineEdit" to="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow/Button" to="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow" method="_on_button_pressed"]
