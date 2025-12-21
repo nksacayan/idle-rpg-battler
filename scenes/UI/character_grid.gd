@@ -1,4 +1,4 @@
-extends GridContainer
+extends HFlowContainer
 
 @export var character_card_scene: PackedScene
 

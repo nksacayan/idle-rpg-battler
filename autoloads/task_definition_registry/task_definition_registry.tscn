@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://lirq230aq03n"]
+[gd_scene load_steps=14 format=3 uid="uid://lirq230aq03n"]
 
 [ext_resource type="Script" uid="uid://bw6kjl321strj" path="res://autoloads/task_definition_registry/task_definition_registry.gd" id="1_ewouj"]
 [ext_resource type="Script" uid="uid://c342rkqm6wre2" path="res://tasks/task_definition.gd" id="2_wah0t"]
@@ -8,7 +8,12 @@
 [ext_resource type="Resource" uid="uid://dl17fnoocn7fc" path="res://autoloads/task_definition_registry/definitions/intelligence_training.tres" id="6_kljf7"]
 [ext_resource type="Resource" uid="uid://ck26cjfnmvb2v" path="res://autoloads/task_definition_registry/definitions/strength_training.tres" id="7_sprjg"]
 [ext_resource type="Resource" uid="uid://yftxwspqfr2l" path="res://autoloads/task_definition_registry/definitions/wisdom_training.tres" id="8_sjn6r"]
+[ext_resource type="Resource" uid="uid://cl3t1b0l1sosj" path="res://autoloads/task_definition_registry/definitions/test1.tres" id="9_tgepb"]
+[ext_resource type="Resource" uid="uid://cmwjoqvjpajga" path="res://autoloads/task_definition_registry/definitions/test2.tres" id="10_r3t0a"]
+[ext_resource type="Resource" uid="uid://8beadr4kckd2" path="res://autoloads/task_definition_registry/definitions/test3.tres" id="11_8hf48"]
+[ext_resource type="Resource" uid="uid://c56sa16how0h1" path="res://autoloads/task_definition_registry/definitions/test4.tres" id="12_alc3y"]
+[ext_resource type="Resource" uid="uid://dwounpt58td2g" path="res://autoloads/task_definition_registry/definitions/test5.tres" id="13_uxmv7"]
 
 [node name="TaskDefinitionRegistry" type="Node"]
 script = ExtResource("1_ewouj")
-_definitions = Array[ExtResource("2_wah0t")]([ExtResource("3_0js42"), ExtResource("4_6ql28"), ExtResource("5_pcp4m"), ExtResource("6_kljf7"), ExtResource("7_sprjg"), ExtResource("8_sjn6r")])
+_definitions = Array[ExtResource("2_wah0t")]([ExtResource("3_0js42"), ExtResource("4_6ql28"), ExtResource("5_pcp4m"), ExtResource("6_kljf7"), ExtResource("7_sprjg"), ExtResource("8_sjn6r"), ExtResource("9_tgepb"), ExtResource("10_r3t0a"), ExtResource("11_8hf48"), ExtResource("12_alc3y"), ExtResource("13_uxmv7")])

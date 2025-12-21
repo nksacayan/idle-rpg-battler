@@ -6,8 +6,7 @@
 [ext_resource type="Script" uid="uid://ct81h7aenxgf0" path="res://scenes/UI/task_container.gd" id="4_t73sy"]
 [ext_resource type="PackedScene" uid="uid://bo0o58e5ebvw8" path="res://tasks/UI/task_card.tscn" id="5_li70l"]
 
-[node name="MainUI" type="Control"]
-layout_mode = 3
+[node name="MainUI" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,53 +15,64 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MainPanelContainer" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPanelContainer"]
+[node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 2
+current_tab = 0
 
-[node name="CharacterContainer" type="VBoxContainer" parent="MainPanelContainer/HBoxContainer"]
+[node name="CharactersAndTasks" type="HBoxContainer" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="CharacterContainer" type="VBoxContainer" parent="TabContainer/CharactersAndTasks"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="CharacterGrid" type="GridContainer" parent="MainPanelContainer/HBoxContainer/CharacterContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/CharactersAndTasks/CharacterContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-columns = 3
+
+[node name="CharacterContainer" type="HFlowContainer" parent="TabContainer/CharactersAndTasks/CharacterContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_h4gv2")
 character_card_scene = ExtResource("2_dfsol")
 
-[node name="CreateCharacterRow" type="HBoxContainer" parent="MainPanelContainer/HBoxContainer/CharacterContainer" node_paths=PackedStringArray("character_name_line")]
+[node name="CreateCharacterRow" type="HBoxContainer" parent="TabContainer/CharactersAndTasks/CharacterContainer" node_paths=PackedStringArray("character_name_line")]
 layout_mode = 2
 size_flags_vertical = 8
 alignment = 1
 script = ExtResource("1_sb5dd")
 character_name_line = NodePath("LineEdit")
 
-[node name="LineEdit" type="LineEdit" parent="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow"]
+[node name="LineEdit" type="LineEdit" parent="TabContainer/CharactersAndTasks/CharacterContainer/CreateCharacterRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 placeholder_text = "Character Name"
 alignment = 1
 
-[node name="Button" type="Button" parent="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow"]
+[node name="Button" type="Button" parent="TabContainer/CharactersAndTasks/CharacterContainer/CreateCharacterRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Create Character"
 
-[node name="TaskContainer" type="VBoxContainer" parent="MainPanelContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/CharactersAndTasks"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="TaskContainer" type="VBoxContainer" parent="TabContainer/CharactersAndTasks/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("4_t73sy")
 task_card_scene = ExtResource("5_li70l")
 
-[connection signal="text_submitted" from="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow/LineEdit" to="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow" method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow/Button" to="MainPanelContainer/HBoxContainer/CharacterContainer/CreateCharacterRow" method="_on_button_pressed"]
+[node name="BattleTeamContainer" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[connection signal="text_submitted" from="TabContainer/CharactersAndTasks/CharacterContainer/CreateCharacterRow/LineEdit" to="TabContainer/CharactersAndTasks/CharacterContainer/CreateCharacterRow" method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="TabContainer/CharactersAndTasks/CharacterContainer/CreateCharacterRow/Button" to="TabContainer/CharactersAndTasks/CharacterContainer/CreateCharacterRow" method="_on_button_pressed"]
