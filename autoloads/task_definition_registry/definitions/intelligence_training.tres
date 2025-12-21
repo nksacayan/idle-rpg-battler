@@ -7,5 +7,5 @@
 script = ExtResource("2_sv28k")
 task_name = "intelligence training"
 related_stat = ExtResource("1_fn5bo")
-exp_reward = 1
+exp_reward = 100
 metadata/_custom_type_script = "uid://c342rkqm6wre2"
