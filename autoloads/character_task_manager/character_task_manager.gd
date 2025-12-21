@@ -13,7 +13,15 @@ func _physics_process(delta: float) -> void:
 	for character_task in character_tasks:
 		character_task.progress += VALUE_PER_TICK * delta
 
+# a character should only have one task at a time
 func create_character_task(p_character: Character, p_task: TaskDefinition) -> void:
+	var existing_tasks: Array[CharacterTask] = character_tasks.filter(
+		func(task: CharacterTask) -> bool:
+			return p_character == task.character
+	)
+	if existing_tasks.size() > 0:
+		for task: CharacterTask in existing_tasks:
+			delete_character_task(task)
 	var character_task := CharacterTask.new(p_character, p_task)
 	character_tasks.append(character_task)
 	character_task_added.emit(character_task)
