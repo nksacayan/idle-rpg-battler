@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://db81omj2p06it" path="res://scenes/UI/create_character_row.gd" id="1_sb5dd"]
 [ext_resource type="PackedScene" uid="uid://jpdt27qwgk5h" path="res://character/UI/character_card/character_card.tscn" id="2_dfsol"]
 [ext_resource type="Script" uid="uid://ct81h7aenxgf0" path="res://scenes/UI/task_container.gd" id="4_t73sy"]
-[ext_resource type="PackedScene" uid="uid://bo0o58e5ebvw8" path="res://tasks/UI/TaskCard.tscn" id="5_li70l"]
+[ext_resource type="PackedScene" uid="uid://bo0o58e5ebvw8" path="res://tasks/UI/task_card.tscn" id="5_li70l"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
