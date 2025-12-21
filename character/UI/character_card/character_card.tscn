@@ -69,6 +69,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="ClearTaskButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Clear Task"
+
+[connection signal="pressed" from="VBoxContainer/ClearTaskButton" to="." method="_on_clear_task_button_pressed"]

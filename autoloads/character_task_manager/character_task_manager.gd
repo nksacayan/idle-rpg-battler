@@ -2,6 +2,7 @@ extends Node
 class_name CharacterTaskManager
 
 signal character_task_added(p_character_task: CharacterTask)
+signal character_task_removed(p_character_task: CharacterTask)
 
 @export var character_tasks: Array[CharacterTask]
 # TODO: Change this and make it rely on character or task or something
@@ -16,3 +17,7 @@ func create_character_task(p_character: Character, p_task: TaskDefinition) -> vo
 	var character_task := CharacterTask.new(p_character, p_task)
 	character_tasks.append(character_task)
 	character_task_added.emit(character_task)
+
+func delete_character_task(p_character_task: CharacterTask) -> void:
+	character_tasks.erase(p_character_task)
+	character_task_removed.emit(p_character_task)
