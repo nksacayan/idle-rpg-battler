@@ -1,4 +1,4 @@
-extends HFlowContainer
+extends Container
 
 @export var character_card_scene: PackedScene
 

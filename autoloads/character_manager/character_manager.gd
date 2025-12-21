@@ -1,9 +1,12 @@
 extends Node
 class_name CharacterManager
 
-signal character_created(character: Character)
+signal character_created(p_character: Character)
+signal added_to_battle_team(p_character: Character)
+signal removed_from_battle_team(p_character: Character)
 
-@export var characters: Array[Character]
+var characters: Array[Character]
+var battle_team: Array[Character]
 
 func create_character(p_character_name: String = "") -> void:
     var new_character: Character
@@ -14,3 +17,13 @@ func create_character(p_character_name: String = "") -> void:
         new_character = Character.new(p_character_name)
         characters.append(new_character)
     character_created.emit(new_character)
+
+func add_to_battle_team(p_character: Character) -> void:
+    if not battle_team.has(p_character):
+        battle_team.append(p_character)
+        added_to_battle_team.emit(p_character)
+
+func remove_from_battle_team(p_character: Character) -> void:
+    if battle_team.has(p_character):
+        battle_team.erase(p_character)
+        removed_from_battle_team.emit(p_character)
