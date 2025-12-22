@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1gvtddnqdwhn" path="res://scenes/UI/character_container.gd" id="1_h4gv2"]
 [ext_resource type="Script" uid="uid://db81omj2p06it" path="res://scenes/UI/create_character_row.gd" id="1_sb5dd"]
-[ext_resource type="PackedScene" uid="uid://jpdt27qwgk5h" path="res://character/UI/character_card/character_card.tscn" id="2_dfsol"]
+[ext_resource type="PackedScene" uid="uid://bd757xpqq6gl7" path="res://character/UI/character_card/character_training_card.tscn" id="2_24nps"]
 [ext_resource type="Script" uid="uid://ct81h7aenxgf0" path="res://scenes/UI/task_container.gd" id="4_t73sy"]
 [ext_resource type="PackedScene" uid="uid://bo0o58e5ebvw8" path="res://tasks/UI/task_card.tscn" id="5_li70l"]
 [ext_resource type="Script" uid="uid://bwnqkebcc4j0c" path="res://scenes/UI/battle_team_container.gd" id="6_24nps"]
@@ -33,7 +33,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_h4gv2")
-character_card_scene = ExtResource("2_dfsol")
+character_card_scene = ExtResource("2_24nps")
 
 [node name="CreateCharacterRow" type="HBoxContainer" parent="MainColumns/CharacterContainer" node_paths=PackedStringArray("character_name_line")]
 layout_mode = 2
@@ -81,7 +81,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("6_24nps")
-character_card_scene = ExtResource("2_dfsol")
+character_card_scene = ExtResource("5_li70l")
 
 [connection signal="text_submitted" from="MainColumns/CharacterContainer/CreateCharacterRow/LineEdit" to="MainColumns/CharacterContainer/CreateCharacterRow" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="MainColumns/CharacterContainer/CreateCharacterRow/Button" to="MainColumns/CharacterContainer/CreateCharacterRow" method="_on_button_pressed"]

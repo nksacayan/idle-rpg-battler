@@ -1,16 +1,17 @@
-extends Control
+extends PanelContainer
 
-@export var character_card_root: CharacterCardRoot
-var character: Character = character_card_root.character
+@export var character_card_root: CharacterCard
+@onready var character: Character = character_card_root.character
 var character_task: CharacterTask
+@export var provide_drop_data_implementation: bool = false
 
 @onready var task_label: Label = %TaskLabel
 @onready var task_progress_bar: ProgressBar = %TaskProgressBar
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 		_subscribe_to_character_task_signals()
-
+		if provide_drop_data_implementation:
+			_provide_drop_data_implementation()
 
 func _subscribe_to_character_task_signals() -> void:
 	CharacterTaskManagerAutoload.character_task_added.connect(_handle_character_task_created)
@@ -33,3 +34,16 @@ func _call_clear_character_task() -> void:
 
 func _update_progress_bar_value(p_value: float) -> void:
 	task_progress_bar.value = p_value
+
+func _can_drop_data_implementation(_at_position: Vector2, data: Variant) -> bool:
+		return data is TaskDefinition
+
+func _drop_data_implementation(_at_position: Vector2, data: Variant) -> void:
+		CharacterTaskManagerAutoload.create_character_task(character, data as TaskDefinition)
+
+func _provide_drop_data_implementation() -> void:
+	character_card_root.can_drop_data_implementation = _can_drop_data_implementation
+	character_card_root.drop_data_implementation = _drop_data_implementation
+
+func _on_clear_task_button_pressed() -> void:
+	_call_clear_character_task()

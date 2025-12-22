@@ -1,16 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://jpdt27qwgk5h"]
+[gd_scene load_steps=2 format=3 uid="uid://brqdnjoy47c0a"]
 
-[ext_resource type="Script" uid="uid://c4q3ogogj70c" path="res://character/UI/character_card/character_card.gd" id="1_jo75j"]
+[ext_resource type="Script" uid="uid://cb4wx55casag0" path="res://character/UI/character_card/components/character_card_stats_component.gd" id="1_iguk5"]
 
-[node name="CharacterCard" type="PanelContainer"]
+[node name="CharacterCardStats" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("1_jo75j")
+mouse_filter = 2
+script = ExtResource("1_iguk5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -57,20 +56,3 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Charisma: x"
 horizontal_alignment = 1
-
-[node name="TaskLabel" type="Label" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Task: None"
-horizontal_alignment = 1
-
-[node name="TaskProgressBar" type="ProgressBar" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="ClearTaskButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Clear Task"
-
-[connection signal="pressed" from="VBoxContainer/ClearTaskButton" to="." method="_on_clear_task_button_pressed"]

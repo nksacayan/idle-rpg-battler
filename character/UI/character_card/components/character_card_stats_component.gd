@@ -1,7 +1,7 @@
-extends Control
+extends PanelContainer
 
-@export var character_card_root: CharacterCardRoot
-var character: Character = character_card_root.character
+@export var character_card_root: CharacterCard
+@onready var character: Character = character_card_root.character
 
 # TODO: Make this render dynamically per stats on a character
 @onready var character_name_label: Label = %CharacterNameLabel
@@ -14,6 +14,7 @@ var character: Character = character_card_root.character
 
 func _ready() -> void:
 	_subscribe_to_character_stat_changed()
+	_update_labels()
 
 # TODO: This update is not performant, might need to optimize down the road when we have lots of characters
 func _subscribe_to_character_stat_changed() -> void:
