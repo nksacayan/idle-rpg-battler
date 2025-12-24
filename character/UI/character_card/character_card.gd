@@ -2,6 +2,7 @@ extends PanelContainer
 class_name CharacterCard
 
 var character: Character
+@export var character_drag_preview_scene: PackedScene
 
 # drag implementations must be provided by children
 # for now only allow 1 implementation. Maybe combo implementations later
@@ -37,13 +38,7 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 func _get_drag_data(at_position: Vector2) -> Variant:
 	if get_drag_data_implementation.is_valid():
 		return get_drag_data_implementation.call(at_position)
-	# i still don't understand this wrapper but it keeps shit from exploding
-	var preview_card: CharacterCard = duplicate()
-	var preview_wrapper = CenterContainer.new()
-
-	preview_card.custom_minimum_size = self.size
-	preview_wrapper.use_top_left = true
-	preview_wrapper.add_child(preview_card)
-
-	set_drag_preview(preview_wrapper)
+	var preview_card: CharacterDragPreview = character_drag_preview_scene.instantiate()
+	set_drag_preview(preview_card)
+	preview_card.preview_label.text = character.character_name
 	return character

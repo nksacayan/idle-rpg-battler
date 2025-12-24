@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dss7couh086gh"]
+
+[ext_resource type="Script" uid="uid://bom1o02riq137" path="res://character/UI/character_card/character_drag_preview.gd" id="1_yeucc"]
+
+[node name="CharacterDragPreview" type="PanelContainer"]
+offset_right = 127.0
+offset_bottom = 23.0
+script = ExtResource("1_yeucc")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PreviewNameLabel" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Character Name"
+horizontal_alignment = 1
+vertical_alignment = 1
