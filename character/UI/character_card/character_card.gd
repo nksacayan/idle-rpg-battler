@@ -39,6 +39,6 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	if get_drag_data_implementation.is_valid():
 		return get_drag_data_implementation.call(at_position)
 	var preview_card: CharacterDragPreview = character_drag_preview_scene.instantiate()
+	preview_card.label_text = character.character_name
 	set_drag_preview(preview_card)
-	preview_card.preview_label.text = character.character_name
 	return character
