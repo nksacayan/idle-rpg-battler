@@ -2,17 +2,29 @@
 
 [ext_resource type="Script" uid="uid://bom1o02riq137" path="res://character/UI/character_card/character_drag_preview.gd" id="1_yeucc"]
 
-[node name="CharacterDragPreview" type="PanelContainer"]
+[node name="CharacterDragPreview" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 127.0
 offset_bottom = 23.0
-script = ExtResource("1_yeucc")
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_yeucc")
 
-[node name="PreviewNameLabel" type="Label" parent="PanelContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+use_top_left = true
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="PreviewNameLabel" type="Label" parent="CenterContainer/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
