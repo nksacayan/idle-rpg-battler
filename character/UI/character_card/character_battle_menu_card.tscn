@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://3jy0cc64verb"]
+
+[ext_resource type="Script" uid="uid://dsp5lk0cisqgb" path="res://character/UI/character_card/character_card.gd" id="1_p4qvo"]
+[ext_resource type="PackedScene" uid="uid://dss7couh086gh" path="res://character/UI/character_card/character_drag_preview.tscn" id="2_ok8sw"]
+[ext_resource type="Script" uid="uid://c7if2ucl4knds" path="res://character/UI/character_card/character_battle_menu_card.gd" id="3_p4qvo"]
+
+[node name="CharacterBattleMenuCard" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p4qvo")
+character_drag_preview_scene = ExtResource("2_ok8sw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+script = ExtResource("3_p4qvo")
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TestLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Battle Label"
+horizontal_alignment = 1
+vertical_alignment = 1
