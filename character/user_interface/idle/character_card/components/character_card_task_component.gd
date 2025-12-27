@@ -1,7 +1,7 @@
 extends PanelContainer
 
 @export var character_card_root: CharacterCard
-@onready var character: Character = character_card_root.character
+@onready var character: CharacterOld = character_card_root.character
 var character_task: CharacterTask
 @export var provide_drop_data_implementation: bool = false
 

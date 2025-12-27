@@ -1,12 +1,12 @@
 extends Resource
-class_name Character
+class_name CharacterOld
 
 
 @export var character_name: String
 # Don't modify stats directly for progression, use exp
-@export var stats: Array[CharacterStat]
+@export var stats: Array[CharacterStatOld]
 # stat exp trackers will manage stat progression.
-@export var stat_exps: Array[CharacterStatExp]
+@export var stat_exps: Array[CharacterStatExpOld]
 
 
 func _init(p_character_name: String = "default_character_name") -> void:
@@ -16,12 +16,12 @@ func _init(p_character_name: String = "default_character_name") -> void:
 # Is tightly coupled to the registry but is simpler and more efficient
 func _init_stats() -> void:
 	for definition in CharacterStatDefinitionRegistryAutoload.definitions:
-		var new_stat = CharacterStat.new(definition)
+		var new_stat = CharacterStatOld.new(definition)
 		stats.append(new_stat)
-		stat_exps.append(CharacterStatExp.new(new_stat))
+		stat_exps.append(CharacterStatExpOld.new(new_stat))
 
-func get_stat(p_stat_definition: CharacterStatDefinition) -> CharacterStat:
-	var filtered_stats := stats.filter(func(stat: CharacterStat) -> bool:
+func get_stat(p_stat_definition: CharacterStatDefinition) -> CharacterStatOld:
+	var filtered_stats := stats.filter(func(stat: CharacterStatOld) -> bool:
 		return stat.definition == p_stat_definition
 	)
 
@@ -33,8 +33,8 @@ func get_stat(p_stat_definition: CharacterStatDefinition) -> CharacterStat:
 
 	return filtered_stats[0]
 
-func get_stat_exp(p_stat_definition: CharacterStatDefinition) -> CharacterStatExp:
-	var filtered := stat_exps.filter(func(stat_exp: CharacterStatExp) -> bool:
+func get_stat_exp(p_stat_definition: CharacterStatDefinition) -> CharacterStatExpOld:
+	var filtered := stat_exps.filter(func(stat_exp: CharacterStatExpOld) -> bool:
 		return stat_exp.managed_stat.definition == p_stat_definition
 	)
 

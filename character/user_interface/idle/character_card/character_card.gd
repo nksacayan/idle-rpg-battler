@@ -1,7 +1,7 @@
 extends PanelContainer
 class_name CharacterCard
 
-var character: Character
+var character: CharacterOld
 @export var character_drag_preview_scene: PackedScene
 
 # drag implementations must be provided by children

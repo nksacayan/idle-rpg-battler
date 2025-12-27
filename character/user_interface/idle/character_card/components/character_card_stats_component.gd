@@ -1,7 +1,7 @@
 extends PanelContainer
 
 @export var character_card_root: CharacterCard
-@onready var character: Character = character_card_root.character
+@onready var character: CharacterOld = character_card_root.character
 
 # TODO: Make this render dynamically per stats on a character
 @onready var character_name_label: Label = %CharacterNameLabel

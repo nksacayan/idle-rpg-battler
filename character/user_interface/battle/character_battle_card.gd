@@ -1,7 +1,7 @@
 extends PanelContainer
 class_name CharacterBattleCard
 
-var character: Character
+var character: CharacterOld
 @onready var name_label: Label = %NameLabel
 
 func _ready() -> void:

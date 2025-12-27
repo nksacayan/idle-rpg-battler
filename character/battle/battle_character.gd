@@ -1,3 +1,3 @@
 extends RefCounted
 
-var character: Character
+var character: CharacterOld
