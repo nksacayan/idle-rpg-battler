@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bd757xpqq6gl7"]
 
-[ext_resource type="Script" uid="uid://dsp5lk0cisqgb" path="res://character/UI/idle/character_card/character_card.gd" id="1_cnot1"]
-[ext_resource type="PackedScene" uid="uid://brqdnjoy47c0a" path="res://character/UI/idle/character_card/components/character_card_stats_component.tscn" id="2_bjka1"]
-[ext_resource type="PackedScene" uid="uid://dss7couh086gh" path="res://character/UI/idle/character_card/components/character_drag_preview.tscn" id="2_va521"]
-[ext_resource type="PackedScene" uid="uid://btdulj7xc31dn" path="res://character/UI/idle/character_card/components/character_card_task_component.tscn" id="3_o3rfs"]
+[ext_resource type="Script" uid="uid://dsp5lk0cisqgb" path="res://character/user_interface/idle/character_card/character_card.gd" id="1_cnot1"]
+[ext_resource type="PackedScene" uid="uid://brqdnjoy47c0a" path="res://character/user_interface/idle/character_card/components/character_card_stats_component.tscn" id="2_bjka1"]
+[ext_resource type="PackedScene" uid="uid://dss7couh086gh" path="res://character/user_interface/idle/character_card/components/character_drag_preview.tscn" id="2_va521"]
+[ext_resource type="PackedScene" uid="uid://btdulj7xc31dn" path="res://character/user_interface/idle/character_card/components/character_card_task_component.tscn" id="3_o3rfs"]
 
 [node name="CharacterTrainingCard" type="PanelContainer"]
 anchors_preset = 15

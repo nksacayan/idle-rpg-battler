@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7v8y31r24dpk"]
 
 [ext_resource type="Texture2D" uid="uid://cua55xqqxrau1" path="res://icon.svg" id="1_wrls2"]
-[ext_resource type="Script" uid="uid://gutdmhw2u84b" path="res://character/UI/battle/character_battle_card.gd" id="1_yf502"]
+[ext_resource type="Script" uid="uid://gutdmhw2u84b" path="res://character/user_interface/battle/character_battle_card.gd" id="1_yf502"]
 
 [node name="CharacterBattleCard" type="PanelContainer"]
 anchors_preset = 15

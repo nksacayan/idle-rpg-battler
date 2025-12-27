@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dss7couh086gh"]
 
-[ext_resource type="Script" uid="uid://bom1o02riq137" path="res://character/UI/idle/character_card/components/character_drag_preview.gd" id="1_yeucc"]
+[ext_resource type="Script" uid="uid://bom1o02riq137" path="res://character/user_interface/idle/character_card/components/character_drag_preview.gd" id="1_yeucc"]
 
 [node name="CharacterDragPreview" type="Control"]
 layout_mode = 3
