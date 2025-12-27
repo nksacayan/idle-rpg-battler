@@ -42,3 +42,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	preview_card.label_text = character.character_name
 	set_drag_preview(preview_card)
 	return character
+
+# Meant to be called by child components
+func delete_card() -> void:
+	queue_free()

@@ -9,6 +9,7 @@ offset_right = 127.0
 offset_bottom = 23.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 script = ExtResource("1_yeucc")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -19,10 +20,12 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 use_top_left = true
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="PreviewNameLabel" type="Label" parent="CenterContainer/PanelContainer"]
 unique_name_in_owner = true
