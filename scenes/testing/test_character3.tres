@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="Character" load_steps=22 format=3 uid="uid://0wo1mwi53lgc"]
+
+[ext_resource type="Script" uid="uid://1dqqlynfmtl7" path="res://character/character.gd" id="1_p8n3x"]
+[ext_resource type="Script" uid="uid://bq8ljf0xn6672" path="res://nks-common-godot/character/character_stats/character_stat_exp/character_stat_exp.gd" id="2_foero"]
+[ext_resource type="Resource" uid="uid://bs6hm5snbbr73" path="res://autoloads/character_stat_definition_registry/stat_definitions/strength.tres" id="3_3thhl"]
+[ext_resource type="Script" uid="uid://buoxfhq1ai48r" path="res://nks-common-godot/character/character_stats/character_stat.gd" id="4_1h0jj"]
+[ext_resource type="Resource" uid="uid://3d05mvt4mweu" path="res://autoloads/character_stat_definition_registry/stat_definitions/dexterity.tres" id="5_npfni"]
+[ext_resource type="Resource" uid="uid://dul8uw578b87q" path="res://autoloads/character_stat_definition_registry/stat_definitions/constitution.tres" id="6_3nh5n"]
+[ext_resource type="Resource" uid="uid://c6tpusdw37s0x" path="res://autoloads/character_stat_definition_registry/stat_definitions/wisdom.tres" id="7_7b5hb"]
+[ext_resource type="Resource" uid="uid://c0t2bc1x0nxgn" path="res://autoloads/character_stat_definition_registry/stat_definitions/intelligence.tres" id="8_2ds31"]
+[ext_resource type="Resource" uid="uid://cep6pqwc024qu" path="res://autoloads/character_stat_definition_registry/stat_definitions/charisma.tres" id="9_vf3t8"]
+
+[sub_resource type="Resource" id="Resource_ijv60"]
+script = ExtResource("4_1h0jj")
+definition = ExtResource("3_3thhl")
+value = 1
+metadata/_custom_type_script = "uid://buoxfhq1ai48r"
+
+[sub_resource type="Resource" id="Resource_kpq8k"]
+script = ExtResource("2_foero")
+managed_stat = SubResource("Resource_ijv60")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
+
+[sub_resource type="Resource" id="Resource_8ew87"]
+script = ExtResource("4_1h0jj")
+definition = ExtResource("5_npfni")
+value = 1
+metadata/_custom_type_script = "uid://buoxfhq1ai48r"
+
+[sub_resource type="Resource" id="Resource_tr1ii"]
+script = ExtResource("2_foero")
+managed_stat = SubResource("Resource_8ew87")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
+
+[sub_resource type="Resource" id="Resource_lhp5t"]
+script = ExtResource("4_1h0jj")
+definition = ExtResource("6_3nh5n")
+value = 1
+metadata/_custom_type_script = "uid://buoxfhq1ai48r"
+
+[sub_resource type="Resource" id="Resource_mn44b"]
+script = ExtResource("2_foero")
+managed_stat = SubResource("Resource_lhp5t")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
+
+[sub_resource type="Resource" id="Resource_47r0g"]
+script = ExtResource("4_1h0jj")
+definition = ExtResource("7_7b5hb")
+value = 1
+metadata/_custom_type_script = "uid://buoxfhq1ai48r"
+
+[sub_resource type="Resource" id="Resource_acwx3"]
+script = ExtResource("2_foero")
+managed_stat = SubResource("Resource_47r0g")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
+
+[sub_resource type="Resource" id="Resource_6nqxi"]
+script = ExtResource("4_1h0jj")
+definition = ExtResource("8_2ds31")
+value = 1
+metadata/_custom_type_script = "uid://buoxfhq1ai48r"
+
+[sub_resource type="Resource" id="Resource_ajtld"]
+script = ExtResource("2_foero")
+managed_stat = SubResource("Resource_6nqxi")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
+
+[sub_resource type="Resource" id="Resource_d28qs"]
+script = ExtResource("4_1h0jj")
+definition = ExtResource("9_vf3t8")
+value = 1
+metadata/_custom_type_script = "uid://buoxfhq1ai48r"
+
+[sub_resource type="Resource" id="Resource_l5ynb"]
+script = ExtResource("2_foero")
+managed_stat = SubResource("Resource_d28qs")
+metadata/_custom_type_script = "uid://bq8ljf0xn6672"
+
+[resource]
+script = ExtResource("1_p8n3x")
+character_name = "Test Character 4"
+stats = Array[ExtResource("4_1h0jj")]([SubResource("Resource_ijv60"), SubResource("Resource_8ew87"), SubResource("Resource_lhp5t"), SubResource("Resource_47r0g"), SubResource("Resource_6nqxi"), SubResource("Resource_d28qs")])
+stat_exps = Array[ExtResource("2_foero")]([SubResource("Resource_kpq8k"), SubResource("Resource_tr1ii"), SubResource("Resource_mn44b"), SubResource("Resource_acwx3"), SubResource("Resource_ajtld"), SubResource("Resource_l5ynb")])
+metadata/_custom_type_script = "uid://1dqqlynfmtl7"

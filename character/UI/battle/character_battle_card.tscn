@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7v8y31r24dpk"]
+
+[ext_resource type="Texture2D" uid="uid://cua55xqqxrau1" path="res://icon.svg" id="1_wrls2"]
+[ext_resource type="Script" uid="uid://gutdmhw2u84b" path="res://character/UI/battle/character_battle_card.gd" id="1_yf502"]
+
+[node name="CharacterBattleCard" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_yf502")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Test Name"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_wrls2")
+stretch_mode = 5

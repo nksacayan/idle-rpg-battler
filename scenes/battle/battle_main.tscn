@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://bb23gwiqd5wsn"]
+
+[ext_resource type="Script" uid="uid://bqektdm713py3" path="res://scenes/battle/battle_main.gd" id="1_suw5k"]
+[ext_resource type="Texture2D" uid="uid://cua55xqqxrau1" path="res://icon.svg" id="1_v0gka"]
+[ext_resource type="Script" uid="uid://b8ss3h6h6wtx7" path="res://scenes/battle/team_container.gd" id="2_hj4f6"]
+[ext_resource type="PackedScene" uid="uid://b7v8y31r24dpk" path="res://character/UI/battle/character_battle_card.tscn" id="3_0jypa"]
+[ext_resource type="Script" uid="uid://1dqqlynfmtl7" path="res://character/character.gd" id="5_udfr5"]
+[ext_resource type="Resource" uid="uid://pqknd1yu1lyt" path="res://scenes/testing/test_character.tres" id="6_7m3k1"]
+[ext_resource type="Resource" uid="uid://dxs4vjir72k8d" path="res://scenes/testing/test_character1.tres" id="7_2qgjh"]
+[ext_resource type="Resource" uid="uid://bwwsojy3dcihy" path="res://scenes/testing/test_character2.tres" id="8_r2jbg"]
+[ext_resource type="Resource" uid="uid://0wo1mwi53lgc" path="res://scenes/testing/test_character3.tres" id="9_8ybqe"]
+
+[node name="BattleMain" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_suw5k")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="EnemyContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/EnemyContainer"]
+layout_mode = 2
+texture = ExtResource("1_v0gka")
+stretch_mode = 5
+
+[node name="TeamContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_hj4f6")
+character_battle_card = ExtResource("3_0jypa")
+character_battle_team = Array[ExtResource("5_udfr5")]([ExtResource("6_7m3k1"), ExtResource("7_2qgjh"), ExtResource("8_r2jbg"), ExtResource("9_8ybqe")])
+
+[node name="MenuContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

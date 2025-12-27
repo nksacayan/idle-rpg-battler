@@ -1,7 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://1qf5iudaxu0g"]
 
-[ext_resource type="PackedScene" uid="uid://bg3bk1mqq0ecb" path="res://scenes/UI/main_ui.tscn" id="1_elqb8"]
+[ext_resource type="PackedScene" uid="uid://bg3bk1mqq0ecb" path="res://scenes/idle/idle_main.tscn" id="1_o5qli"]
 
 [node name="Main" type="Node"]
 
-[node name="TestUi" parent="." instance=ExtResource("1_elqb8")]
+[node name="SceneManager" type="Node" parent="."]
+
+[node name="TestUi" parent="SceneManager" instance=ExtResource("1_o5qli")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://btdulj7xc31dn"]
 
-[ext_resource type="Script" uid="uid://c47q4y1qgqvf4" path="res://character/UI/character_card/components/character_card_task_component.gd" id="1_ktbk6"]
+[ext_resource type="Script" uid="uid://c47q4y1qgqvf4" path="res://character/UI/idle/character_card/components/character_card_task_component.gd" id="1_ktbk6"]
 
 [node name="CharacterCardTask" type="PanelContainer"]
 anchors_preset = 15

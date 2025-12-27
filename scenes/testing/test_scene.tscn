@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckidwolg50glj"]
+[gd_scene load_steps=2 format=3 uid="uid://ckidwolg50glj"]
 
 [ext_resource type="Script" uid="uid://brpg0s1m726a6" path="res://scenes/testing/test_scene.gd" id="1_mncer"]
-[ext_resource type="Resource" uid="uid://pqknd1yu1lyt" path="res://scenes/testing/test_character.tres" id="3_kcw80"]
 
-[node name="TestScene" type="Node2D"]
+[node name="TestScene" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_mncer")
-test_character = ExtResource("3_kcw80")
