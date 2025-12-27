@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b1gvtddnqdwhn" path="res://scenes/UI/character_container.gd" id="1_h4gv2"]
 [ext_resource type="Script" uid="uid://db81omj2p06it" path="res://scenes/UI/create_character_row.gd" id="1_sb5dd"]
-[ext_resource type="PackedScene" uid="uid://bd757xpqq6gl7" path="res://character/UI/character_card/character_training_card.tscn" id="2_24nps"]
+[ext_resource type="PackedScene" uid="uid://bd757xpqq6gl7" path="res://character/UI/character_card/implementations/character_training_card.tscn" id="2_24nps"]
 [ext_resource type="Script" uid="uid://ct81h7aenxgf0" path="res://scenes/UI/task_container.gd" id="4_t73sy"]
 [ext_resource type="PackedScene" uid="uid://bo0o58e5ebvw8" path="res://tasks/UI/task_card.tscn" id="5_li70l"]
 [ext_resource type="Script" uid="uid://bwnqkebcc4j0c" path="res://scenes/UI/battle_team_container.gd" id="6_24nps"]
-[ext_resource type="PackedScene" uid="uid://3jy0cc64verb" path="res://character/UI/character_card/character_battle_menu_card.tscn" id="7_13kck"]
+[ext_resource type="PackedScene" uid="uid://3jy0cc64verb" path="res://character/UI/character_card/implementations/character_battle_menu_card.tscn" id="7_13kck"]
 
 [node name="MainUI" type="PanelContainer"]
 anchors_preset = 15
@@ -58,10 +58,9 @@ text = "Create Character"
 [node name="TabContainer" type="TabContainer" parent="MainColumns"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 1
+current_tab = 0
 
 [node name="Tasks" type="ScrollContainer" parent="MainColumns/TabContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 0
@@ -73,7 +72,8 @@ size_flags_vertical = 3
 script = ExtResource("4_t73sy")
 task_card_scene = ExtResource("5_li70l")
 
-[node name="Battle Team" type="ScrollContainer" parent="MainColumns/TabContainer"]
+[node name="Battle Team" type="VBoxContainer" parent="MainColumns/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -83,6 +83,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("6_24nps")
 character_card_scene = ExtResource("7_13kck")
+
+[node name="Button" type="Button" parent="MainColumns/TabContainer/Battle Team"]
+layout_mode = 2
+text = "Fight!"
 
 [connection signal="text_submitted" from="MainColumns/CharacterContainer/CreateCharacterRow/LineEdit" to="MainColumns/CharacterContainer/CreateCharacterRow" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="MainColumns/CharacterContainer/CreateCharacterRow/Button" to="MainColumns/CharacterContainer/CreateCharacterRow" method="_on_button_pressed"]

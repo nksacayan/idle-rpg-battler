@@ -7,6 +7,7 @@ signal removed_from_battle_team(p_character: Character)
 
 var characters: Array[Character]
 var battle_team: Array[Character]
+const BATTLE_TEAM_MAX_SIZE = 4
 
 func create_character(p_character_name: String = "") -> void:
 	var new_character: Character
@@ -19,7 +20,7 @@ func create_character(p_character_name: String = "") -> void:
 	character_created.emit(new_character)
 
 func add_to_battle_team(p_character: Character) -> void:
-	if not battle_team.has(p_character):
+	if battle_team.size() < BATTLE_TEAM_MAX_SIZE and not battle_team.has(p_character):
 		battle_team.append(p_character)
 		added_to_battle_team.emit(p_character)
 
