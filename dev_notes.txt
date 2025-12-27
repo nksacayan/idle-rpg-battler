@@ -1,5 +1,2 @@
-Currently Working On:
-	Jobs
-	
-Pressing Todo:
-	
+TODO:
+	Go refactor health to be a more generic stat, then use it to start implementing battle character
