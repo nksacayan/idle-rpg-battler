@@ -16,28 +16,23 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
 
 [node name="MainColumns" type="HBoxContainer" parent="."]
 layout_mode = 2
-mouse_filter = 2
 
 [node name="CharacterContainer" type="VBoxContainer" parent="MainColumns"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
-mouse_filter = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MainColumns/CharacterContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-mouse_filter = 2
 
 [node name="CharacterContainer" type="HFlowContainer" parent="MainColumns/CharacterContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
 script = ExtResource("1_h4gv2")
 character_card_scene = ExtResource("2_24nps")
 
@@ -80,7 +75,6 @@ task_card_scene = ExtResource("5_li70l")
 
 [node name="Battle Team" type="ScrollContainer" parent="MainColumns/TabContainer"]
 layout_mode = 2
-mouse_filter = 2
 metadata/_tab_index = 1
 
 [node name="BattleTeamContainer" type="VBoxContainer" parent="MainColumns/TabContainer/Battle Team"]
