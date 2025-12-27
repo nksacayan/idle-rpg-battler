@@ -36,3 +36,11 @@ character_battle_card = ExtResource("3_0jypa")
 [node name="MenuContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/MenuContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Test Button"
+
+[connection signal="pressed" from="VBoxContainer/MenuContainer/Button" to="." method="emit_player_commands_recieved"]

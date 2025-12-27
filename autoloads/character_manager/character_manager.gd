@@ -5,8 +5,8 @@ signal character_created(p_character: Character)
 signal added_to_battle_team(p_character: Character)
 signal removed_from_battle_team(p_character: Character)
 
-var characters: Array[Character]
-var battle_team: Array[Character]
+@export var characters: Array[Character]
+@export var battle_team: Array[Character]
 const BATTLE_TEAM_MAX_SIZE = 4
 
 func create_character(p_character_name: String = "") -> void:

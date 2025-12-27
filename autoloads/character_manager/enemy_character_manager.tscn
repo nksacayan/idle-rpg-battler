@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlktgk6gfbfre"]
+
+[ext_resource type="Script" uid="uid://c1w0ha25f0gt3" path="res://autoloads/character_manager/character_manager.gd" id="1_5nhbr"]
+[ext_resource type="Script" uid="uid://1dqqlynfmtl7" path="res://character/character.gd" id="2_cvoo0"]
+[ext_resource type="Resource" uid="uid://bh7sx3xbwgp06" path="res://autoloads/character_manager/premade_characters/test_dummy.tres" id="3_axxoe"]
+
+[node name="CharacterManager" type="Node"]
+script = ExtResource("1_5nhbr")
+characters = Array[ExtResource("2_cvoo0")]([ExtResource("3_axxoe")])
