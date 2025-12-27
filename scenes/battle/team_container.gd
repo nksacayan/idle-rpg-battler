@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 @export var character_battle_card: PackedScene
-@export var character_battle_team: Array[Character]
+var character_battle_team: Array[Character]
 var character_battle_cards: Array[CharacterBattleCard]
 
 func _ready() -> void:

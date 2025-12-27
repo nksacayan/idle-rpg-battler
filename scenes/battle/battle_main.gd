@@ -1,7 +1,7 @@
 extends PanelContainer
 
-func _ready():
-	_run_testing()
-
-func _run_testing() -> void:
-	pass
+@export var battle_team: Array[Character]
+var commands
+# get player commands for each character
+# execute commands
+# enemy turn (we'll mess with turn order later)
