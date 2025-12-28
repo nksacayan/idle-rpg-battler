@@ -1,9 +1,6 @@
 TODO:
 	Go refactor health to be a more generic stat, then use it to start implementing battle character
-	Big character stat refactor to simplify with dicts
 	
 NOTES:
 	At all times try to decouple components. Strive for dependency injection, and make the injector
 	a different object than the guy who needs the dependencies
-
-	You tried too hard to make your code reusable and now your stat architecture is overcomplicated.
