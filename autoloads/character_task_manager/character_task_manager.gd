@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 		character_task.progress += VALUE_PER_TICK * delta
 
 # a character should only have one task at a time
-func create_character_task(p_character: CharacterOld, p_task: TaskDefinition) -> void:
+func create_character_task(p_character: CharacterData, p_task: TaskDefinition) -> void:
 	var existing_tasks: Array[CharacterTask] = character_tasks.filter(
 		func(task: CharacterTask) -> bool:
 			return p_character == task.character
