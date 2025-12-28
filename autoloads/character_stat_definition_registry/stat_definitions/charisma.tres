@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StatDefinition" load_steps=2 format=3 uid="uid://cep6pqwc024qu"]
 
-[ext_resource type="Script" uid="uid://bgicgklmd7bul" path="res://nks-common-godot/character/character_stats/character_stat_definition/character_stat_definition.gd" id="1_mh827"]
+[ext_resource type="Script" uid="uid://bgicgklmd7bul" path="res://nks-common-godot/character/character_stats_old/character_stat_definition/character_stat_definition.gd" id="1_mh827"]
 
 [resource]
 script = ExtResource("1_mh827")

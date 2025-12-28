@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Character" load_steps=22 format=3 uid="uid://pqknd1yu1lyt"]
 
-[ext_resource type="Script" uid="uid://1dqqlynfmtl7" path="res://character/character.gd" id="1_427hj"]
-[ext_resource type="Script" uid="uid://bq8ljf0xn6672" path="res://nks-common-godot/character/character_stats/character_stat_exp/character_stat_exp.gd" id="2_ia4ra"]
-[ext_resource type="Script" uid="uid://buoxfhq1ai48r" path="res://nks-common-godot/character/character_stats/character_stat.gd" id="2_ijv60"]
+[ext_resource type="Script" uid="uid://1dqqlynfmtl7" path="res://character/character_old.gd" id="1_427hj"]
+[ext_resource type="Script" uid="uid://bq8ljf0xn6672" path="res://nks-common-godot/character/character_stats_old/character_stat_exp/character_stat_exp.gd" id="2_ia4ra"]
+[ext_resource type="Script" uid="uid://buoxfhq1ai48r" path="res://nks-common-godot/character/character_stats_old/character_stat.gd" id="2_ijv60"]
 [ext_resource type="Resource" uid="uid://bs6hm5snbbr73" path="res://autoloads/character_stat_definition_registry/stat_definitions/strength.tres" id="3_7w5ki"]
 [ext_resource type="Resource" uid="uid://3d05mvt4mweu" path="res://autoloads/character_stat_definition_registry/stat_definitions/dexterity.tres" id="4_ia4ra"]
 [ext_resource type="Resource" uid="uid://dul8uw578b87q" path="res://autoloads/character_stat_definition_registry/stat_definitions/constitution.tres" id="5_kpq8k"]
