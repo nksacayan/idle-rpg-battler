@@ -18,4 +18,4 @@ func _init(p_character: CharacterData = null, p_task: TaskDefinition = null) -> 
 	task = p_task
 
 func _reward_exp() -> void:
-	character.get_stat_exp(task.related_stat).current_exp += task.exp_reward
+	character.stats[task.related_stat].experience += task.exp_reward

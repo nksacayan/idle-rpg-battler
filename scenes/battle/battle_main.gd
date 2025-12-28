@@ -2,7 +2,7 @@ extends PanelContainer
 
 signal _player_commands_received
 
-@export var battle_team: Array[CharacterOld]
+@export var battle_team: Array[CharacterData]
 var commands
 # get player commands for each character
 # execute commands

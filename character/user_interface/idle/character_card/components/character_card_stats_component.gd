@@ -1,7 +1,7 @@
 extends PanelContainer
 
 @export var character_card_root: CharacterCard
-@onready var character: CharacterOld = character_card_root.character
+@onready var character: CharacterData = character_card_root.character
 
 # TODO: Make this render dynamically per stats on a character
 @onready var character_name_label: Label = %CharacterNameLabel
@@ -18,15 +18,15 @@ func _ready() -> void:
 
 # TODO: This update is not performant, might need to optimize down the road when we have lots of characters
 func _subscribe_to_character_stat_changed() -> void:
-	for stat in character.stats:
+	for stat: LeveledStat in character.stats.values():
 		# Ignoring emitted value for now, will need to optimize
-		stat.value_changed.connect(_update_labels.unbind(1))
+		stat.stat_value.value_changed.connect(_update_labels.unbind(1))
 
 func _update_labels() -> void:
 	character_name_label.text = character.character_name
-	strength_label.text = "Strength: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.strength_definition).value)
-	dexterity_label.text = "Dexterity: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.dexterity_definition).value)
-	constitution_label.text = "Constitution: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.constitution_definition).value)
-	wisdom_label.text = "Wisdom: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.wisdom_definition).value)
-	intelligence_label.text = "Intelligence: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.intelligence_definition).value)
-	charisma_label.text = "Charisma: " + str(character.get_stat(CharacterStatDefinitionRegistryAutoload.charisma_definition).value)
+	strength_label.text = "Strength: " + str(character.stats[CharacterData.STAT_NAMES.STRENGTH].stat_value.value)
+	dexterity_label.text = "Dexterity: " + str(character.stats[CharacterData.STAT_NAMES.DEXTERITY].stat_value.value)
+	constitution_label.text = "Constitution: " + str(character.stats[CharacterData.STAT_NAMES.CONSTITUTION].stat_value.value)
+	wisdom_label.text = "Wisdom: " + str(character.stats[CharacterData.STAT_NAMES.WISDOM].stat_value.value)
+	intelligence_label.text = "Intelligence: " + str(character.stats[CharacterData.STAT_NAMES.INTELLIGENCE].stat_value.value)
+	charisma_label.text = "Charisma: " + str(character.stats[CharacterData.STAT_NAMES.CHARISMA].stat_value.value)

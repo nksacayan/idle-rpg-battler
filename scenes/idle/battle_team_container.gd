@@ -8,13 +8,13 @@ func _ready() -> void:
 	CharacterManagerAutoload.added_to_battle_team.connect(add_character)
 	CharacterManagerAutoload.removed_from_battle_team.connect(remove_character)
 
-func add_character(p_character: CharacterOld) -> void:
+func add_character(p_character: CharacterData) -> void:
 	var character_card: CharacterCard = character_card_scene.instantiate()
 	character_card.character = p_character
 	add_child(character_card)
 	character_cards.append(character_card)
 
-func remove_character(p_character: CharacterOld) -> void:
+func remove_character(p_character: CharacterData) -> void:
 	var cards_to_remove: Array[CharacterCard] = character_cards.filter(
 		func(card: CharacterCard) -> bool:
 			return p_character == card.character
@@ -26,7 +26,7 @@ func remove_character(p_character: CharacterOld) -> void:
 		card.queue_free()
 
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
-	return data is CharacterOld
+	return data is CharacterData
 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	CharacterManagerAutoload.add_to_battle_team(data as CharacterOld)
+	CharacterManagerAutoload.add_to_battle_team(data as CharacterData)

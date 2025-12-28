@@ -9,7 +9,7 @@ class_name TaskCard
 
 func _update_labels() -> void:
 	name_label.text = task.task_name
-	stat_label.text = "Stat: " + str(task.related_stat.stat_name)
+	stat_label.text = "Stat: " + str(CharacterData.STAT_NAMES.keys()[task.related_stat])
 	reward_label.text = "Reward: " + str(task.exp_reward) + " XP"
 
 # Called when the node enters the scene tree for the first time.

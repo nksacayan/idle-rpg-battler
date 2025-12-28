@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="TaskDefinition" load_steps=3 format=3 uid="uid://dl17fnoocn7fc"]
+[gd_resource type="Resource" script_class="TaskDefinition" load_steps=2 format=3 uid="uid://dl17fnoocn7fc"]
 
-[ext_resource type="Resource" uid="uid://c0t2bc1x0nxgn" path="res://autoloads/character_stat_definition_registry/stat_definitions/intelligence.tres" id="1_fn5bo"]
 [ext_resource type="Script" uid="uid://c342rkqm6wre2" path="res://tasks/task_definition.gd" id="2_sv28k"]
 
 [resource]
 script = ExtResource("2_sv28k")
 task_name = "intelligence training"
-related_stat = ExtResource("1_fn5bo")
+related_stat = 4
 exp_reward = 100
 metadata/_custom_type_script = "uid://c342rkqm6wre2"
