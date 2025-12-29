@@ -16,8 +16,15 @@ func _ready() -> void:
 	_run_main_battle_loop()
 
 func _provide_battle_teams() -> void:
-	_ally_team_container.setup(ally_team)
-	_enemy_team_container.setup(enemy_team)
+	_ally_team_container.setup(_convert_data_to_battle_chars(ally_team))
+	_enemy_team_container.setup(_convert_data_to_battle_chars(enemy_team))
+
+# Helper function to keep the logic reusable
+func _convert_data_to_battle_chars(data_array: Array[CharacterData]) -> Array[BattleCharacter]:
+	var result: Array[BattleCharacter] = []
+	for data in data_array:
+		result.append(BattleCharacter.new(data))
+	return result
 
 func _run_main_battle_loop() -> void:
 	while not _is_battle_over():
