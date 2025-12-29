@@ -1,46 +1,182 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb23gwiqd5wsn"]
+[gd_scene load_steps=33 format=3 uid="uid://bb23gwiqd5wsn"]
 
 [ext_resource type="Script" uid="uid://bqektdm713py3" path="res://scenes/battle/battle_main.gd" id="1_suw5k"]
-[ext_resource type="Texture2D" uid="uid://cua55xqqxrau1" path="res://icon.svg" id="1_v0gka"]
+[ext_resource type="Script" uid="uid://cppn1dvuqyerv" path="res://character/character_data.gd" id="2_7xoa7"]
 [ext_resource type="Script" uid="uid://b8ss3h6h6wtx7" path="res://scenes/battle/team_container.gd" id="2_hj4f6"]
 [ext_resource type="PackedScene" uid="uid://b7v8y31r24dpk" path="res://character/user_interface/battle/character_battle_card.tscn" id="3_0jypa"]
+[ext_resource type="Script" uid="uid://0s5eonlhsruj" path="res://nks-common-godot/rpg_stats/leveled_stat.gd" id="3_ai12c"]
+[ext_resource type="Script" uid="uid://dvbyw3d3f1mb" path="res://nks-common-godot/utils/clamped_int.gd" id="4_qdqkm"]
 
-[node name="BattleMain" type="PanelContainer"]
+[sub_resource type="Resource" id="Resource_7m3k1"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_2qgjh"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_7m3k1")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_r2jbg"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_8ybqe"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_r2jbg")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_2vttj"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_bdfxc"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_2vttj")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_ppvt3"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_hht2y"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_ppvt3")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_66wd1"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_wjqm4"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_66wd1")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_x5hi8"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_7rq38"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_x5hi8")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_60ip8"]
+script = ExtResource("2_7xoa7")
+stats = Dictionary[int, Object]({
+0: SubResource("Resource_2qgjh"),
+1: SubResource("Resource_8ybqe"),
+2: SubResource("Resource_bdfxc"),
+3: SubResource("Resource_hht2y"),
+4: SubResource("Resource_wjqm4"),
+5: SubResource("Resource_7rq38")
+})
+metadata/_custom_type_script = "uid://cppn1dvuqyerv"
+
+[sub_resource type="Resource" id="Resource_7xoa7"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_ai12c"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_7xoa7")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_qdqkm"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_45aqn"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_qdqkm")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_wvp2u"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_3dode"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_wvp2u")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_7qa0q"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_p2md1"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_7qa0q")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_7ybdm"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_s7s4x"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_7ybdm")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_42s2f"]
+script = ExtResource("4_qdqkm")
+metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+
+[sub_resource type="Resource" id="Resource_1t5bg"]
+script = ExtResource("3_ai12c")
+stat_value = SubResource("Resource_42s2f")
+metadata/_custom_type_script = "uid://0s5eonlhsruj"
+
+[sub_resource type="Resource" id="Resource_ju840"]
+script = ExtResource("2_7xoa7")
+character_name = "Test Bad Guy"
+stats = Dictionary[int, Object]({
+0: SubResource("Resource_ai12c"),
+1: SubResource("Resource_45aqn"),
+2: SubResource("Resource_3dode"),
+3: SubResource("Resource_p2md1"),
+4: SubResource("Resource_s7s4x"),
+5: SubResource("Resource_1t5bg")
+})
+metadata/_custom_type_script = "uid://cppn1dvuqyerv"
+
+[node name="BattleMain" type="Node"]
+script = ExtResource("1_suw5k")
+ally_team = Array[ExtResource("2_7xoa7")]([SubResource("Resource_60ip8")])
+enemy_team = Array[ExtResource("2_7xoa7")]([SubResource("Resource_ju840")])
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("1_suw5k")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="EnemyContainer" type="PanelContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/EnemyContainer"]
-layout_mode = 2
-texture = ExtResource("1_v0gka")
-stretch_mode = 5
-
-[node name="TeamContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="EnemyTeamContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_hj4f6")
 character_battle_card = ExtResource("3_0jypa")
 
-[node name="MenuContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="AllyTeamContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_hj4f6")
+character_battle_card = ExtResource("3_0jypa")
+
+[node name="MenuContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="VBoxContainer/MenuContainer"]
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/MenuContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Test Button"
 
-[connection signal="pressed" from="VBoxContainer/MenuContainer/Button" to="." method="emit_player_commands_recieved"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MenuContainer/Button" to="." method="emit_player_commands_recieved"]
