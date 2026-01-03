@@ -63,7 +63,7 @@ metadata/_custom_type_script = "uid://0s5eonlhsruj"
 
 [sub_resource type="Resource" id="Resource_60ip8"]
 script = ExtResource("2_7xoa7")
-stats = Dictionary[int, Object]({
+stats = Dictionary[int, ExtResource("3_ai12c")]({
 0: SubResource("Resource_2qgjh"),
 1: SubResource("Resource_8ybqe"),
 2: SubResource("Resource_bdfxc"),
@@ -130,7 +130,7 @@ metadata/_custom_type_script = "uid://0s5eonlhsruj"
 [sub_resource type="Resource" id="Resource_ju840"]
 script = ExtResource("2_7xoa7")
 character_name = "Test Bad Guy"
-stats = Dictionary[int, Object]({
+stats = Dictionary[int, ExtResource("3_ai12c")]({
 0: SubResource("Resource_ai12c"),
 1: SubResource("Resource_45aqn"),
 2: SubResource("Resource_3dode"),
