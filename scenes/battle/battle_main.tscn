@@ -7,143 +7,156 @@
 [ext_resource type="Script" uid="uid://0s5eonlhsruj" path="res://nks-common-godot/rpg_stats/leveled_stat.gd" id="3_ai12c"]
 [ext_resource type="Script" uid="uid://dvbyw3d3f1mb" path="res://nks-common-godot/utils/clamped_int.gd" id="4_qdqkm"]
 
-[sub_resource type="Resource" id="Resource_7m3k1"]
-script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
-
-[sub_resource type="Resource" id="Resource_2qgjh"]
-script = ExtResource("3_ai12c")
-stat_value = SubResource("Resource_7m3k1")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
-
-[sub_resource type="Resource" id="Resource_r2jbg"]
-script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
-
-[sub_resource type="Resource" id="Resource_8ybqe"]
-script = ExtResource("3_ai12c")
-stat_value = SubResource("Resource_r2jbg")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
-
-[sub_resource type="Resource" id="Resource_2vttj"]
-script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
-
-[sub_resource type="Resource" id="Resource_bdfxc"]
-script = ExtResource("3_ai12c")
-stat_value = SubResource("Resource_2vttj")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
-
-[sub_resource type="Resource" id="Resource_ppvt3"]
-script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
-
-[sub_resource type="Resource" id="Resource_hht2y"]
-script = ExtResource("3_ai12c")
-stat_value = SubResource("Resource_ppvt3")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
-
-[sub_resource type="Resource" id="Resource_66wd1"]
-script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
-
-[sub_resource type="Resource" id="Resource_wjqm4"]
-script = ExtResource("3_ai12c")
-stat_value = SubResource("Resource_66wd1")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
-
-[sub_resource type="Resource" id="Resource_x5hi8"]
-script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
-
-[sub_resource type="Resource" id="Resource_7rq38"]
-script = ExtResource("3_ai12c")
-stat_value = SubResource("Resource_x5hi8")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
-
-[sub_resource type="Resource" id="Resource_60ip8"]
-script = ExtResource("2_7xoa7")
-stats = Dictionary[int, ExtResource("3_ai12c")]({
-0: SubResource("Resource_2qgjh"),
-1: SubResource("Resource_8ybqe"),
-2: SubResource("Resource_bdfxc"),
-3: SubResource("Resource_hht2y"),
-4: SubResource("Resource_wjqm4"),
-5: SubResource("Resource_7rq38")
-})
-metadata/_custom_type_script = "uid://cppn1dvuqyerv"
-
 [sub_resource type="Resource" id="Resource_7xoa7"]
 script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+_min_value = 1
+value = 1
 
 [sub_resource type="Resource" id="Resource_ai12c"]
 script = ExtResource("3_ai12c")
+_stat_name = "STRENGTH"
 stat_value = SubResource("Resource_7xoa7")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
 
 [sub_resource type="Resource" id="Resource_qdqkm"]
 script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_7m3k1"]
+script = ExtResource("3_ai12c")
+_stat_name = "DEXTERITY"
+stat_value = SubResource("Resource_qdqkm")
+
+[sub_resource type="Resource" id="Resource_2qgjh"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_r2jbg"]
+script = ExtResource("3_ai12c")
+_stat_name = "CONSTITUTION"
+stat_value = SubResource("Resource_2qgjh")
+
+[sub_resource type="Resource" id="Resource_8ybqe"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_2vttj"]
+script = ExtResource("3_ai12c")
+_stat_name = "WISDOM"
+stat_value = SubResource("Resource_8ybqe")
+
+[sub_resource type="Resource" id="Resource_bdfxc"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_ppvt3"]
+script = ExtResource("3_ai12c")
+_stat_name = "INTELLIGENCE"
+stat_value = SubResource("Resource_bdfxc")
+
+[sub_resource type="Resource" id="Resource_hht2y"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_66wd1"]
+script = ExtResource("3_ai12c")
+_stat_name = "CHARISMA"
+stat_value = SubResource("Resource_hht2y")
+
+[sub_resource type="Resource" id="Resource_wjqm4"]
+script = ExtResource("2_7xoa7")
+character_name = "Test Ally"
+stats = Dictionary[int, ExtResource("3_ai12c")]({
+0: SubResource("Resource_ai12c"),
+1: SubResource("Resource_7m3k1"),
+2: SubResource("Resource_r2jbg"),
+3: SubResource("Resource_2vttj"),
+4: SubResource("Resource_ppvt3"),
+5: SubResource("Resource_66wd1")
+})
+metadata/_custom_type_script = "uid://cppn1dvuqyerv"
+
+[sub_resource type="Resource" id="Resource_x5hi8"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_7rq38"]
+script = ExtResource("3_ai12c")
+_stat_name = "STRENGTH"
+stat_value = SubResource("Resource_x5hi8")
+
+[sub_resource type="Resource" id="Resource_60ip8"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
 
 [sub_resource type="Resource" id="Resource_45aqn"]
 script = ExtResource("3_ai12c")
-stat_value = SubResource("Resource_qdqkm")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
+_stat_name = "DEXTERITY"
+stat_value = SubResource("Resource_60ip8")
 
 [sub_resource type="Resource" id="Resource_wvp2u"]
 script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
-
-[sub_resource type="Resource" id="Resource_3dode"]
-script = ExtResource("3_ai12c")
-stat_value = SubResource("Resource_wvp2u")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
-
-[sub_resource type="Resource" id="Resource_7qa0q"]
-script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
-
-[sub_resource type="Resource" id="Resource_p2md1"]
-script = ExtResource("3_ai12c")
-stat_value = SubResource("Resource_7qa0q")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
-
-[sub_resource type="Resource" id="Resource_7ybdm"]
-script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
-
-[sub_resource type="Resource" id="Resource_s7s4x"]
-script = ExtResource("3_ai12c")
-stat_value = SubResource("Resource_7ybdm")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
-
-[sub_resource type="Resource" id="Resource_42s2f"]
-script = ExtResource("4_qdqkm")
-metadata/_custom_type_script = "uid://dvbyw3d3f1mb"
-
-[sub_resource type="Resource" id="Resource_1t5bg"]
-script = ExtResource("3_ai12c")
-stat_value = SubResource("Resource_42s2f")
-metadata/_custom_type_script = "uid://0s5eonlhsruj"
+_min_value = 1
+value = 1
 
 [sub_resource type="Resource" id="Resource_ju840"]
+script = ExtResource("3_ai12c")
+_stat_name = "CONSTITUTION"
+stat_value = SubResource("Resource_wvp2u")
+
+[sub_resource type="Resource" id="Resource_3dode"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_7qa0q"]
+script = ExtResource("3_ai12c")
+_stat_name = "WISDOM"
+stat_value = SubResource("Resource_3dode")
+
+[sub_resource type="Resource" id="Resource_p2md1"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_7ybdm"]
+script = ExtResource("3_ai12c")
+_stat_name = "INTELLIGENCE"
+stat_value = SubResource("Resource_p2md1")
+
+[sub_resource type="Resource" id="Resource_s7s4x"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_42s2f"]
+script = ExtResource("3_ai12c")
+_stat_name = "CHARISMA"
+stat_value = SubResource("Resource_s7s4x")
+
+[sub_resource type="Resource" id="Resource_1t5bg"]
 script = ExtResource("2_7xoa7")
-character_name = "Test Bad Guy"
+character_name = "Test Enemy"
 stats = Dictionary[int, ExtResource("3_ai12c")]({
-0: SubResource("Resource_ai12c"),
+0: SubResource("Resource_7rq38"),
 1: SubResource("Resource_45aqn"),
-2: SubResource("Resource_3dode"),
-3: SubResource("Resource_p2md1"),
-4: SubResource("Resource_s7s4x"),
-5: SubResource("Resource_1t5bg")
+2: SubResource("Resource_ju840"),
+3: SubResource("Resource_7qa0q"),
+4: SubResource("Resource_7ybdm"),
+5: SubResource("Resource_42s2f")
 })
 metadata/_custom_type_script = "uid://cppn1dvuqyerv"
 
 [node name="BattleMain" type="Node"]
 script = ExtResource("1_suw5k")
-ally_team = Array[ExtResource("2_7xoa7")]([SubResource("Resource_60ip8")])
-enemy_team = Array[ExtResource("2_7xoa7")]([SubResource("Resource_ju840")])
+ally_team = Array[ExtResource("2_7xoa7")]([SubResource("Resource_wjqm4")])
+enemy_team = Array[ExtResource("2_7xoa7")]([SubResource("Resource_1t5bg")])
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
