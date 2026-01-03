@@ -15,6 +15,6 @@ var depletable_stats: Dictionary[DEPLETABLE_STAT_NAMES, DepletableStat]
 func _init(p_character_data: CharacterData) -> void:
 	character_data = p_character_data
 	# TODO: Figure out something better for derived stats
-	depletable_stats[DEPLETABLE_STAT_NAMES.HEALTH] = DepletableStat.new(character_data.stats[CharacterData.STAT_NAMES.CONSTITUTION].stat_value.value * DEPLETABLE_PER_STAT)
-	depletable_stats[DEPLETABLE_STAT_NAMES.STAMINA] = DepletableStat.new(character_data.stats[CharacterData.STAT_NAMES.CONSTITUTION].stat_value.value * DEPLETABLE_PER_STAT)
-	depletable_stats[DEPLETABLE_STAT_NAMES.MAGIC] = DepletableStat.new(character_data.stats[CharacterData.STAT_NAMES.INTELLIGENCE].stat_value.value * DEPLETABLE_PER_STAT)
+	depletable_stats[DEPLETABLE_STAT_NAMES.HEALTH] = DepletableStat.new(DEPLETABLE_STAT_NAMES.keys()[DEPLETABLE_STAT_NAMES.HEALTH], character_data.stats[CharacterData.STAT_NAMES.CONSTITUTION].stat_value.value * DEPLETABLE_PER_STAT)
+	depletable_stats[DEPLETABLE_STAT_NAMES.STAMINA] = DepletableStat.new(DEPLETABLE_STAT_NAMES.keys()[DEPLETABLE_STAT_NAMES.STAMINA], character_data.stats[CharacterData.STAT_NAMES.CONSTITUTION].stat_value.value * DEPLETABLE_PER_STAT)
+	depletable_stats[DEPLETABLE_STAT_NAMES.MAGIC] = DepletableStat.new(DEPLETABLE_STAT_NAMES.keys()[DEPLETABLE_STAT_NAMES.MAGIC], character_data.stats[CharacterData.STAT_NAMES.INTELLIGENCE].stat_value.value * DEPLETABLE_PER_STAT)
