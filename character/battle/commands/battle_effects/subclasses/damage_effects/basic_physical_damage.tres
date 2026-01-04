@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DamageEffect" load_steps=2 format=3 uid="uid://d1a1ubaued0fe"]
+
+[ext_resource type="Script" uid="uid://caoknhvavtqfd" path="res://character/battle/commands/battle_effects/subclasses/damage_effects/damage_effect.gd" id="1_xa6qc"]
+
+[resource]
+script = ExtResource("1_xa6qc")
+base_power = 1
+additive_stat_factor = 1.0
+effect_name = "basic physical damage"
+metadata/_custom_type_script = "uid://caoknhvavtqfd"

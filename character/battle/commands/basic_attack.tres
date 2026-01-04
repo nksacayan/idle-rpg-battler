@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BattleCommand" load_steps=4 format=3 uid="uid://cy3uulpuo2sfk"]
+
+[ext_resource type="Script" uid="uid://c85ym5t2umph0" path="res://character/battle/commands/battle_effects/battle_effect.gd" id="1_gn7jd"]
+[ext_resource type="Resource" uid="uid://d1a1ubaued0fe" path="res://character/battle/commands/battle_effects/subclasses/damage_effects/basic_physical_damage.tres" id="2_agqkp"]
+[ext_resource type="Script" uid="uid://c1uli2rvae5ek" path="res://character/battle/commands/battle_command.gd" id="2_wrnfi"]
+
+[resource]
+script = ExtResource("2_wrnfi")
+command_name = "basic attack"
+command_description = "does a basic attack"
+target_types = Array[int]([2])
+effects = Array[ExtResource("1_gn7jd")]([ExtResource("2_agqkp")])
+metadata/_custom_type_script = "uid://c1uli2rvae5ek"
