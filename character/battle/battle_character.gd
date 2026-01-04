@@ -39,6 +39,7 @@ func _init(p_character_data: CharacterData) -> void:
 	character_data = p_character_data
 	_init_depletables()
 	_init_battle_stats()
+	_init_battle_commands()
 
 func _init_depletables() -> void:
 	for stat: DEPLETABLE_STAT_NAMES in DEPLETABLE_STAT_NAMES.values():
@@ -53,3 +54,7 @@ func _init_battle_stats() -> void:
 			BATTLE_STAT_NAMES.find_key(stat),
 			battle_stat_formulas[stat].call(character_data.stats)
 		)
+
+func _init_battle_commands() -> void:
+	for command: BattleCommand in character_data.battle_commands:
+		command.source_character = self
