@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://532oxsj04ur"]
+
+[node name="CommandButtonTemplate" type="Button"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Test Command"

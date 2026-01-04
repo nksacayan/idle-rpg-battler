@@ -1,6 +1,8 @@
 extends PanelContainer
 class_name CharacterBattleCard
 
+signal character_selected(p_battle_character: BattleCharacter)
+
 var _battle_character: BattleCharacter
 var battle_character: BattleCharacter:
 	set(value):
@@ -32,3 +34,6 @@ func _generate_depletable_stat_labels() -> void:
 		var depletable_value: String = str(_battle_character.depletable_stats[depletable_key].current)
 		new_label.text = depletable_name + ": " + depletable_value
 		_battle_card_container.add_child(new_label)
+
+func _on_select_character_pressed() -> void:
+	character_selected.emit(_battle_character)
