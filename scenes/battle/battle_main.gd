@@ -4,6 +4,8 @@ signal _player_commands_received
 
 @export var ally_team: Array[CharacterData]
 @export var enemy_team: Array[CharacterData]
+var ally_battle_team: Array[BattleCharacter]
+var enemy_battle_team: Array[BattleCharacter]
 var commands
 # get player commands for each character
 # execute commands
@@ -16,8 +18,10 @@ func _ready() -> void:
 	_run_main_battle_loop()
 
 func _provide_battle_teams() -> void:
-	_ally_team_container.setup(_convert_data_to_battle_chars(ally_team))
-	_enemy_team_container.setup(_convert_data_to_battle_chars(enemy_team))
+	ally_battle_team = _convert_data_to_battle_chars(ally_team)
+	_ally_team_container.setup(ally_battle_team)
+	enemy_battle_team = _convert_data_to_battle_chars(enemy_team)
+	_enemy_team_container.setup(enemy_battle_team)
 
 # Helper function to keep the logic reusable
 func _convert_data_to_battle_chars(data_array: Array[CharacterData]) -> Array[BattleCharacter]:

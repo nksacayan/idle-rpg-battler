@@ -20,7 +20,7 @@ stat_value = SubResource("Resource_7xoa7")
 [sub_resource type="Resource" id="Resource_qdqkm"]
 script = ExtResource("4_qdqkm")
 _min_value = 1
-value = 1
+value = 3
 
 [sub_resource type="Resource" id="Resource_7m3k1"]
 script = ExtResource("3_ai12c")
