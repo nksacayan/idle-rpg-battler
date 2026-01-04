@@ -11,11 +11,22 @@ enum TARGET_TYPE {
 @export var command_name: String
 @export var command_description: String
 @export var target_types: Array[TARGET_TYPE]
+@export var min_targets: int = 1
 @export var max_targets: int = 1
 @export var effects: Array[BattleEffect]
 var targets: Array[BattleCharacter]
 var source_character: BattleCharacter
 
 func execute() -> void:
+    if not is_valid():
+        push_warning("Tried to execute non-valid command")
+        return
     for effect: BattleEffect in effects:
         effect.apply_effect(source_character, targets)
+
+func is_valid() -> bool:
+    if targets.size() < min_targets or targets.size() > max_targets:
+        return false
+    if not is_instance_valid(source_character):
+        return false
+    return true

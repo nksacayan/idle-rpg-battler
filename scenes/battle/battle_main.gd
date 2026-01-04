@@ -1,13 +1,28 @@
 extends Node
 
+signal turn_state_changed(p_state: TURN_STATE)
 signal _player_commands_received
+
+enum TURN_STATE {
+	SELECTING_CHARACTER,
+	SELECTING_COMMAND,
+	SELECTING_TARGET,
+	OTHER
+}
 
 @export var ally_team: Array[CharacterData]
 @export var enemy_team: Array[CharacterData]
 var ally_battle_team: Array[BattleCharacter]
 var enemy_battle_team: Array[BattleCharacter]
-var command_queue: Array[BattleCommand]
+var command_list: BattleCommandList
 var selected_character: BattleCharacter
+var _turn_state: TURN_STATE = TURN_STATE.OTHER
+var turn_state: TURN_STATE = TURN_STATE.OTHER:
+	get:
+		return _turn_state
+	set(p_state):
+		_turn_state = p_state
+		turn_state_changed.emit(_turn_state)
 # get player commands for each character
 # execute commands
 # enemy turn (we'll mess with turn order later)
@@ -25,6 +40,7 @@ func _setup_battle_team_containers() -> void:
 	_ally_team_container.setup(ally_battle_team)
 	_ally_team_container.character_selected.connect(_on_battle_character_selected)
 	_enemy_team_container.setup(enemy_battle_team)
+	_enemy_team_container.character_selected.connect(_on_battle_character_selected)
 
 func _setup_battle_characters() -> void:
 	ally_battle_team = _convert_data_to_battle_chars(ally_team)
@@ -49,14 +65,15 @@ func _run_main_battle_loop() -> void:
 			print("false player commands")
 
 func _get_player_commands() -> bool:
+	turn_state = TURN_STATE.SELECTING_CHARACTER
 	await _player_commands_received
-	print("_get_player_commands: ", command_queue)
 	return true
 
 func _resolve_commands() -> bool:
 	print("_resolve_commands")
-	for command: BattleCommand in command_queue:
+	for command: BattleCommand in command_list.commands_view:
 		command.execute()
+	command_list.clear()
 	return true
 
 func _run_enemy_turn() -> bool:
@@ -74,12 +91,16 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 	_command_container.setup(selected_character.character_data.battle_commands)
 
 func _on_command_selected(p_command: BattleCommand) -> void:
-	command_queue.append(p_command)
+	# wire in targeter here?
+	command_list.add_command(p_command)
 
 func _on_submit_commands() -> void:
 	print("submit commands")
-	# validate here
-	_player_commands_received.emit()
+	var all_battle_characters: Array[BattleCharacter]
+	all_battle_characters.append_array(ally_battle_team)
+	all_battle_characters.append_array(enemy_battle_team)
+	if command_list.is_complete_and_valid(all_battle_characters):
+		_player_commands_received.emit()
 
 func _on_submit_commands_button_pressed() -> void:
 	_on_submit_commands()
