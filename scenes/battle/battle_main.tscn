@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b7v8y31r24dpk" path="res://character/user_interface/battle/character_battle_card.tscn" id="3_0jypa"]
 [ext_resource type="Script" uid="uid://0s5eonlhsruj" path="res://nks-common-godot/rpg_stats/leveled_stat.gd" id="3_ai12c"]
 [ext_resource type="Script" uid="uid://c1uli2rvae5ek" path="res://character/battle/commands/battle_command.gd" id="3_qdqkm"]
-[ext_resource type="Resource" uid="uid://cy3uulpuo2sfk" path="res://character/battle/commands/basic_attack.tres" id="4_7m3k1"]
+[ext_resource type="Resource" uid="uid://cy3uulpuo2sfk" path="res://character/battle/commands/command_resources/basic_attack.tres" id="4_7m3k1"]
 [ext_resource type="Script" uid="uid://dvbyw3d3f1mb" path="res://nks-common-godot/utils/clamped_int.gd" id="4_qdqkm"]
 [ext_resource type="Script" uid="uid://brdnr7vmom15r" path="res://scenes/battle/command_container.gd" id="9_7m3k1"]
 [ext_resource type="PackedScene" uid="uid://532oxsj04ur" path="res://scenes/battle/command_button_template.tscn" id="10_2qgjh"]
@@ -156,7 +156,6 @@ stats = Dictionary[int, ExtResource("3_ai12c")]({
 4: SubResource("Resource_7ybdm"),
 5: SubResource("Resource_42s2f")
 })
-battle_commands = null
 metadata/_custom_type_script = "uid://cppn1dvuqyerv"
 
 [node name="BattleMain" type="Node"]
