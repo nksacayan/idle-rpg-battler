@@ -8,7 +8,7 @@ func _ready() -> void:
 	_create_all_cards_from_registry()
 
 func _create_all_cards_from_registry() -> void:
-	for task_definition: TaskDefinition in TaskDefinitionRegistryAutoload.definitions:
+	for task_definition: TaskDefinition in TaskDefinitionRegistryAutoload.definitions_view:
 		create_task_card(task_definition)
 
 func create_task_card(p_task: TaskDefinition) -> void:

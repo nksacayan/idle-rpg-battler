@@ -3,11 +3,11 @@ class_name TaskDefinitionRegistry
 
 # TODO: Abstract our definition registries later? They are hardcoded per type
 @export var _definitions: Array[TaskDefinition]
-var definitions: Array[TaskDefinition]:
-	get: return _definitions.duplicate()
+var definitions_view: Array[TaskDefinition]:
+	get: return _definitions
 
 func find_task_definition_by_name(p_name: String) -> TaskDefinition:
-	var filtered = definitions.filter(
+	var filtered = definitions_view.filter(
 		func(definition: TaskDefinition) -> bool:
 			return definition.task_name == p_name
 	)
