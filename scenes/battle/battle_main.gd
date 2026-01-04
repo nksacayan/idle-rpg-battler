@@ -16,21 +16,28 @@ var selected_character: BattleCharacter
 @onready var _command_container: BattleCommandContainer = %CommandContainer
 
 func _ready() -> void:
-	_provide_battle_teams()
+	_setup_battle_characters()
+	_setup_battle_team_containers()
+	_setup_command_container()
 	_run_main_battle_loop()
 
-func _provide_battle_teams() -> void:
-	ally_battle_team = _convert_data_to_battle_chars(ally_team)
+func _setup_battle_team_containers() -> void:
 	_ally_team_container.setup(ally_battle_team)
 	_ally_team_container.character_selected.connect(_on_battle_character_selected)
-	enemy_battle_team = _convert_data_to_battle_chars(enemy_team)
 	_enemy_team_container.setup(enemy_battle_team)
+
+func _setup_battle_characters() -> void:
+	ally_battle_team = _convert_data_to_battle_chars(ally_team)
+	enemy_battle_team = _convert_data_to_battle_chars(enemy_team)
 
 func _convert_data_to_battle_chars(data_array: Array[CharacterData]) -> Array[BattleCharacter]:
 	var result: Array[BattleCharacter] = []
 	for data in data_array:
 		result.append(BattleCharacter.new(data))
 	return result
+
+func _setup_command_container() -> void:
+	_command_container.command_selected.connect(_on_command_selected)
 
 func _run_main_battle_loop() -> void:
 	while not _is_battle_over():
@@ -65,3 +72,14 @@ func emit_player_commands_recieved() -> void:
 func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 	selected_character = p_battle_character
 	_command_container.setup(selected_character.character_data.battle_commands)
+
+func _on_command_selected(p_command: BattleCommand) -> void:
+	command_queue.append(p_command)
+
+func _on_submit_commands() -> void:
+	print("submit commands")
+	# validate here
+	_player_commands_received.emit()
+
+func _on_submit_commands_button_pressed() -> void:
+	_on_submit_commands()
