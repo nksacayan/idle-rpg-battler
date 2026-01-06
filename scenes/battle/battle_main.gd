@@ -14,7 +14,7 @@ enum TURN_STATE {
 @export var enemy_team: Array[CharacterData]
 var ally_battle_team: Array[BattleCharacter]
 var enemy_battle_team: Array[BattleCharacter]
-var command_list: BattleCommandList
+var command_list: BattleCommandList = BattleCommandList.new()
 var selected_character: BattleCharacter
 var _turn_state: TURN_STATE = TURN_STATE.OTHER
 var turn_state: TURN_STATE = TURN_STATE.OTHER:
