@@ -15,7 +15,6 @@ enum TURN_STATE {
 var ally_battle_team: Array[BattleCharacter]
 var enemy_battle_team: Array[BattleCharacter]
 var command_list: BattleCommandList = BattleCommandList.new()
-var selected_character: BattleCharacter
 var _turn_state: TURN_STATE = TURN_STATE.OTHER
 var turn_state: TURN_STATE = TURN_STATE.OTHER:
 	get:
@@ -34,7 +33,7 @@ func _ready() -> void:
 	_setup_battle_characters()
 	_setup_battle_team_containers()
 	_setup_command_container()
-	_run_main_battle_loop()
+	turn_state = TURN_STATE.SELECTING_CHARACTER
 
 func _setup_battle_team_containers() -> void:
 	_ally_team_container.setup(ally_battle_team)
@@ -55,20 +54,6 @@ func _convert_data_to_battle_chars(data_array: Array[CharacterData]) -> Array[Ba
 func _setup_command_container() -> void:
 	_command_container.command_selected.connect(_on_command_selected)
 
-func _run_main_battle_loop() -> void:
-	while not _is_battle_over():
-		print("running battle loop")
-		var player_commands_awaited := await _get_player_commands()
-		if player_commands_awaited:
-			print("true player command")
-		else:
-			print("false player commands")
-
-func _get_player_commands() -> bool:
-	turn_state = TURN_STATE.SELECTING_CHARACTER
-	await _player_commands_received
-	return true
-
 func _resolve_commands() -> bool:
 	print("_resolve_commands")
 	for command: BattleCommand in command_list.commands_view:
@@ -87,14 +72,31 @@ func emit_player_commands_recieved() -> void:
 	_player_commands_received.emit()
 
 func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
-	selected_character = p_battle_character
-	_command_container.setup(selected_character.character_data.battle_commands)
+	match turn_state:
+		TURN_STATE.SELECTING_CHARACTER:
+			_command_container.setup(p_battle_character.character_data.battle_commands)
+			turn_state = TURN_STATE.SELECTING_COMMAND
+		TURN_STATE.SELECTING_COMMAND:
+			# This means we want to change characters rather than select a command
+			_command_container.setup(p_battle_character.character_data.battle_commands)
+			turn_state = TURN_STATE.SELECTING_COMMAND
+		TURN_STATE.SELECTING_TARGET:
+			# Attempt to add a target to current command
+			# Check if this is the last target then lock in the command
+			# Let players try to submit attacks whenever, but maybe do a UI thing to show that the character has a command submitted?
+			turn_state = TURN_STATE.SELECTING_CHARACTER
+			_command_container.clear()
+		_:
+			push_error("Hit turn state fallback. Attempting reset")
+			turn_state = TURN_STATE.SELECTING_CHARACTER
+			_command_container.clear()
+			pass
 
 func _on_command_selected(p_command: BattleCommand) -> void:
 	# wire in targeter here?
 	command_list.add_command(p_command)
 
-func _on_submit_commands() -> void:
+func _submit_commands() -> void:
 	print("submit commands")
 	var all_battle_characters: Array[BattleCharacter]
 	all_battle_characters.append_array(ally_battle_team)
@@ -103,4 +105,4 @@ func _on_submit_commands() -> void:
 		_player_commands_received.emit()
 
 func _on_submit_commands_button_pressed() -> void:
-	_on_submit_commands()
+	_submit_commands()
