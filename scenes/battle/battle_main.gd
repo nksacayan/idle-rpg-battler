@@ -15,6 +15,7 @@ enum TURN_STATE {
 var ally_battle_team: Array[BattleCharacter]
 var enemy_battle_team: Array[BattleCharacter]
 var command_list: BattleCommandList = BattleCommandList.new()
+var target_provider: CommandTargetProvider
 var _turn_state: TURN_STATE = TURN_STATE.OTHER
 var turn_state: TURN_STATE = TURN_STATE.OTHER:
 	get:
@@ -33,6 +34,7 @@ func _ready() -> void:
 	_setup_battle_characters()
 	_setup_battle_team_containers()
 	_setup_command_container()
+	target_provider = CommandTargetProvider.new(ally_battle_team, enemy_battle_team)
 	turn_state = TURN_STATE.SELECTING_CHARACTER
 
 func _setup_battle_team_containers() -> void:
