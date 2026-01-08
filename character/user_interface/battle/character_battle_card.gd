@@ -33,6 +33,10 @@ func _generate_depletable_stat_labels() -> void:
 		var depletable_name: String = BattleCharacter.DEPLETABLE_STAT_NAMES.keys()[depletable_key]
 		var depletable_value: String = str(_battle_character.depletable_stats[depletable_key].current)
 		new_label.text = depletable_name + ": " + depletable_value
+		_battle_character.depletable_stats[depletable_key].changed.connect(
+			func(p_value: int) -> void:
+				new_label.text = depletable_name + ": " + str(p_value)		
+		)
 		_battle_card_container.add_child(new_label)
 
 func _on_select_character_pressed() -> void:
