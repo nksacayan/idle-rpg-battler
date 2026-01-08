@@ -8,6 +8,6 @@
 script = ExtResource("2_wrnfi")
 command_name = "basic attack"
 command_description = "does a basic attack"
-target_types = Array[int]([2])
+target_types = Array[int]([1])
 effects = Array[ExtResource("1_gn7jd")]([ExtResource("2_agqkp")])
 metadata/_custom_type_script = "uid://c1uli2rvae5ek"

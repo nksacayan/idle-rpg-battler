@@ -1,12 +1,13 @@
 extends Node
+class_name BattleMain
 
 signal turn_state_changed(p_state: TURN_STATE)
-signal _player_commands_received
 
 enum TURN_STATE {
 	SELECTING_CHARACTER,
 	SELECTING_COMMAND,
 	SELECTING_TARGET,
+	RESOLVING_COMMANDS,
 	OTHER
 }
 
@@ -14,6 +15,7 @@ enum TURN_STATE {
 @export var enemy_team: Array[CharacterData]
 var ally_battle_team: Array[BattleCharacter]
 var enemy_battle_team: Array[BattleCharacter]
+var current_command: BattleCommand
 var command_list: BattleCommandList = BattleCommandList.new()
 var target_provider: CommandTargetProvider
 var _turn_state: TURN_STATE = TURN_STATE.OTHER
@@ -33,15 +35,12 @@ var turn_state: TURN_STATE = TURN_STATE.OTHER:
 func _ready() -> void:
 	_setup_battle_characters()
 	_setup_battle_team_containers()
-	_setup_command_container()
 	target_provider = CommandTargetProvider.new(ally_battle_team, enemy_battle_team)
 	turn_state = TURN_STATE.SELECTING_CHARACTER
 
 func _setup_battle_team_containers() -> void:
 	_ally_team_container.setup(ally_battle_team)
-	_ally_team_container.character_selected.connect(_on_battle_character_selected)
 	_enemy_team_container.setup(enemy_battle_team)
-	_enemy_team_container.character_selected.connect(_on_battle_character_selected)
 
 func _setup_battle_characters() -> void:
 	ally_battle_team = _convert_data_to_battle_chars(ally_team)
@@ -53,25 +52,8 @@ func _convert_data_to_battle_chars(data_array: Array[CharacterData]) -> Array[Ba
 		result.append(BattleCharacter.new(data))
 	return result
 
-func _setup_command_container() -> void:
-	_command_container.command_selected.connect(_on_command_selected)
-
-func _resolve_commands() -> bool:
-	print("_resolve_commands")
-	for command: BattleCommand in command_list.commands_view:
-		command.execute()
-	command_list.clear()
-	return true
-
-func _run_enemy_turn() -> bool:
-	print("_run_enemy_turn")
-	return true
-
 func _is_battle_over() -> bool:
 	return false
-
-func emit_player_commands_recieved() -> void:
-	_player_commands_received.emit()
 
 func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 	match turn_state:
@@ -85,9 +67,13 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 		TURN_STATE.SELECTING_TARGET:
 			# Attempt to add a target to current command
 			# Check if this is the last target then lock in the command
+			var target_success: bool = target_provider.add_target_to_command(current_command, p_battle_character)
+			if target_success and target_provider.has_maximum_targets(current_command):
+				print("max targets reached")
+				command_list.add_command(current_command)
+				current_command = null
+				turn_state = TURN_STATE.SELECTING_CHARACTER
 			# Let players try to submit attacks whenever, but maybe do a UI thing to show that the character has a command submitted?
-			turn_state = TURN_STATE.SELECTING_CHARACTER
-			_command_container.clear()
 		_:
 			push_error("Hit turn state fallback. Attempting reset")
 			turn_state = TURN_STATE.SELECTING_CHARACTER
@@ -95,8 +81,9 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 			pass
 
 func _on_command_selected(p_command: BattleCommand) -> void:
-	# wire in targeter here?
-	command_list.add_command(p_command)
+	current_command = p_command
+	turn_state = TURN_STATE.SELECTING_TARGET
+	_command_container.clear()
 
 func _submit_commands() -> void:
 	print("submit commands")
@@ -104,7 +91,15 @@ func _submit_commands() -> void:
 	all_battle_characters.append_array(ally_battle_team)
 	all_battle_characters.append_array(enemy_battle_team)
 	if command_list.is_complete_and_valid(all_battle_characters):
-		_player_commands_received.emit()
+		_resolve_commands()
+	else:
+		push_warning("Commands invalid, did not resolve")
 
-func _on_submit_commands_button_pressed() -> void:
-	_submit_commands()
+func _resolve_commands() -> void:
+	turn_state = TURN_STATE.RESOLVING_COMMANDS
+	print("_resolve_commands: ", command_list.commands_view)
+	for command: BattleCommand in command_list.commands_view:
+		print("resolving command: ", command.command_name, " source: ", command.source_character, " targets: ", command.targets)
+		command.execute()
+	command_list.clear()
+	turn_state = TURN_STATE.SELECTING_CHARACTER

@@ -34,9 +34,12 @@ func clear() -> void:
 func has_command_by_character(p_battle_character: BattleCharacter) -> bool:
     return _commands.any(func(p_command): return p_command.source_character == p_battle_character)
 
-func is_complete_and_valid(p_battle_characters: Array[BattleCharacter]) -> bool:
+func is_complete_and_valid(_p_battle_characters: Array[BattleCharacter]) -> bool:
     if _commands.any(func(p_command): return not p_command.is_valid()):
+        push_warning("A command was invalid")
         return false
-    if _commands.size() != p_battle_characters.size():
-        return false
+    # Temporarily disabling until enemies are implemented
+    # if _commands.size() != p_battle_characters.size():
+    #     push_warning("Did not have a command per character")
+    #     return false
     return true
