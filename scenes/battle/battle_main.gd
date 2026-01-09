@@ -11,6 +11,8 @@ enum TURN_STATE {
 	OTHER
 }
 
+# export character data teams just for testing, probably move to a setup func
+#  and only store the battle teams later
 @export var ally_team: Array[CharacterData]
 @export var enemy_team: Array[CharacterData]
 var ally_battle_team: Array[BattleCharacter]
@@ -58,11 +60,11 @@ func _is_battle_over() -> bool:
 func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 	match turn_state:
 		TURN_STATE.SELECTING_CHARACTER:
-			_command_container.setup(p_battle_character.character_data.battle_commands)
+			_command_container.setup(p_battle_character.local_battle_commands)
 			turn_state = TURN_STATE.SELECTING_COMMAND
 		TURN_STATE.SELECTING_COMMAND:
 			# This means we want to change characters rather than select a command
-			_command_container.setup(p_battle_character.character_data.battle_commands)
+			_command_container.setup(p_battle_character.local_battle_commands)
 			turn_state = TURN_STATE.SELECTING_COMMAND
 		TURN_STATE.SELECTING_TARGET:
 			# Attempt to add a target to current command

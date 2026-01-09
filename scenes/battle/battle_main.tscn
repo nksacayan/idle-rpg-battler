@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bb23gwiqd5wsn"]
+[gd_scene load_steps=116 format=3 uid="uid://bb23gwiqd5wsn"]
 
 [ext_resource type="Script" uid="uid://bqektdm713py3" path="res://scenes/battle/battle_main.gd" id="1_suw5k"]
 [ext_resource type="Script" uid="uid://cppn1dvuqyerv" path="res://character/character_data.gd" id="2_7xoa7"]
@@ -12,26 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://532oxsj04ur" path="res://scenes/battle/command_button_template.tscn" id="10_2qgjh"]
 [ext_resource type="Script" uid="uid://bgjodnctu768y" path="res://scenes/battle/command_status_label.gd" id="11_r2jbg"]
 
-[sub_resource type="Resource" id="Resource_7xoa7"]
-script = ExtResource("4_qdqkm")
-_min_value = 1
-value = 1
-
-[sub_resource type="Resource" id="Resource_ai12c"]
-script = ExtResource("3_ai12c")
-_stat_name = "STRENGTH"
-stat_value = SubResource("Resource_7xoa7")
-
-[sub_resource type="Resource" id="Resource_qdqkm"]
-script = ExtResource("4_qdqkm")
-_min_value = 1
-value = 3
-
-[sub_resource type="Resource" id="Resource_7m3k1"]
-script = ExtResource("3_ai12c")
-_stat_name = "DEXTERITY"
-stat_value = SubResource("Resource_qdqkm")
-
 [sub_resource type="Resource" id="Resource_2qgjh"]
 script = ExtResource("4_qdqkm")
 _min_value = 1
@@ -39,7 +19,7 @@ value = 1
 
 [sub_resource type="Resource" id="Resource_r2jbg"]
 script = ExtResource("3_ai12c")
-_stat_name = "CONSTITUTION"
+_stat_name = "STRENGTH"
 stat_value = SubResource("Resource_2qgjh")
 
 [sub_resource type="Resource" id="Resource_8ybqe"]
@@ -49,7 +29,7 @@ value = 1
 
 [sub_resource type="Resource" id="Resource_2vttj"]
 script = ExtResource("3_ai12c")
-_stat_name = "WISDOM"
+_stat_name = "DEXTERITY"
 stat_value = SubResource("Resource_8ybqe")
 
 [sub_resource type="Resource" id="Resource_bdfxc"]
@@ -59,7 +39,7 @@ value = 1
 
 [sub_resource type="Resource" id="Resource_ppvt3"]
 script = ExtResource("3_ai12c")
-_stat_name = "INTELLIGENCE"
+_stat_name = "CONSTITUTION"
 stat_value = SubResource("Resource_bdfxc")
 
 [sub_resource type="Resource" id="Resource_hht2y"]
@@ -69,42 +49,42 @@ value = 1
 
 [sub_resource type="Resource" id="Resource_66wd1"]
 script = ExtResource("3_ai12c")
-_stat_name = "CHARISMA"
+_stat_name = "WISDOM"
 stat_value = SubResource("Resource_hht2y")
 
 [sub_resource type="Resource" id="Resource_wjqm4"]
-script = ExtResource("2_7xoa7")
-character_name = "Test Ally"
-stats = Dictionary[int, ExtResource("3_ai12c")]({
-0: SubResource("Resource_ai12c"),
-1: SubResource("Resource_7m3k1"),
-2: SubResource("Resource_r2jbg"),
-3: SubResource("Resource_2vttj"),
-4: SubResource("Resource_ppvt3"),
-5: SubResource("Resource_66wd1")
-})
-battle_commands = Array[ExtResource("3_qdqkm")]([ExtResource("4_7m3k1")])
-metadata/_custom_type_script = "uid://cppn1dvuqyerv"
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
 
 [sub_resource type="Resource" id="Resource_x5hi8"]
-script = ExtResource("4_qdqkm")
-_min_value = 1
-value = 1
+script = ExtResource("3_ai12c")
+_stat_name = "INTELLIGENCE"
+stat_value = SubResource("Resource_wjqm4")
 
 [sub_resource type="Resource" id="Resource_7rq38"]
-script = ExtResource("3_ai12c")
-_stat_name = "STRENGTH"
-stat_value = SubResource("Resource_x5hi8")
-
-[sub_resource type="Resource" id="Resource_60ip8"]
 script = ExtResource("4_qdqkm")
 _min_value = 1
 value = 1
 
-[sub_resource type="Resource" id="Resource_45aqn"]
+[sub_resource type="Resource" id="Resource_60ip8"]
 script = ExtResource("3_ai12c")
-_stat_name = "DEXTERITY"
-stat_value = SubResource("Resource_60ip8")
+_stat_name = "CHARISMA"
+stat_value = SubResource("Resource_7rq38")
+
+[sub_resource type="Resource" id="Resource_45aqn"]
+script = ExtResource("2_7xoa7")
+character_name = "Test Ally 1"
+stats = Dictionary[int, ExtResource("3_ai12c")]({
+0: SubResource("Resource_r2jbg"),
+1: SubResource("Resource_2vttj"),
+2: SubResource("Resource_ppvt3"),
+3: SubResource("Resource_66wd1"),
+4: SubResource("Resource_x5hi8"),
+5: SubResource("Resource_60ip8")
+})
+available_battle_commands = Array[ExtResource("3_qdqkm")]([ExtResource("4_7m3k1")])
+metadata/_custom_type_script = "uid://cppn1dvuqyerv"
 
 [sub_resource type="Resource" id="Resource_wvp2u"]
 script = ExtResource("4_qdqkm")
@@ -113,7 +93,7 @@ value = 1
 
 [sub_resource type="Resource" id="Resource_ju840"]
 script = ExtResource("3_ai12c")
-_stat_name = "CONSTITUTION"
+_stat_name = "STRENGTH"
 stat_value = SubResource("Resource_wvp2u")
 
 [sub_resource type="Resource" id="Resource_3dode"]
@@ -123,7 +103,7 @@ value = 1
 
 [sub_resource type="Resource" id="Resource_7qa0q"]
 script = ExtResource("3_ai12c")
-_stat_name = "WISDOM"
+_stat_name = "DEXTERITY"
 stat_value = SubResource("Resource_3dode")
 
 [sub_resource type="Resource" id="Resource_p2md1"]
@@ -133,7 +113,7 @@ value = 1
 
 [sub_resource type="Resource" id="Resource_7ybdm"]
 script = ExtResource("3_ai12c")
-_stat_name = "INTELLIGENCE"
+_stat_name = "CONSTITUTION"
 stat_value = SubResource("Resource_p2md1")
 
 [sub_resource type="Resource" id="Resource_s7s4x"]
@@ -143,26 +123,491 @@ value = 1
 
 [sub_resource type="Resource" id="Resource_42s2f"]
 script = ExtResource("3_ai12c")
-_stat_name = "CHARISMA"
+_stat_name = "WISDOM"
 stat_value = SubResource("Resource_s7s4x")
 
 [sub_resource type="Resource" id="Resource_1t5bg"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_c5r8d"]
+script = ExtResource("3_ai12c")
+_stat_name = "INTELLIGENCE"
+stat_value = SubResource("Resource_1t5bg")
+
+[sub_resource type="Resource" id="Resource_1e6it"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_u4mi4"]
+script = ExtResource("3_ai12c")
+_stat_name = "CHARISMA"
+stat_value = SubResource("Resource_1e6it")
+
+[sub_resource type="Resource" id="Resource_00iey"]
 script = ExtResource("2_7xoa7")
-character_name = "Test Enemy"
+character_name = "Test Ally 2"
 stats = Dictionary[int, ExtResource("3_ai12c")]({
-0: SubResource("Resource_7rq38"),
-1: SubResource("Resource_45aqn"),
-2: SubResource("Resource_ju840"),
-3: SubResource("Resource_7qa0q"),
-4: SubResource("Resource_7ybdm"),
-5: SubResource("Resource_42s2f")
+0: SubResource("Resource_ju840"),
+1: SubResource("Resource_7qa0q"),
+2: SubResource("Resource_7ybdm"),
+3: SubResource("Resource_42s2f"),
+4: SubResource("Resource_c5r8d"),
+5: SubResource("Resource_u4mi4")
 })
+available_battle_commands = Array[ExtResource("3_qdqkm")]([ExtResource("4_7m3k1")])
+metadata/_custom_type_script = "uid://cppn1dvuqyerv"
+
+[sub_resource type="Resource" id="Resource_cvudp"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_gyso4"]
+script = ExtResource("3_ai12c")
+_stat_name = "STRENGTH"
+stat_value = SubResource("Resource_cvudp")
+
+[sub_resource type="Resource" id="Resource_2jrkt"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_48wug"]
+script = ExtResource("3_ai12c")
+_stat_name = "DEXTERITY"
+stat_value = SubResource("Resource_2jrkt")
+
+[sub_resource type="Resource" id="Resource_2ecsv"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_wlk8e"]
+script = ExtResource("3_ai12c")
+_stat_name = "CONSTITUTION"
+stat_value = SubResource("Resource_2ecsv")
+
+[sub_resource type="Resource" id="Resource_bsjle"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_6yh7f"]
+script = ExtResource("3_ai12c")
+_stat_name = "WISDOM"
+stat_value = SubResource("Resource_bsjle")
+
+[sub_resource type="Resource" id="Resource_rdwou"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_udql6"]
+script = ExtResource("3_ai12c")
+_stat_name = "INTELLIGENCE"
+stat_value = SubResource("Resource_rdwou")
+
+[sub_resource type="Resource" id="Resource_knw0m"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_q0kt8"]
+script = ExtResource("3_ai12c")
+_stat_name = "CHARISMA"
+stat_value = SubResource("Resource_knw0m")
+
+[sub_resource type="Resource" id="Resource_xuxdd"]
+script = ExtResource("2_7xoa7")
+character_name = "Test Ally 3"
+stats = Dictionary[int, ExtResource("3_ai12c")]({
+0: SubResource("Resource_gyso4"),
+1: SubResource("Resource_48wug"),
+2: SubResource("Resource_wlk8e"),
+3: SubResource("Resource_6yh7f"),
+4: SubResource("Resource_udql6"),
+5: SubResource("Resource_q0kt8")
+})
+available_battle_commands = Array[ExtResource("3_qdqkm")]([ExtResource("4_7m3k1")])
+metadata/_custom_type_script = "uid://cppn1dvuqyerv"
+
+[sub_resource type="Resource" id="Resource_tuhte"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_v7jmw"]
+script = ExtResource("3_ai12c")
+_stat_name = "STRENGTH"
+stat_value = SubResource("Resource_tuhte")
+
+[sub_resource type="Resource" id="Resource_ia2js"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_xreop"]
+script = ExtResource("3_ai12c")
+_stat_name = "DEXTERITY"
+stat_value = SubResource("Resource_ia2js")
+
+[sub_resource type="Resource" id="Resource_skfya"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_dml8q"]
+script = ExtResource("3_ai12c")
+_stat_name = "CONSTITUTION"
+stat_value = SubResource("Resource_skfya")
+
+[sub_resource type="Resource" id="Resource_qvxcn"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_bu4m0"]
+script = ExtResource("3_ai12c")
+_stat_name = "WISDOM"
+stat_value = SubResource("Resource_qvxcn")
+
+[sub_resource type="Resource" id="Resource_guoqv"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_nxkiv"]
+script = ExtResource("3_ai12c")
+_stat_name = "INTELLIGENCE"
+stat_value = SubResource("Resource_guoqv")
+
+[sub_resource type="Resource" id="Resource_prrok"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_3k3i1"]
+script = ExtResource("3_ai12c")
+_stat_name = "CHARISMA"
+stat_value = SubResource("Resource_prrok")
+
+[sub_resource type="Resource" id="Resource_kpe0u"]
+script = ExtResource("2_7xoa7")
+character_name = "Test Ally 4"
+stats = Dictionary[int, ExtResource("3_ai12c")]({
+0: SubResource("Resource_v7jmw"),
+1: SubResource("Resource_xreop"),
+2: SubResource("Resource_dml8q"),
+3: SubResource("Resource_bu4m0"),
+4: SubResource("Resource_nxkiv"),
+5: SubResource("Resource_3k3i1")
+})
+available_battle_commands = Array[ExtResource("3_qdqkm")]([ExtResource("4_7m3k1")])
+metadata/_custom_type_script = "uid://cppn1dvuqyerv"
+
+[sub_resource type="Resource" id="Resource_pgmue"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_i2tug"]
+script = ExtResource("3_ai12c")
+_stat_name = "STRENGTH"
+stat_value = SubResource("Resource_pgmue")
+
+[sub_resource type="Resource" id="Resource_j85c1"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_yeru6"]
+script = ExtResource("3_ai12c")
+_stat_name = "DEXTERITY"
+stat_value = SubResource("Resource_j85c1")
+
+[sub_resource type="Resource" id="Resource_14h1r"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_7w4bt"]
+script = ExtResource("3_ai12c")
+_stat_name = "CONSTITUTION"
+stat_value = SubResource("Resource_14h1r")
+
+[sub_resource type="Resource" id="Resource_on4km"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_ptsjy"]
+script = ExtResource("3_ai12c")
+_stat_name = "WISDOM"
+stat_value = SubResource("Resource_on4km")
+
+[sub_resource type="Resource" id="Resource_fgow4"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_7dtj4"]
+script = ExtResource("3_ai12c")
+_stat_name = "INTELLIGENCE"
+stat_value = SubResource("Resource_fgow4")
+
+[sub_resource type="Resource" id="Resource_7g0t8"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_sxaqo"]
+script = ExtResource("3_ai12c")
+_stat_name = "CHARISMA"
+stat_value = SubResource("Resource_7g0t8")
+
+[sub_resource type="Resource" id="Resource_o4tm4"]
+script = ExtResource("2_7xoa7")
+character_name = "Test Enemy 1"
+stats = Dictionary[int, ExtResource("3_ai12c")]({
+0: SubResource("Resource_i2tug"),
+1: SubResource("Resource_yeru6"),
+2: SubResource("Resource_7w4bt"),
+3: SubResource("Resource_ptsjy"),
+4: SubResource("Resource_7dtj4"),
+5: SubResource("Resource_sxaqo")
+})
+available_battle_commands = null
+metadata/_custom_type_script = "uid://cppn1dvuqyerv"
+
+[sub_resource type="Resource" id="Resource_4ur7s"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_3n11o"]
+script = ExtResource("3_ai12c")
+_stat_name = "STRENGTH"
+stat_value = SubResource("Resource_4ur7s")
+
+[sub_resource type="Resource" id="Resource_1oq32"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_0rwg7"]
+script = ExtResource("3_ai12c")
+_stat_name = "DEXTERITY"
+stat_value = SubResource("Resource_1oq32")
+
+[sub_resource type="Resource" id="Resource_ctwp7"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_ievp3"]
+script = ExtResource("3_ai12c")
+_stat_name = "CONSTITUTION"
+stat_value = SubResource("Resource_ctwp7")
+
+[sub_resource type="Resource" id="Resource_yk1vq"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_qsjkm"]
+script = ExtResource("3_ai12c")
+_stat_name = "WISDOM"
+stat_value = SubResource("Resource_yk1vq")
+
+[sub_resource type="Resource" id="Resource_m8tmp"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_i8xus"]
+script = ExtResource("3_ai12c")
+_stat_name = "INTELLIGENCE"
+stat_value = SubResource("Resource_m8tmp")
+
+[sub_resource type="Resource" id="Resource_neojh"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_33gan"]
+script = ExtResource("3_ai12c")
+_stat_name = "CHARISMA"
+stat_value = SubResource("Resource_neojh")
+
+[sub_resource type="Resource" id="Resource_maky8"]
+script = ExtResource("2_7xoa7")
+character_name = "Test Enemy 2"
+stats = Dictionary[int, ExtResource("3_ai12c")]({
+0: SubResource("Resource_3n11o"),
+1: SubResource("Resource_0rwg7"),
+2: SubResource("Resource_ievp3"),
+3: SubResource("Resource_qsjkm"),
+4: SubResource("Resource_i8xus"),
+5: SubResource("Resource_33gan")
+})
+available_battle_commands = null
+metadata/_custom_type_script = "uid://cppn1dvuqyerv"
+
+[sub_resource type="Resource" id="Resource_x6wgy"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_gd4sj"]
+script = ExtResource("3_ai12c")
+_stat_name = "STRENGTH"
+stat_value = SubResource("Resource_x6wgy")
+
+[sub_resource type="Resource" id="Resource_kieyo"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_fdhka"]
+script = ExtResource("3_ai12c")
+_stat_name = "DEXTERITY"
+stat_value = SubResource("Resource_kieyo")
+
+[sub_resource type="Resource" id="Resource_im8cw"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_7b0oy"]
+script = ExtResource("3_ai12c")
+_stat_name = "CONSTITUTION"
+stat_value = SubResource("Resource_im8cw")
+
+[sub_resource type="Resource" id="Resource_741am"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_i745k"]
+script = ExtResource("3_ai12c")
+_stat_name = "WISDOM"
+stat_value = SubResource("Resource_741am")
+
+[sub_resource type="Resource" id="Resource_fdjkv"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_nl7ed"]
+script = ExtResource("3_ai12c")
+_stat_name = "INTELLIGENCE"
+stat_value = SubResource("Resource_fdjkv")
+
+[sub_resource type="Resource" id="Resource_50hag"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_6cp52"]
+script = ExtResource("3_ai12c")
+_stat_name = "CHARISMA"
+stat_value = SubResource("Resource_50hag")
+
+[sub_resource type="Resource" id="Resource_8sk85"]
+script = ExtResource("2_7xoa7")
+character_name = "Test Enemy 3"
+stats = Dictionary[int, ExtResource("3_ai12c")]({
+0: SubResource("Resource_gd4sj"),
+1: SubResource("Resource_fdhka"),
+2: SubResource("Resource_7b0oy"),
+3: SubResource("Resource_i745k"),
+4: SubResource("Resource_nl7ed"),
+5: SubResource("Resource_6cp52")
+})
+available_battle_commands = null
+metadata/_custom_type_script = "uid://cppn1dvuqyerv"
+
+[sub_resource type="Resource" id="Resource_gytwd"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_r8x3k"]
+script = ExtResource("3_ai12c")
+_stat_name = "STRENGTH"
+stat_value = SubResource("Resource_gytwd")
+
+[sub_resource type="Resource" id="Resource_rtfsj"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_r4grv"]
+script = ExtResource("3_ai12c")
+_stat_name = "DEXTERITY"
+stat_value = SubResource("Resource_rtfsj")
+
+[sub_resource type="Resource" id="Resource_vhdxn"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_cjpg1"]
+script = ExtResource("3_ai12c")
+_stat_name = "CONSTITUTION"
+stat_value = SubResource("Resource_vhdxn")
+
+[sub_resource type="Resource" id="Resource_jeom7"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_k84dt"]
+script = ExtResource("3_ai12c")
+_stat_name = "WISDOM"
+stat_value = SubResource("Resource_jeom7")
+
+[sub_resource type="Resource" id="Resource_ropk5"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_ut6s0"]
+script = ExtResource("3_ai12c")
+_stat_name = "INTELLIGENCE"
+stat_value = SubResource("Resource_ropk5")
+
+[sub_resource type="Resource" id="Resource_r1agn"]
+script = ExtResource("4_qdqkm")
+_min_value = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_8oiaf"]
+script = ExtResource("3_ai12c")
+_stat_name = "CHARISMA"
+stat_value = SubResource("Resource_r1agn")
+
+[sub_resource type="Resource" id="Resource_3lrnq"]
+script = ExtResource("2_7xoa7")
+character_name = "Test Enemy 4"
+stats = Dictionary[int, ExtResource("3_ai12c")]({
+0: SubResource("Resource_r8x3k"),
+1: SubResource("Resource_r4grv"),
+2: SubResource("Resource_cjpg1"),
+3: SubResource("Resource_k84dt"),
+4: SubResource("Resource_ut6s0"),
+5: SubResource("Resource_8oiaf")
+})
+available_battle_commands = null
 metadata/_custom_type_script = "uid://cppn1dvuqyerv"
 
 [node name="BattleMain" type="Node"]
 script = ExtResource("1_suw5k")
-ally_team = Array[ExtResource("2_7xoa7")]([SubResource("Resource_wjqm4")])
-enemy_team = Array[ExtResource("2_7xoa7")]([SubResource("Resource_1t5bg")])
+ally_team = Array[ExtResource("2_7xoa7")]([SubResource("Resource_45aqn"), SubResource("Resource_00iey"), SubResource("Resource_xuxdd"), SubResource("Resource_kpe0u")])
+enemy_team = Array[ExtResource("2_7xoa7")]([SubResource("Resource_o4tm4"), SubResource("Resource_maky8"), SubResource("Resource_8sk85"), SubResource("Resource_3lrnq")])
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15

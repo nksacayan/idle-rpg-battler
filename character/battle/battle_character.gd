@@ -34,6 +34,7 @@ var battle_stat_formulas: Dictionary[BATTLE_STAT_NAMES, Callable] = {
 var character_data: CharacterData
 var depletable_stats: Dictionary[DEPLETABLE_STAT_NAMES, DepletableStat]
 var battle_stats: Dictionary[BATTLE_STAT_NAMES, BattleStat]
+var local_battle_commands: Array[BattleCommand]
 
 func _init(p_character_data: CharacterData) -> void:
 	character_data = p_character_data
@@ -56,5 +57,7 @@ func _init_battle_stats() -> void:
 		)
 
 func _init_battle_commands() -> void:
-	for command: BattleCommand in character_data.battle_commands:
-		command.source_character = self
+	for command: BattleCommand in character_data.available_battle_commands:
+		var local_command: BattleCommand = command.duplicate_deep()
+		local_command.source_character = self
+		local_battle_commands.append(local_command)
