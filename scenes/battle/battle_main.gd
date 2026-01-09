@@ -60,6 +60,9 @@ func _is_battle_over() -> bool:
 func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 	match turn_state:
 		TURN_STATE.SELECTING_CHARACTER:
+			if p_battle_character in enemy_battle_team:
+				push_warning("Can't select enemy characters for commands")
+				return
 			_command_container.setup(p_battle_character.local_battle_commands)
 			turn_state = TURN_STATE.SELECTING_COMMAND
 		TURN_STATE.SELECTING_COMMAND:
@@ -75,7 +78,6 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 				command_list.add_command(current_command)
 				current_command = null
 				turn_state = TURN_STATE.SELECTING_CHARACTER
-			# Let players try to submit attacks whenever, but maybe do a UI thing to show that the character has a command submitted?
 		_:
 			push_error("Hit turn state fallback. Attempting reset")
 			turn_state = TURN_STATE.SELECTING_CHARACTER
