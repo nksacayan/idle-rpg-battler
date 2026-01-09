@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg3bk1mqq0ecb"]
+[gd_scene load_steps=9 format=3 uid="uid://bg3bk1mqq0ecb"]
 
 [ext_resource type="Script" uid="uid://b1gvtddnqdwhn" path="res://scenes/idle/character_container.gd" id="1_h4gv2"]
+[ext_resource type="Script" uid="uid://bct8waa026snl" path="res://scenes/idle/idle_main.gd" id="1_qf8ti"]
 [ext_resource type="Script" uid="uid://db81omj2p06it" path="res://scenes/idle/create_character_row.gd" id="1_sb5dd"]
 [ext_resource type="PackedScene" uid="uid://bd757xpqq6gl7" path="res://character/user_interface/idle/character_card/implementations/character_training_card.tscn" id="2_24nps"]
 [ext_resource type="Script" uid="uid://ct81h7aenxgf0" path="res://scenes/idle/task_container.gd" id="4_t73sy"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://3jy0cc64verb" path="res://character/user_interface/idle/character_card/implementations/character_battle_menu_card.tscn" id="7_13kck"]
 
 [node name="IdleMain" type="Node"]
+script = ExtResource("1_qf8ti")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -58,9 +60,10 @@ text = "Create Character"
 [node name="TabContainer" type="TabContainer" parent="PanelContainer/MainColumns"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 0
+current_tab = 1
 
 [node name="Tasks" type="ScrollContainer" parent="PanelContainer/MainColumns/TabContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 0
@@ -73,7 +76,6 @@ script = ExtResource("4_t73sy")
 task_card_scene = ExtResource("5_li70l")
 
 [node name="Battle Team" type="VBoxContainer" parent="PanelContainer/MainColumns/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -84,9 +86,10 @@ size_flags_vertical = 3
 script = ExtResource("6_24nps")
 character_card_scene = ExtResource("7_13kck")
 
-[node name="Button" type="Button" parent="PanelContainer/MainColumns/TabContainer/Battle Team"]
+[node name="FightButton" type="Button" parent="PanelContainer/MainColumns/TabContainer/Battle Team"]
 layout_mode = 2
 text = "Fight!"
 
 [connection signal="text_submitted" from="PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow/LineEdit" to="PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow/Button" to="PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow" method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MainColumns/TabContainer/Battle Team/FightButton" to="." method="_start_battle"]

@@ -1,9 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://1qf5iudaxu0g"]
 
-[ext_resource type="PackedScene" uid="uid://bg3bk1mqq0ecb" path="res://scenes/idle/idle_main.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://bht5dodsqgj13" path="res://scenes/main.gd" id="1_rvslj"]
 
 [node name="Main" type="Node"]
-
-[node name="SceneManager" type="Node" parent="."]
-
-[node name="TestUi" parent="SceneManager" instance=ExtResource("1_o5qli")]
+script = ExtResource("1_rvslj")
