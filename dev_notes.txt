@@ -1,5 +1,2 @@
 TODO:
-	implement battle character	
-NOTES:
-	At all times try to decouple components. Strive for dependency injection, and make the injector
-	a different object than the guy who needs the dependencies
+	Battle prototype works, now work on bridge between idle and battle

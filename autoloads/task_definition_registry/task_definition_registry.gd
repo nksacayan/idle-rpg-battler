@@ -6,6 +6,7 @@ class_name TaskDefinitionRegistry
 var definitions_view: Array[TaskDefinition]:
 	get: return _definitions
 
+# TODO: Not performant. Refactor to a dictionary lookup at some point.
 func find_task_definition_by_name(p_name: String) -> TaskDefinition:
 	var filtered = definitions_view.filter(
 		func(definition: TaskDefinition) -> bool:
