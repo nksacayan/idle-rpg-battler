@@ -6,6 +6,7 @@ signal added_to_battle_team(p_character: CharacterData)
 signal removed_from_battle_team(p_character: CharacterData)
 
 # recommended to refactor characters to a resource and have an autoload node wrapper
+# will probably need to change things anyways once i try saving and loading
 @export var characters: Array[CharacterData]
 # there was a thought to remove battle team and keep that state local to the idle scene and pass it
 #  during scene transition, but shits so cheap just keep it
