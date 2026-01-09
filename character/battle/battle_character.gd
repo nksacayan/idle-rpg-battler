@@ -1,6 +1,8 @@
 extends RefCounted
 class_name BattleCharacter
 
+signal current_command_changed(p_command: BattleCommand)
+
 const BATTLE_STAT_MAX_VALUE := 9999
 
 enum DEPLETABLE_STAT_NAMES {
@@ -35,6 +37,11 @@ var character_data: CharacterData
 var depletable_stats: Dictionary[DEPLETABLE_STAT_NAMES, DepletableStat]
 var battle_stats: Dictionary[BATTLE_STAT_NAMES, BattleStat]
 var local_battle_commands: Array[BattleCommand]
+var _current_command_ref: BattleCommand
+var current_command_ref: BattleCommand:
+	set(p_command):
+		_current_command_ref = p_command
+		current_command_changed.emit(_current_command_ref)
 
 func _init(p_character_data: CharacterData) -> void:
 	character_data = p_character_data

@@ -11,7 +11,7 @@ var commands_view: Array[BattleCommand]:
 # Should only ever have one command per character
 # Don't add commands without a source
 func add_command(p_command: BattleCommand) -> void:
-    if not is_instance_valid(p_command.source_character):
+    if not p_command.source_character:
         push_warning("Tried to push command without source")
         return
     if has_command_by_character(p_command.source_character):

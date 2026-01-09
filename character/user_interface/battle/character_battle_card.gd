@@ -7,11 +7,13 @@ var _battle_character: BattleCharacter
 var battle_character: BattleCharacter:
 	set(value):
 		_battle_character = value
+		_battle_character.current_command_changed.connect(_update_command_label)
 		
 		if is_node_ready():
 			_update_ui()
 
 @onready var _name_label: Label = %NameLabel
+@onready var _command_label: Label = %CommandLabel
 @onready var _battle_card_container: VBoxContainer = %BattleCardContainer
 var _depletable_stat_labels: Array[Label]
 
@@ -21,6 +23,7 @@ func _ready() -> void:
 
 func _update_ui() -> void:
 	_name_label.text = _battle_character.character_data.character_name
+	_update_command_label(_battle_character.current_command_ref)
 	_generate_depletable_stat_labels()
 
 func _generate_depletable_stat_labels() -> void:
@@ -41,3 +44,13 @@ func _generate_depletable_stat_labels() -> void:
 
 func _on_select_character_pressed() -> void:
 	character_selected.emit(_battle_character)
+
+func _update_command_label(p_command: BattleCommand = null) -> void:
+	if not _command_label.is_node_ready():
+		return
+
+	_command_label.text = "Current Command: "
+	if p_command:
+		_command_label.text += p_command.command_name
+	else:
+		_command_label.text += "None"

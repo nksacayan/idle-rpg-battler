@@ -9,7 +9,7 @@ func add_target_to_command(p_command: BattleCommand, p_target_character: BattleC
     if ally_battle_team.is_empty() or enemy_battle_team.is_empty():
         push_error("Did not initialize battle teams for targeter")
         return false
-    if not is_instance_valid(p_command):
+    if not p_command:
         push_error("Command not valid")
         return false
     if p_command.targets.size() > p_command.max_targets:

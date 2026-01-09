@@ -6,7 +6,7 @@ signal turn_state_changed(p_state: TURN_STATE)
 enum TURN_STATE {
 	SELECTING_CHARACTER,
 	SELECTING_COMMAND,
-	SELECTING_TARGET,
+	SELECTING_TARGETS,
 	RESOLVING_COMMANDS,
 	OTHER
 }
@@ -17,6 +17,7 @@ enum TURN_STATE {
 @export var enemy_team: Array[CharacterData]
 var ally_battle_team: Array[BattleCharacter]
 var enemy_battle_team: Array[BattleCharacter]
+var current_character: BattleCharacter
 var current_command: BattleCommand
 var command_list: BattleCommandList = BattleCommandList.new()
 var target_provider: CommandTargetProvider
@@ -59,22 +60,21 @@ func _is_battle_over() -> bool:
 
 func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 	match turn_state:
-		TURN_STATE.SELECTING_CHARACTER:
+		TURN_STATE.SELECTING_CHARACTER, TURN_STATE.SELECTING_COMMAND:
 			if p_battle_character in enemy_battle_team:
 				push_warning("Can't select enemy characters for commands")
 				return
+			current_character = p_battle_character
+			current_character.current_command_ref = null
 			_command_container.setup(p_battle_character.local_battle_commands)
 			turn_state = TURN_STATE.SELECTING_COMMAND
-		TURN_STATE.SELECTING_COMMAND:
-			# This means we want to change characters rather than select a command
-			_command_container.setup(p_battle_character.local_battle_commands)
-			turn_state = TURN_STATE.SELECTING_COMMAND
-		TURN_STATE.SELECTING_TARGET:
+		TURN_STATE.SELECTING_TARGETS:
 			# Attempt to add a target to current command
 			# Check if this is the last target then lock in the command
 			var target_success: bool = target_provider.add_target_to_command(current_command, p_battle_character)
 			if target_success and target_provider.has_maximum_targets(current_command):
 				print("max targets reached")
+				current_character.current_command_ref = current_command
 				command_list.add_command(current_command)
 				current_command = null
 				turn_state = TURN_STATE.SELECTING_CHARACTER
@@ -86,15 +86,12 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 
 func _on_command_selected(p_command: BattleCommand) -> void:
 	current_command = p_command
-	turn_state = TURN_STATE.SELECTING_TARGET
+	turn_state = TURN_STATE.SELECTING_TARGETS
 	_command_container.clear()
 
 func _submit_commands() -> void:
 	print("submit commands")
-	var all_battle_characters: Array[BattleCharacter]
-	all_battle_characters.append_array(ally_battle_team)
-	all_battle_characters.append_array(enemy_battle_team)
-	if command_list.is_complete_and_valid(all_battle_characters):
+	if command_list.is_complete_and_valid(ally_battle_team + enemy_battle_team):
 		_resolve_commands()
 	else:
 		push_warning("Commands invalid, did not resolve")
@@ -107,3 +104,7 @@ func _resolve_commands() -> void:
 		command.execute()
 	command_list.clear()
 	turn_state = TURN_STATE.SELECTING_CHARACTER
+
+func _clear_character_command_refs() -> void:
+	for character: BattleCharacter in ally_battle_team + enemy_battle_team:
+		character.current_command_ref = null

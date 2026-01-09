@@ -26,6 +26,12 @@ layout_mode = 2
 text = "Test Name"
 horizontal_alignment = 1
 
+[node name="CommandLabel" type="Label" parent="VBoxContainer/BattleCardContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Current Command: None"
+horizontal_alignment = 1
+
 [node name="SelectCharacter" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
