@@ -47,5 +47,4 @@ static func _get_battle_team(p_battle_team_data: Array[CharacterData]) -> Array[
 				return BattleCharacter.new(p_character_data)
 		)
 	)
-	print("new shi: ", converted_battle_team)
 	return converted_battle_team
