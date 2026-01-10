@@ -2,6 +2,7 @@ extends Node
 class_name BattleMain
 
 signal turn_state_changed(p_state: TURN_STATE)
+signal exit_battle_requested
 
 enum TURN_STATE {
 	SELECTING_CHARACTER,
@@ -120,3 +121,6 @@ func _resolve_commands() -> void:
 func _clear_character_command_refs() -> void:
 	for character: BattleCharacter in ally_battle_team + enemy_battle_team:
 		character.current_command_ref = null
+
+func _exit_battle() -> void:
+	exit_battle_requested.emit()

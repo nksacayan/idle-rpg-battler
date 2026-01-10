@@ -11,6 +11,7 @@ func _ready():
 	idle_main = idle_main_packed.instantiate()
 	idle_main.begin_battle_requested.connect(switch_to_battle_scene)
 	battle_main = battle_main_packed.instantiate()
+	battle_main.exit_battle_requested.connect(switch_to_idle_scene)
 	switch_to_idle_scene()
 
 func switch_to_battle_scene() -> void:
@@ -29,7 +30,7 @@ func switch_to_battle_scene() -> void:
 
 func switch_to_idle_scene() -> void:
 	if battle_main.get_parent() == self:
-		remove_child(idle_main)
+		remove_child(battle_main)
 	if idle_main.get_parent() == self:
 		return
 	add_child(idle_main)

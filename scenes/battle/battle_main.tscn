@@ -66,8 +66,14 @@ layout_mode = 2
 size_flags_vertical = 8
 text = "Submit Commands"
 
+[node name="ExitBattleTestButton" type="Button" parent="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Exit Battle"
+
 [connection signal="turn_state_changed" from="." to="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer/CommandStatusLabel" method="_on_turn_state_changed"]
 [connection signal="character_selected" from="PanelContainer/VBoxContainer/EnemyTeamContainer" to="." method="_on_battle_character_selected"]
 [connection signal="character_selected" from="PanelContainer/VBoxContainer/AllyTeamContainer" to="." method="_on_battle_character_selected"]
 [connection signal="command_selected" from="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer/CommandScrollContainer/CommandContainer" to="." method="_on_command_selected"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer/SubmitCommandsButton" to="." method="_submit_commands"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer/ExitBattleTestButton" to="." method="_exit_battle"]
