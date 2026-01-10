@@ -29,3 +29,12 @@ func create_character_task(p_character: CharacterData, p_task: TaskDefinition) -
 func delete_character_task(p_character_task: CharacterTask) -> void:
 	character_tasks.erase(p_character_task)
 	character_task_removed.emit(p_character_task)
+
+func delete_character_task_by_character(p_character: CharacterData) -> void:
+	var filtered_tasks := character_tasks.filter(
+		func(p_task: CharacterTask) -> bool: return p_task.character == p_character
+	)
+	# should just be one task but being safe
+	for task: CharacterTask in filtered_tasks:
+		delete_character_task(task)
+

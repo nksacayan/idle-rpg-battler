@@ -33,6 +33,10 @@ func add_to_battle_team(p_character: CharacterData) -> void:
 		and not ally_battle_team_data.has(p_character):
 		ally_battle_team_data.append(p_character)
 		added_to_battle_team.emit(p_character)
+		# TODO: task management when character enters battle team needs further
+		#  impl. Want to lockout tasks while a character is on the team
+		#  maybe move him between lists so that the reference doesnt exist in the main list?
+		CharacterTaskManagerAutoload.delete_character_task_by_character(p_character)
 
 func remove_from_battle_team(p_character: CharacterData) -> void:
 	if ally_battle_team_data.has(p_character):
