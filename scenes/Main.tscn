@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://1qf5iudaxu0g"]
+[gd_scene load_steps=4 format=3 uid="uid://1qf5iudaxu0g"]
 
 [ext_resource type="Script" uid="uid://bht5dodsqgj13" path="res://scenes/main.gd" id="1_rvslj"]
+[ext_resource type="PackedScene" uid="uid://bg3bk1mqq0ecb" path="res://scenes/idle/idle_main.tscn" id="2_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://bb23gwiqd5wsn" path="res://scenes/battle/battle_main.tscn" id="3_rarhs"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_rvslj")
+idle_main_packed = ExtResource("2_0bbpv")
+battle_main_packed = ExtResource("3_rarhs")

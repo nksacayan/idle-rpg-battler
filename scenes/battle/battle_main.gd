@@ -11,10 +11,6 @@ enum TURN_STATE {
 	OTHER
 }
 
-# export character data teams just for testing, probably move to a setup func
-#  and only store the battle teams later
-@export var ally_team: Array[CharacterData]
-@export var enemy_team: Array[CharacterData]
 var ally_battle_team: Array[BattleCharacter]
 var enemy_battle_team: Array[BattleCharacter]
 var current_character: BattleCharacter
@@ -35,8 +31,11 @@ var turn_state: TURN_STATE = TURN_STATE.OTHER:
 @onready var _enemy_team_container: BattleTeamContainer = %EnemyTeamContainer
 @onready var _command_container: BattleCommandContainer = %CommandContainer
 
+func setup(p_ally_team: Array[BattleCharacter], p_enemy_team: Array[BattleCharacter]) -> void:
+	ally_battle_team = p_ally_team
+	enemy_battle_team = p_enemy_team
+
 func _ready() -> void:
-	_setup_battle_characters()
 	_setup_battle_team_containers()
 	target_provider = CommandTargetProvider.new(ally_battle_team, enemy_battle_team)
 	turn_state = TURN_STATE.SELECTING_CHARACTER
@@ -44,16 +43,6 @@ func _ready() -> void:
 func _setup_battle_team_containers() -> void:
 	_ally_team_container.setup(ally_battle_team)
 	_enemy_team_container.setup(enemy_battle_team)
-
-func _setup_battle_characters() -> void:
-	ally_battle_team = _convert_data_to_battle_chars(ally_team)
-	enemy_battle_team = _convert_data_to_battle_chars(enemy_team)
-
-func _convert_data_to_battle_chars(data_array: Array[CharacterData]) -> Array[BattleCharacter]:
-	var result: Array[BattleCharacter] = []
-	for data in data_array:
-		result.append(BattleCharacter.new(data))
-	return result
 
 func _is_battle_over() -> bool:
 	return false
