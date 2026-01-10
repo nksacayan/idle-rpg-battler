@@ -25,14 +25,14 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_hj4f6")
-character_battle_card = ExtResource("3_0jypa")
+character_battle_card_scene = ExtResource("3_0jypa")
 
 [node name="AllyTeamContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_hj4f6")
-character_battle_card = ExtResource("3_0jypa")
+character_battle_card_scene = ExtResource("3_0jypa")
 
 [node name="MenuContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

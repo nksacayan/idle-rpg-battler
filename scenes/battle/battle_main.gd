@@ -41,8 +41,8 @@ func _ready() -> void:
 	turn_state = TURN_STATE.SELECTING_CHARACTER
 
 func _setup_battle_team_containers() -> void:
-	_ally_team_container.setup(ally_battle_team)
-	_enemy_team_container.setup(enemy_battle_team)
+	_ally_team_container.battle_team = ally_battle_team
+	_enemy_team_container.battle_team = enemy_battle_team
 
 func _is_battle_over() -> bool:
 	return false
