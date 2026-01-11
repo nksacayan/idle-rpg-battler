@@ -1,9 +1,17 @@
-[gd_resource type="Resource" script_class="TrainingTask" load_steps=2 format=3 uid="uid://ck26cjfnmvb2v"]
+[gd_resource type="Resource" script_class="TaskDefinition" load_steps=5 format=3 uid="uid://ck26cjfnmvb2v"]
 
-[ext_resource type="Script" uid="uid://byef7m7m0hvjm" path="res://tasks/task_definition_subclasses/training_task.gd" id="1_5d485"]
+[ext_resource type="Script" uid="uid://ys2ya4wnbnat" path="res://tasks/task_rewards/task_reward.gd" id="1_qi5rf"]
+[ext_resource type="Script" uid="uid://c342rkqm6wre2" path="res://tasks/task_definition.gd" id="2_lsjby"]
+[ext_resource type="Script" uid="uid://bjg5464sxssxw" path="res://tasks/task_rewards/subclasses/stat_exp_reward.gd" id="2_ra6i7"]
+
+[sub_resource type="Resource" id="Resource_jpflb"]
+script = ExtResource("2_ra6i7")
+exp_amount = 100
+reward_name = "Strength Exp Reward"
+metadata/_custom_type_script = "uid://bjg5464sxssxw"
 
 [resource]
-script = ExtResource("1_5d485")
-exp_reward = 100
-task_name = "Strength Training"
-metadata/_custom_type_script = "uid://byef7m7m0hvjm"
+script = ExtResource("2_lsjby")
+task_name = "strength training"
+rewards = Array[ExtResource("1_qi5rf")]([SubResource("Resource_jpflb")])
+metadata/_custom_type_script = "uid://c342rkqm6wre2"

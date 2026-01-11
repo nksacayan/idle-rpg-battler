@@ -9,7 +9,7 @@ signal progress_updated(p_progress: float)
 	set(p_value):
 		if p_value > TaskDefinition.MAX_PROGRESS:
 			p_value -= TaskDefinition.MAX_PROGRESS
-			task.give_reward(character)
+			task.give_rewards(character)
 		progress = clampf(p_value, TaskDefinition.MIN_PROGRESS, TaskDefinition.MAX_PROGRESS)
 		progress_updated.emit(progress)
 
