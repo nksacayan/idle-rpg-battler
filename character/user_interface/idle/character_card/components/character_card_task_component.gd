@@ -25,6 +25,7 @@ func _handle_character_task_created(p_character_task: CharacterTask) -> void:
 
 func _handle_character_task_removed(p_character_task: CharacterTask) -> void:
 	if p_character_task == character_task:
+		character_task.progress_updated.disconnect(_update_progress_bar_value)
 		character_task = null
 		task_label.text = "Task: None"
 		task_progress_bar.value = 0

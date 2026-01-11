@@ -15,6 +15,11 @@ func _process(delta: float) -> void:
 
 # a character should only have one task at a time
 func create_character_task(p_character: CharacterData, p_task: TaskDefinition) -> void:
+	# only add task if character not in battle team
+	if p_character not in CharacterManagerAutoload.characters:
+		push_warning("Can't add task to battle character")
+		return
+	# check to see if character already has task
 	var existing_tasks: Array[CharacterTask] = character_tasks.filter(
 		func(task: CharacterTask) -> bool:
 			return p_character == task.character
@@ -22,6 +27,7 @@ func create_character_task(p_character: CharacterData, p_task: TaskDefinition) -
 	if existing_tasks.size() > 0:
 		for task: CharacterTask in existing_tasks:
 			delete_character_task(task)
+	
 	var character_task := CharacterTask.new(p_character, p_task)
 	character_tasks.append(character_task)
 	character_task_added.emit(character_task)
