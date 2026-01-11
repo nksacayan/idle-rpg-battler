@@ -1,7 +1,8 @@
 extends RefCounted
 class_name CommandTargetProvider
 
-
+# TODO: We currently don't have a way to exit early if num targets
+#  < max but > min
 var ally_battle_team: Array[BattleCharacter]
 var enemy_battle_team: Array[BattleCharacter]
 
