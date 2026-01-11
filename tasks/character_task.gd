@@ -7,15 +7,15 @@ signal progress_updated(p_progress: float)
 @export var task: TaskDefinition
 @export var progress: float = 0.0:
 	set(p_value):
-		if p_value > task.max_progress:
-			p_value -= task.max_progress
-			_reward_exp()
-		progress = clampf(p_value, TaskDefinition.MIN_PROGRESS, task.max_progress)
+		if p_value > TaskDefinition.MAX_PROGRESS:
+			p_value -= TaskDefinition.MAX_PROGRESS
+			task.give_reward(character)
+		progress = clampf(p_value, TaskDefinition.MIN_PROGRESS, TaskDefinition.MAX_PROGRESS)
 		progress_updated.emit(progress)
 
 func _init(p_character: CharacterData = null, p_task: TaskDefinition = null) -> void:
 	character = p_character
 	task = p_task
 
-func _reward_exp() -> void:
-	character.stats[task.related_stat].experience += task.exp_reward
+func process_task(delta: float) -> void:
+	progress += task.get_tick_amount(character) * delta

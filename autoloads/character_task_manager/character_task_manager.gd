@@ -6,12 +6,10 @@ signal character_task_added(p_character_task: CharacterTask)
 signal character_task_removed(p_character_task: CharacterTask)
 
 @export var character_tasks: Array[CharacterTask]
-# TODO: Change this and make it rely on character or task or something
-const VALUE_PER_TICK: int = 100
 
 func _process(delta: float) -> void:
 	for character_task in character_tasks:
-		character_task.progress += VALUE_PER_TICK * delta
+		character_task.process_task(delta)
 
 # a character should only have one task at a time
 func create_character_task(p_character: CharacterData, p_task: TaskDefinition) -> void:

@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="TaskDefinition" load_steps=2 format=3 uid="uid://ck26cjfnmvb2v"]
+[gd_resource type="Resource" script_class="TrainingTask" load_steps=2 format=3 uid="uid://ck26cjfnmvb2v"]
 
-[ext_resource type="Script" uid="uid://c342rkqm6wre2" path="res://tasks/task_definition.gd" id="1_5d485"]
+[ext_resource type="Script" uid="uid://byef7m7m0hvjm" path="res://tasks/task_definition_subclasses/training_task.gd" id="1_5d485"]
 
 [resource]
 script = ExtResource("1_5d485")
-task_name = "strength training"
 exp_reward = 100
-metadata/_custom_type_script = "uid://c342rkqm6wre2"
+task_name = "Strength Training"
+metadata/_custom_type_script = "uid://byef7m7m0hvjm"
