@@ -43,6 +43,7 @@ var current_command_ref: BattleCommand:
 		_current_command_ref = p_command
 		current_command_changed.emit(_current_command_ref)
 
+# TODO: Battle stats should update if base stats change
 func _init(p_character_data: CharacterData) -> void:
 	character_data = p_character_data
 	_init_depletables()
@@ -51,10 +52,12 @@ func _init(p_character_data: CharacterData) -> void:
 
 func _init_depletables() -> void:
 	for stat: DEPLETABLE_STAT_NAMES in DEPLETABLE_STAT_NAMES.values():
-		depletable_stats[stat] = DepletableStat.new(
+		var new_stat := DepletableStat.new(
 			DEPLETABLE_STAT_NAMES.find_key(stat), 
 			depletable_stat_formulas[stat].call(character_data.stats)
 		)
+		
+		depletable_stats[stat] = new_stat
 
 func _init_battle_stats() -> void:
 	for stat: BATTLE_STAT_NAMES in BATTLE_STAT_NAMES.values():

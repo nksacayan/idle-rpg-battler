@@ -25,15 +25,14 @@ horizontal_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="BaseStatsPanel" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="BaseStatsVbox" parent="VBoxContainer/HBoxContainer/BaseStatsPanel" instance=ExtResource("2_ggl5k")]
+[node name="BaseStatsVbox" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_ggl5k")]
 unique_name_in_owner = true
 layout_mode = 2
 
 [node name="BattleStatsPanel" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="CommandPanel" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
