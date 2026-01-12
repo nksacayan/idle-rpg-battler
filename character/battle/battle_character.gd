@@ -51,20 +51,22 @@ func _init(p_character_data: CharacterData) -> void:
 	_init_battle_commands()
 
 func _init_depletables() -> void:
-	for stat: DEPLETABLE_STAT_NAMES in DEPLETABLE_STAT_NAMES.values():
+	for stat_name in DEPLETABLE_STAT_NAMES:
+		var stat_id: DEPLETABLE_STAT_NAMES = DEPLETABLE_STAT_NAMES[stat_name]
 		var new_stat := DepletableStat.new(
-			DEPLETABLE_STAT_NAMES.find_key(stat), 
-			depletable_stat_formulas[stat].call(character_data.stats)
+			stat_name, 
+			depletable_stat_formulas[stat_id].call(character_data.stats)
 		)
-		
-		depletable_stats[stat] = new_stat
+		depletable_stats[stat_id] = new_stat
 
 func _init_battle_stats() -> void:
-	for stat: BATTLE_STAT_NAMES in BATTLE_STAT_NAMES.values():
-		battle_stats[stat] = BattleStat.new(
-			BATTLE_STAT_NAMES.find_key(stat),
-			battle_stat_formulas[stat].call(character_data.stats)
+	for stat_name in BATTLE_STAT_NAMES:
+		var stat_id: BATTLE_STAT_NAMES = BATTLE_STAT_NAMES[stat_name]
+		var new_battle_stat := BattleStat.new(
+			stat_name,
+			battle_stat_formulas[stat_id].call(character_data.stats)
 		)
+		battle_stats[stat_id] = new_battle_stat
 
 func _init_battle_commands() -> void:
 	for command: BattleCommand in character_data.available_battle_commands:
