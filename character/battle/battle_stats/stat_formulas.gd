@@ -43,4 +43,4 @@ static func calc_speed(character_stats: Dictionary[CharacterData.STAT_NAMES, Lev
 
 # helpers can deviate as only the above will be callables
 static func _calculate_value_per_character_stat(stat: LeveledStat, value_per_stat: int) -> int:
-    return stat.stat_value.value * value_per_stat
+    return stat.stat.value * value_per_stat

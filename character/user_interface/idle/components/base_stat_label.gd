@@ -16,4 +16,4 @@ func _update_ui() -> void:
 		_set_label_text()
 
 func _set_label_text() -> void:
-	text = str(base_stat.stat_name, ": ", base_stat.stat_value.value)
+	text = str(base_stat.stat_name, ": ", base_stat.stat.value)

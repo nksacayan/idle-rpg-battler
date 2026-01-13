@@ -20,7 +20,7 @@ func _ready() -> void:
 func _subscribe_to_character_stat_changed() -> void:
 	for stat: LeveledStat in character.stats.values():
 		# Ignoring emitted value for now, will need to optimize
-		stat.stat_value.value_changed.connect(_update_labels.unbind(1))
+		stat.stat.value_changed.connect(_update_labels.unbind(1))
 
 func _update_labels() -> void:
 	character_name_label.text = character.character_name
