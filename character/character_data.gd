@@ -23,4 +23,6 @@ func _init(p_character_name: String = DEFAULT_NAME) -> void:
 func _init_stats() -> void:
 	if stats.is_empty():
 		for stat: STAT_NAMES in STAT_NAMES.values():
-			stats[stat] = LeveledStat.new(STAT_NAMES.find_key(stat))
+			stats[stat] = LeveledStat.new(
+				BaseStat.new(STAT_NAMES.find_key(stat))
+			)
