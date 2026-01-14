@@ -24,21 +24,21 @@ func _ready() -> void:
 func _update_ui() -> void:
 	_name_label.text = _battle_character.character_data.character_name
 	_update_command_label(_battle_character.current_command_ref)
-	_generate_depletable_stat_labels()
+	_generate_character_resource_labels()
 
-func _generate_depletable_stat_labels() -> void:
+func _generate_character_resource_labels() -> void:
 	for label: Label in _depletable_stat_labels:
 		label.queue_free()
 	_depletable_stat_labels.clear()
 			
-	for depletable_key in _battle_character.depletable_stats:
+	for resource_key in _battle_character.character_resources:
 		var new_label: Label = _name_label.duplicate()
-		var depletable_name: String = BattleCharacter.DEPLETABLE_STAT_NAMES.keys()[depletable_key]
-		var depletable_value: String = str(_battle_character.depletable_stats[depletable_key].current)
-		new_label.text = depletable_name + ": " + depletable_value
-		_battle_character.depletable_stats[depletable_key].changed.connect(
+		var resource_name := BattleCharacter.RESOURCE_NAMES.find_key(resource_key) as String
+		var depletable_value: String = str(_battle_character.character_resources[resource_key].current_value)
+		new_label.text = resource_name + ": " + depletable_value
+		_battle_character.character_resources[resource_key].changed.connect(
 			func(p_value: int) -> void:
-				new_label.text = depletable_name + ": " + str(p_value)		
+				new_label.text = resource_name + ": " + str(p_value)		
 		)
 		_battle_card_container.add_child(new_label)
 

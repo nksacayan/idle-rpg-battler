@@ -31,6 +31,6 @@ func apply_effect(_p_source_character: BattleCharacter, _p_targets: Array[Battle
         var defending_stat_value: int = target.battle_stats[defending_stat].stat_value.value
         print("defending value for ", target, " is ", defending_stat_value)
         var damage = max(total_power - defending_stat_value, 0)
-        target.depletable_stats[BattleCharacter.DEPLETABLE_STAT_NAMES.HEALTH].current -= damage
+        target.character_resources[BattleCharacter.RESOURCE_NAMES.HEALTH].current -= damage
         print("dealt ", damage, " to ", target);
     print_debug("applying effect ", effect_name, "from source ", _p_source_character, "to target ", _p_targets)
