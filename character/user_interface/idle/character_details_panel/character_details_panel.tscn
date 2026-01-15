@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqibvxojupg2f"]
 
 [ext_resource type="Script" uid="uid://whrsxasr2rxp" path="res://character/user_interface/idle/character_details_panel/character_details_panel.gd" id="1_70en7"]
-[ext_resource type="PackedScene" uid="uid://8jx158fdjtqj" path="res://character/user_interface/idle/components/base_stats_vbox.tscn" id="2_ggl5k"]
+[ext_resource type="PackedScene" uid="uid://8jx158fdjtqj" path="res://nks-common-godot/rpg_stats/user_interface/base_stats_vbox.tscn" id="2_ggl5k"]
 
 [node name="CharacterDetailsPanel" type="PanelContainer"]
 anchors_preset = 15
