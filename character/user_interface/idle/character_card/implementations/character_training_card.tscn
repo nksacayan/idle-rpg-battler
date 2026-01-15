@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd757xpqq6gl7"]
+[gd_scene load_steps=5 format=3 uid="uid://bd757xpqq6gl7"]
 
 [ext_resource type="Script" uid="uid://dsp5lk0cisqgb" path="res://character/user_interface/idle/character_card/character_card.gd" id="1_cnot1"]
 [ext_resource type="PackedScene" uid="uid://dss7couh086gh" path="res://character/user_interface/idle/character_card/components/character_drag_preview.tscn" id="2_va521"]
+[ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_name_label_component.tscn" id="3_nes3t"]
 [ext_resource type="PackedScene" uid="uid://btdulj7xc31dn" path="res://character/user_interface/idle/character_card/components/character_card_task_component.tscn" id="3_o3rfs"]
 
 [node name="CharacterTrainingCard" type="PanelContainer"]
@@ -16,8 +17,11 @@ character_drag_preview_scene = ExtResource("2_va521")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="CharacterCardTaskComponent" parent="VBoxContainer" node_paths=PackedStringArray("character_card_root") instance=ExtResource("3_o3rfs")]
+[node name="CharacterNameLabelComponent" parent="VBoxContainer" instance=ExtResource("3_nes3t")]
 layout_mode = 2
-size_flags_vertical = 2
-character_card_root = NodePath("../..")
-provide_drop_data_implementation = true
+size_flags_vertical = 0
+
+[node name="CharacterCardTaskComponent" parent="VBoxContainer" instance=ExtResource("3_o3rfs")]
+layout_mode = 2
+size_flags_vertical = 0
+provide_drop_impl = true

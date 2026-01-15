@@ -42,3 +42,8 @@ func delete_character_task_by_character(p_character: CharacterData) -> void:
 	for task: CharacterTask in filtered_tasks:
 		delete_character_task(task)
 
+func find_character_task_by_character(p_character: CharacterData) -> CharacterTask:
+	var tasks := character_tasks.filter(func(task): return task.character == p_character)
+	if tasks.size() > 0:
+		return tasks[0]
+	return null

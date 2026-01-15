@@ -1,10 +1,16 @@
+@abstract
 extends Control
 class_name CharacterCardComponent
 
-@export var character: CharacterData
+var character: CharacterData:
+	set = _set_character
 # make sure to force these to a value if a component can't provide an impl
 @export var provide_drop_impl: bool = false
 @export var provide_drag_impl: bool = false
+
+# To allow overrides
+func _set_character(p_character: CharacterData) -> void:
+	character = p_character
 
 # Optional "Interface" methods - defaults do nothing
 # If component needs get complex, refactor impl to children of components

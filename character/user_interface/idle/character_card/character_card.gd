@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Control
 class_name CharacterCard
 
 @export var character_drag_preview_scene: PackedScene
@@ -7,12 +7,7 @@ var character: CharacterData:
 	set(p_character_data):
 		character = p_character_data
 
-static var _base_card_comp_template: CharacterCardComponent
-
 func _ready() -> void:
-	if not _base_card_comp_template:
-		_base_card_comp_template = CharacterCardComponent.new()
-	
 	_initialize_components(self)
 
 func _initialize_components(root: Node) -> void:
