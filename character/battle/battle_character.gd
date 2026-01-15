@@ -25,17 +25,9 @@ var resource_formulas: Dictionary[RESOURCE_NAMES, Callable] = {
 	RESOURCE_NAMES.MAGIC: StatFormulas.calc_per_intelligence,
 }
 
-var battle_stat_formulas: Dictionary[BATTLE_STAT_NAMES, Callable] = {
-	BATTLE_STAT_NAMES.PHYSICAL_ATTACK: StatFormulas.calc_physical_attack,
-	BATTLE_STAT_NAMES.PHYSICAL_DEFENSE: StatFormulas.calc_physical_defense,
-	BATTLE_STAT_NAMES.MAGICAL_ATTACK: StatFormulas.calc_magical_attack,
-	BATTLE_STAT_NAMES.MAGICAL_DEFENSE: StatFormulas.calc_magical_defense,
-	BATTLE_STAT_NAMES.SPEED: StatFormulas.calc_speed,
-}
-
 var character_data: CharacterData
 var character_resources: Dictionary[RESOURCE_NAMES, BoundedStat]
-var battle_stats: Dictionary[BATTLE_STAT_NAMES, BattleStat]
+var battle_stats: Dictionary[BATTLE_STAT_NAMES, DerivedStat]
 var local_battle_commands: Array[BattleCommand]
 var _current_command_ref: BattleCommand
 var current_command_ref: BattleCommand:
@@ -54,7 +46,7 @@ func _init_resources() -> void:
 	for stat_name in RESOURCE_NAMES:
 		var stat_id := RESOURCE_NAMES[stat_name] as RESOURCE_NAMES
 		var new_stat := BoundedStat.new(
-			BaseStat.new(RESOURCE_NAMES.find_key(stat_id) as String, 
+			BaseStat.new(RESOURCE_NAMES.find_key(stat_id) as String,
 				resource_formulas[stat_id].call(character_data.stats)
 			)
 		)
@@ -62,10 +54,17 @@ func _init_resources() -> void:
 
 func _init_battle_stats() -> void:
 	for stat_name in BATTLE_STAT_NAMES:
-		var stat_id: BATTLE_STAT_NAMES = BATTLE_STAT_NAMES[stat_name]
-		var new_battle_stat := BattleStat.new(
-			stat_name,
-			battle_stat_formulas[stat_id].call(character_data.stats)
+		var stat_id := BATTLE_STAT_NAMES[stat_name] as BATTLE_STAT_NAMES
+		var stat_formula_helper := StatFormulas.battle_stat_formula_helpers[stat_id]
+		var applicable_stats: Array[BaseStat]
+		for stat in stat_formula_helper.base_stats:
+			applicable_stats.append(character_data.stats[stat].stat)
+		# It is important to pass ONLY the base stats that the derived stat needs,
+		#  otherwise the derived stat will rerender off of any stat change
+		var new_battle_stat := DerivedStat.new(
+			applicable_stats,
+			stat_formula_helper.stat_formula,
+			stat_name
 		)
 		battle_stats[stat_id] = new_battle_stat
 
