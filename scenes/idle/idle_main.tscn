@@ -60,10 +60,9 @@ text = "Create Character"
 [node name="TabContainer" type="TabContainer" parent="PanelContainer/MainColumns"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 1
+current_tab = 0
 
 [node name="Tasks" type="ScrollContainer" parent="PanelContainer/MainColumns/TabContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 0
@@ -76,6 +75,7 @@ script = ExtResource("4_t73sy")
 task_card_scene = ExtResource("5_li70l")
 
 [node name="Battle Team" type="VBoxContainer" parent="PanelContainer/MainColumns/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
