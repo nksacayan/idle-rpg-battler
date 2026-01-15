@@ -2,6 +2,8 @@
 extends Resource
 class_name CharacterData
 
+const STARTING_LEVELED_STAT_VALUE := 1
+
 enum STAT_NAMES {
 	STRENGTH,
 	DEXTERITY,
@@ -24,5 +26,8 @@ func _init_stats() -> void:
 	if stats.is_empty():
 		for stat: STAT_NAMES in STAT_NAMES.values():
 			stats[stat] = LeveledStat.new(
-				BaseStat.new(STAT_NAMES.find_key(stat))
+				BaseStat.new(
+					STAT_NAMES.find_key(stat),
+					STARTING_LEVELED_STAT_VALUE
+				)
 			)
