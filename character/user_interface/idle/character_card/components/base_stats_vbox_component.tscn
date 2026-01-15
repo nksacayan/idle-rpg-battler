@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://yk8byimreumw"]
 
-[ext_resource type="Script" uid="uid://b6xb3b1qoefna" path="res://character/user_interface/idle/character_card/components/base_stats_provider_component.gd" id="1_erdwa"]
+[ext_resource type="Script" uid="uid://b6xb3b1qoefna" path="res://character/user_interface/idle/character_card/components/base_stats_component.gd" id="1_erdwa"]
 [ext_resource type="PackedScene" uid="uid://8jx158fdjtqj" path="res://nks-common-godot/rpg_stats/user_interface/base_stats_vbox.tscn" id="2_ugv23"]
 
-[node name="BaseStatsProviderComponent" type="MarginContainer"]
+[node name="BaseStatsVboxComponent" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
