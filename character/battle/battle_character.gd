@@ -54,10 +54,11 @@ func _init_resources() -> void:
 
 func _init_battle_stats() -> void:
 	for stat_name in BATTLE_STAT_NAMES:
-		var stat_id := BATTLE_STAT_NAMES[stat_name] as BATTLE_STAT_NAMES
-		var stat_formula_helper := StatFormulas.battle_stat_formula_helpers[stat_id]
+		var battle_stat_id := BATTLE_STAT_NAMES[stat_name] as BATTLE_STAT_NAMES
+		var stat_formula_helper := StatFormulas.battle_stat_formula_helpers[battle_stat_id]
 		var applicable_stats: Array[BaseStat]
 		for stat in stat_formula_helper.base_stats:
+			# applicable_stats[stat] = character_data.stats[stat]
 			applicable_stats.append(character_data.stats[stat].stat)
 		# It is important to pass ONLY the base stats that the derived stat needs,
 		#  otherwise the derived stat will rerender off of any stat change
@@ -66,7 +67,7 @@ func _init_battle_stats() -> void:
 			stat_formula_helper.stat_formula,
 			stat_name
 		)
-		battle_stats[stat_id] = new_battle_stat
+		battle_stats[battle_stat_id] = new_battle_stat
 
 func _init_battle_commands() -> void:
 	for command: BattleCommand in character_data.available_battle_commands:

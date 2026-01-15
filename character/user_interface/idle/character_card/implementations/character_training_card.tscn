@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd757xpqq6gl7"]
+[gd_scene load_steps=7 format=3 uid="uid://bd757xpqq6gl7"]
 
 [ext_resource type="Script" uid="uid://dsp5lk0cisqgb" path="res://character/user_interface/idle/character_card/character_card.gd" id="1_cnot1"]
 [ext_resource type="PackedScene" uid="uid://dss7couh086gh" path="res://character/user_interface/idle/character_card/components/character_drag_preview.tscn" id="2_va521"]
 [ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_name_label_component.tscn" id="3_nes3t"]
 [ext_resource type="PackedScene" uid="uid://btdulj7xc31dn" path="res://character/user_interface/idle/character_card/components/character_card_task_component.tscn" id="3_o3rfs"]
-[ext_resource type="PackedScene" uid="uid://yk8byimreumw" path="res://character/user_interface/idle/character_card/components/base_stats_vbox_component.tscn" id="4_7qe7c"]
+[ext_resource type="PackedScene" uid="uid://yk8byimreumw" path="res://character/user_interface/idle/character_card/components/base_stats_provider_component.tscn" id="4_7qe7c"]
+[ext_resource type="PackedScene" uid="uid://8jx158fdjtqj" path="res://nks-common-godot/rpg_stats/user_interface/base_stats_vbox.tscn" id="5_toqqv"]
 
 [node name="CharacterTrainingCard" type="PanelContainer"]
 anchors_preset = 15
@@ -22,7 +23,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="BaseStatsVboxComponent" parent="VBoxContainer" instance=ExtResource("4_7qe7c")]
+[node name="BaseStatsProviderComponent" parent="VBoxContainer" instance=ExtResource("4_7qe7c")]
+layout_mode = 2
+
+[node name="BaseStatsVbox" parent="VBoxContainer/BaseStatsProviderComponent" instance=ExtResource("5_toqqv")]
 layout_mode = 2
 
 [node name="CharacterCardTaskComponent" parent="VBoxContainer" instance=ExtResource("3_o3rfs")]

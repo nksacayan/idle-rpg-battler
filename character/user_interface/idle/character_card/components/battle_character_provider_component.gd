@@ -6,8 +6,14 @@ func _enter_tree() -> void:
 	provide_drag_impl = false
 	provide_drop_impl = false
 
+func _ready() -> void:
+	_initialize_components(self)
+
 func _set_character(p_character: CharacterData) -> void:
 	super (p_character)
+	if character:
+		battle_character = BattleCharacter.new(character)
+		_initialize_components(self)
 
 func _initialize_components(root: Node) -> void:
 	if not character or not is_node_ready():
@@ -24,5 +30,5 @@ func _initialize_components(root: Node) -> void:
 		_initialize_components(child)
 		
 func _setup_component(component: BaseStatsContainer) -> void:
-	# component.base_stats = _get_base_stats()
-	pass
+	# .assign() handles the conversion from untyped to typed safely
+	component.base_stats.assign(battle_character.battle_stats.values())
