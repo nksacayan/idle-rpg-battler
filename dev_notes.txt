@@ -1,2 +1,3 @@
 TODO:
-	Battle prototype works, now work on bridge between idle and battle
+	Figure out how to add default starter commands so i can retest battle UI
+	Had to do big UI refactor on the way to character details page in order to do commands

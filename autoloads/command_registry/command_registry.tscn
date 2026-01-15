@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://6h3iphi6llwt"]
+
+[ext_resource type="Script" uid="uid://bcfhyxbjb4fd6" path="res://autoloads/command_registry/command_registry.gd" id="1_p5dlm"]
+[ext_resource type="Resource" uid="uid://buocvagvqbrbv" path="res://autoloads/command_registry/DefaultCommandCollection.tres" id="2_h0ycx"]
+[ext_resource type="Resource" uid="uid://cy3uulpuo2sfk" path="res://character/battle/commands/command_resources/basic_attack.tres" id="3_kredc"]
+
+[node name="CommandRegistry" type="Node"]
+script = ExtResource("1_p5dlm")
+command_collection = ExtResource("2_h0ycx")
+default_attack = ExtResource("3_kredc")
