@@ -19,12 +19,6 @@ enum BATTLE_STAT_NAMES {
 	SPEED,
 }
 
-var resource_formulas: Dictionary[RESOURCE_NAMES, Callable] = {
-	RESOURCE_NAMES.HEALTH: StatFormulas.calc_per_constitution,
-	RESOURCE_NAMES.STAMINA: StatFormulas.calc_per_constitution,
-	RESOURCE_NAMES.MAGIC: StatFormulas.calc_per_intelligence,
-}
-
 var character_data: CharacterData
 var character_resources: Dictionary[RESOURCE_NAMES, BoundedStat]
 var battle_stats: Dictionary[BATTLE_STAT_NAMES, DerivedStat]
@@ -43,14 +37,20 @@ func _init(p_character_data: CharacterData) -> void:
 	_init_battle_commands()
 
 func _init_resources() -> void:
-	for stat_name in RESOURCE_NAMES:
-		var stat_id := RESOURCE_NAMES[stat_name] as RESOURCE_NAMES
+	for resource_name in RESOURCE_NAMES:
+		var resource_id := RESOURCE_NAMES[resource_name] as RESOURCE_NAMES
+		var resource_formula_helper := StatFormulas.resource_formula_helpers[resource_id]
+		var applicable_stats: Array[BaseStat]
+		for stat in resource_formula_helper.base_stats:
+			applicable_stats.append(character_data.stats[stat].stat)
 		var new_stat := BoundedStat.new(
-			BaseStat.new(RESOURCE_NAMES.find_key(stat_id) as String,
-				resource_formulas[stat_id].call(character_data.stats)
+			DerivedStat.new(
+				applicable_stats,
+				resource_formula_helper.stat_formula,
+				resource_name
 			)
 		)
-		character_resources[stat_id] = new_stat
+		character_resources[resource_id] = new_stat
 
 func _init_battle_stats() -> void:
 	for stat_name in BATTLE_STAT_NAMES:
@@ -58,7 +58,6 @@ func _init_battle_stats() -> void:
 		var stat_formula_helper := StatFormulas.battle_stat_formula_helpers[battle_stat_id]
 		var applicable_stats: Array[BaseStat]
 		for stat in stat_formula_helper.base_stats:
-			# applicable_stats[stat] = character_data.stats[stat]
 			applicable_stats.append(character_data.stats[stat].stat)
 		# It is important to pass ONLY the base stats that the derived stat needs,
 		#  otherwise the derived stat will rerender off of any stat change

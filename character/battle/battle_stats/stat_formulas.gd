@@ -6,6 +6,14 @@ class_name StatFormulas
 # Array[BaseStat]
 # In order to keep derived stat flexible we have to get stats by their string name
 #  not happy about it but they should still be keyed to the enum
+
+# resource stat formulas
+# these have to be updated/upkept manually
+static var resource_formula_helpers: Dictionary[BattleCharacter.RESOURCE_NAMES, StatFormulaHelper] = {
+	BattleCharacter.RESOURCE_NAMES.HEALTH: StatFormulaHelper.new(calc_per_constitution, [CharacterData.STAT_NAMES.CONSTITUTION]),
+	BattleCharacter.RESOURCE_NAMES.STAMINA: StatFormulaHelper.new(calc_per_constitution, [CharacterData.STAT_NAMES.CONSTITUTION]),
+	BattleCharacter.RESOURCE_NAMES.MAGIC: StatFormulaHelper.new(calc_per_intelligence, [CharacterData.STAT_NAMES.INTELLIGENCE]),
+}
 static func calc_per_constitution(character_stats: Dictionary[CharacterData.STAT_NAMES, LeveledStat]) -> int:
 	var value_per_constitution := 10
 	var value := _calculate_value_per_character_stat(character_stats[CharacterData.STAT_NAMES.CONSTITUTION], value_per_constitution)
