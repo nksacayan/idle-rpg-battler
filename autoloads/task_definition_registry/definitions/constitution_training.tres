@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TaskDefinition" load_steps=5 format=3 uid="uid://bjkcbn3po0brx"]
+
+[ext_resource type="Script" uid="uid://ys2ya4wnbnat" path="res://tasks/task_rewards/task_reward.gd" id="1_vdtyn"]
+[ext_resource type="Script" uid="uid://c342rkqm6wre2" path="res://tasks/task_definition.gd" id="2_h01lq"]
+[ext_resource type="Script" uid="uid://bjg5464sxssxw" path="res://tasks/task_rewards/subclasses/stat_exp_reward.gd" id="2_mh2om"]
+
+[sub_resource type="Resource" id="Resource_odico"]
+script = ExtResource("2_mh2om")
+exp_amount = 100
+related_stat = 2
+metadata/_custom_type_script = "uid://bjg5464sxssxw"
+
+[resource]
+script = ExtResource("2_h01lq")
+task_name = "constitution training"
+rewards = Array[ExtResource("1_vdtyn")]([SubResource("Resource_odico")])
+metadata/_custom_type_script = "uid://c342rkqm6wre2"

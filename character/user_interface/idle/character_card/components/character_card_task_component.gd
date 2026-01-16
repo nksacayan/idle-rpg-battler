@@ -19,6 +19,7 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	# Always cleanup global signals to prevent memory leaks
+	# TODO: There's a bug here, sometimes i attempt a disconnect when it doesnt exist
 	CharacterTaskManagerAutoload.character_task_added.disconnect(_handle_character_task_created)
 	CharacterTaskManagerAutoload.character_task_removed.disconnect(_handle_character_task_removed)
 
