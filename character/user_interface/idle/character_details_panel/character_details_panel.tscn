@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqibvxojupg2f"]
+[gd_scene load_steps=6 format=3 uid="uid://dqibvxojupg2f"]
 
-[ext_resource type="Script" uid="uid://dsp5lk0cisqgb" path="res://character/user_interface/idle/character_card/character_card.gd" id="1_ggl5k"]
+[ext_resource type="Script" uid="uid://b66pn3cfe08vq" path="res://character/user_interface/idle/character_card/card_subclasses/character_detail_card.gd" id="1_5qv7p"]
 [ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.tscn" id="2_1jlte"]
+[ext_resource type="Script" uid="uid://bsn4u51373iw" path="res://nks-common-godot/rpg_stats/user_interface/base_stat_label_container.gd" id="3_1jlte"]
+[ext_resource type="Script" uid="uid://b6xb3b1qoefna" path="res://character/user_interface/idle/character_card/components/providers/base_stats_provider.gd" id="3_5qv7p"]
+[ext_resource type="PackedScene" uid="uid://uduiyfl4wlsx" path="res://nks-common-godot/rpg_stats/user_interface/base_stat_label.tscn" id="4_rgacx"]
 
 [node name="CharacterDetailsPanel" type="PanelContainer"]
 anchors_preset = 15
@@ -11,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_ggl5k")
+script = ExtResource("1_5qv7p")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -19,3 +22,20 @@ layout_mode = 2
 [node name="CharacterNameLabelComponent" parent="VBoxContainer" instance=ExtResource("2_1jlte")]
 layout_mode = 2
 size_flags_vertical = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("3_5qv7p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_1jlte")
+label_packed_scene = ExtResource("4_rgacx")
+
+[node name="ClosePanelButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="VBoxContainer/ClosePanelButton" to="." method="_close_details"]

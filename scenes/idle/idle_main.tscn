@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg3bk1mqq0ecb"]
+[gd_scene load_steps=11 format=3 uid="uid://bg3bk1mqq0ecb"]
 
 [ext_resource type="Script" uid="uid://b1gvtddnqdwhn" path="res://scenes/idle/character_container.gd" id="1_h4gv2"]
 [ext_resource type="Script" uid="uid://bct8waa026snl" path="res://scenes/idle/idle_main.gd" id="1_qf8ti"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bwnqkebcc4j0c" path="res://scenes/idle/battle_team_container.gd" id="6_24nps"]
 [ext_resource type="PackedScene" uid="uid://3jy0cc64verb" path="res://character/user_interface/idle/character_card/implementations/character_battle_menu_card.tscn" id="7_13kck"]
 [ext_resource type="Script" uid="uid://cjd02kax8cbwn" path="res://scenes/idle/over_layer.gd" id="9_8m43x"]
+[ext_resource type="PackedScene" uid="uid://dqibvxojupg2f" path="res://character/user_interface/idle/character_details_panel/character_details_panel.tscn" id="10_mhw01"]
 
 [node name="IdleMain" type="Node"]
 script = ExtResource("1_qf8ti")
@@ -98,16 +99,11 @@ layer = 2
 visible = false
 script = ExtResource("9_8m43x")
 
-[node name="ModalDimmer" type="ColorRect" parent="OverLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0, 0, 0, 0.5254902)
+[node name="CharacterDetailsPanel" parent="OverLayer" instance=ExtResource("10_mhw01")]
+unique_name_in_owner = true
 
+[connection signal="request_character_details" from="MainLayer/PanelContainer/MainColumns/CharacterContainer/ScrollContainer/CharacterContainer" to="OverLayer" method="_show_character_details_panel"]
 [connection signal="text_submitted" from="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow/LineEdit" to="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow/Button" to="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow" method="_on_button_pressed"]
 [connection signal="pressed" from="MainLayer/PanelContainer/MainColumns/TabContainer/Battle Team/FightButton" to="." method="_start_battle"]
+[connection signal="close_details_requested" from="OverLayer/CharacterDetailsPanel" to="OverLayer" method="_close_overlay"]
