@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bg3bk1mqq0ecb"]
+[gd_scene load_steps=10 format=3 uid="uid://bg3bk1mqq0ecb"]
 
 [ext_resource type="Script" uid="uid://b1gvtddnqdwhn" path="res://scenes/idle/character_container.gd" id="1_h4gv2"]
 [ext_resource type="Script" uid="uid://bct8waa026snl" path="res://scenes/idle/idle_main.gd" id="1_qf8ti"]
@@ -8,88 +8,95 @@
 [ext_resource type="PackedScene" uid="uid://bo0o58e5ebvw8" path="res://tasks/UI/task_card.tscn" id="5_li70l"]
 [ext_resource type="Script" uid="uid://bwnqkebcc4j0c" path="res://scenes/idle/battle_team_container.gd" id="6_24nps"]
 [ext_resource type="PackedScene" uid="uid://3jy0cc64verb" path="res://character/user_interface/idle/character_card/implementations/character_battle_menu_card.tscn" id="7_13kck"]
+[ext_resource type="Script" uid="uid://cjd02kax8cbwn" path="res://scenes/idle/over_layer.gd" id="9_8m43x"]
 
 [node name="IdleMain" type="Node"]
 script = ExtResource("1_qf8ti")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="MainLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="MainLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainColumns" type="HBoxContainer" parent="PanelContainer"]
+[node name="MainColumns" type="HBoxContainer" parent="MainLayer/PanelContainer"]
 layout_mode = 2
 
-[node name="CharacterContainer" type="VBoxContainer" parent="PanelContainer/MainColumns"]
+[node name="CharacterContainer" type="VBoxContainer" parent="MainLayer/PanelContainer/MainColumns"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MainColumns/CharacterContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainLayer/PanelContainer/MainColumns/CharacterContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CharacterContainer" type="HFlowContainer" parent="PanelContainer/MainColumns/CharacterContainer/ScrollContainer"]
+[node name="CharacterContainer" type="HFlowContainer" parent="MainLayer/PanelContainer/MainColumns/CharacterContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_h4gv2")
 character_card_scene = ExtResource("2_24nps")
 
-[node name="CreateCharacterRow" type="HBoxContainer" parent="PanelContainer/MainColumns/CharacterContainer" node_paths=PackedStringArray("character_name_line")]
+[node name="CreateCharacterRow" type="HBoxContainer" parent="MainLayer/PanelContainer/MainColumns/CharacterContainer" node_paths=PackedStringArray("character_name_line")]
 layout_mode = 2
 size_flags_vertical = 8
 alignment = 1
 script = ExtResource("1_sb5dd")
 character_name_line = NodePath("LineEdit")
 
-[node name="LineEdit" type="LineEdit" parent="PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow"]
+[node name="LineEdit" type="LineEdit" parent="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 placeholder_text = "Character Name"
 alignment = 1
 
-[node name="Button" type="Button" parent="PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow"]
+[node name="Button" type="Button" parent="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Create Character"
 
-[node name="TabContainer" type="TabContainer" parent="PanelContainer/MainColumns"]
+[node name="TabContainer" type="TabContainer" parent="MainLayer/PanelContainer/MainColumns"]
 layout_mode = 2
 size_flags_horizontal = 3
 current_tab = 0
 
-[node name="Tasks" type="ScrollContainer" parent="PanelContainer/MainColumns/TabContainer"]
+[node name="Tasks" type="ScrollContainer" parent="MainLayer/PanelContainer/MainColumns/TabContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 0
 
-[node name="TaskContainer" type="VBoxContainer" parent="PanelContainer/MainColumns/TabContainer/Tasks"]
+[node name="TaskContainer" type="VBoxContainer" parent="MainLayer/PanelContainer/MainColumns/TabContainer/Tasks"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("4_t73sy")
 task_card_scene = ExtResource("5_li70l")
 
-[node name="Battle Team" type="VBoxContainer" parent="PanelContainer/MainColumns/TabContainer"]
+[node name="Battle Team" type="VBoxContainer" parent="MainLayer/PanelContainer/MainColumns/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="BattleTeamContainer" type="VBoxContainer" parent="PanelContainer/MainColumns/TabContainer/Battle Team"]
+[node name="BattleTeamContainer" type="VBoxContainer" parent="MainLayer/PanelContainer/MainColumns/TabContainer/Battle Team"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("6_24nps")
 character_card_scene = ExtResource("7_13kck")
 
-[node name="FightButton" type="Button" parent="PanelContainer/MainColumns/TabContainer/Battle Team"]
+[node name="FightButton" type="Button" parent="MainLayer/PanelContainer/MainColumns/TabContainer/Battle Team"]
 layout_mode = 2
 text = "Fight!"
 
-[connection signal="text_submitted" from="PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow/LineEdit" to="PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow" method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow/Button" to="PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow" method="_on_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MainColumns/TabContainer/Battle Team/FightButton" to="." method="_start_battle"]
+[node name="OverLayer" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("9_8m43x")
+
+[connection signal="text_submitted" from="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow/LineEdit" to="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow" method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow/Button" to="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow" method="_on_button_pressed"]
+[connection signal="pressed" from="MainLayer/PanelContainer/MainColumns/TabContainer/Battle Team/FightButton" to="." method="_start_battle"]

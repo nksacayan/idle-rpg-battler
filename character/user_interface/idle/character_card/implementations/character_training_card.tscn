@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd757xpqq6gl7"]
+[gd_scene load_steps=8 format=3 uid="uid://bd757xpqq6gl7"]
 
 [ext_resource type="Script" uid="uid://dsp5lk0cisqgb" path="res://character/user_interface/idle/character_card/character_card.gd" id="1_cnot1"]
 [ext_resource type="PackedScene" uid="uid://dss7couh086gh" path="res://character/user_interface/idle/character_card/components/character_drag_preview.tscn" id="2_va521"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btdulj7xc31dn" path="res://character/user_interface/idle/character_card/components/character_card_task_component.tscn" id="3_o3rfs"]
 [ext_resource type="PackedScene" uid="uid://yk8byimreumw" path="res://character/user_interface/idle/character_card/components/base_stats_provider_component.tscn" id="4_7qe7c"]
 [ext_resource type="PackedScene" uid="uid://8jx158fdjtqj" path="res://nks-common-godot/rpg_stats/user_interface/base_stats_vbox.tscn" id="5_toqqv"]
+[ext_resource type="Script" uid="uid://cqh6xmqioagn4" path="res://character/user_interface/idle/character_card/implementations/character_detail_button.gd" id="7_3tyfo"]
 
 [node name="CharacterTrainingCard" type="PanelContainer"]
 anchors_preset = 15
@@ -33,3 +34,8 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 0
 provide_drop_impl = true
+
+[node name="CharacterDetailButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Character Details"
+script = ExtResource("7_3tyfo")
