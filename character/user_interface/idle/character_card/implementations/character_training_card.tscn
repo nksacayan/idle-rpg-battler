@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dss7couh086gh" path="res://character/user_interface/idle/character_card/components/character_drag_preview.tscn" id="2_va521"]
 [ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.tscn" id="3_nes3t"]
 [ext_resource type="PackedScene" uid="uid://btdulj7xc31dn" path="res://character/user_interface/idle/character_card/components/character_data_components/character_card_task_component.tscn" id="3_o3rfs"]
-[ext_resource type="Script" uid="uid://b6xb3b1qoefna" path="res://character/user_interface/idle/character_card/components/providers/base_stats_provider.gd" id="4_3tyfo"]
+[ext_resource type="Script" uid="uid://b6xb3b1qoefna" path="res://character/user_interface/idle/character_card/components/providers/base_stat_label_provider.gd" id="4_3tyfo"]
 [ext_resource type="Script" uid="uid://bsn4u51373iw" path="res://nks-common-godot/rpg_stats/user_interface/base_stat_label_container.gd" id="5_3tyfo"]
 [ext_resource type="PackedScene" uid="uid://uduiyfl4wlsx" path="res://nks-common-godot/rpg_stats/user_interface/base_stat_label.tscn" id="6_qpexr"]
 
