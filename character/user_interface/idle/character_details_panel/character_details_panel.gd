@@ -1,7 +1,7 @@
 extends PanelContainer
 
 @onready var name_label: Label = %NameLabel
-@onready var base_stats_container: BaseStatsContainer = %BaseStatsVbox
+@onready var base_stats_container: BaseStatLabelContainer = %BaseStatsVbox
 
 var character: CharacterData:
 	set(p_character):

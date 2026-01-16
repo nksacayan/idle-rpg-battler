@@ -21,7 +21,7 @@ func _initialize_components(root: Node) -> void:
 
 	for child in root.get_children():
 		# 1. Try to treat the child as a CardComponent
-		var component := child as BaseStatsContainer
+		var component := child as BattleCharacterCardComponent
 		
 		if component:
 			_setup_component(component)
@@ -29,9 +29,5 @@ func _initialize_components(root: Node) -> void:
 		# 2. Always recurse to find deeper children (e.g. inside Containers)
 		_initialize_components(child)
 		
-func _setup_component(component: BaseStatsContainer) -> void:
-	# .assign() handles the conversion from untyped to typed safely
-	var new_stats: Array[BaseStat]
-	new_stats.assign(battle_character.battle_stats.values())
-	# explicitly assigning to trigger setter as assign() is in place
-	component.base_stats = new_stats
+func _setup_component(component: BattleCharacterCardComponent) -> void:
+	component.character = battle_character

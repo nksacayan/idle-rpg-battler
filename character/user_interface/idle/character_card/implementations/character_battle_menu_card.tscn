@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://3jy0cc64verb"]
+[gd_scene load_steps=7 format=3 uid="uid://3jy0cc64verb"]
 
 [ext_resource type="Script" uid="uid://dsp5lk0cisqgb" path="res://character/user_interface/idle/character_card/character_card.gd" id="1_p4qvo"]
 [ext_resource type="PackedScene" uid="uid://dss7couh086gh" path="res://character/user_interface/idle/character_card/components/character_drag_preview.tscn" id="2_ok8sw"]
-[ext_resource type="PackedScene" uid="uid://ch0noibdyregn" path="res://character/user_interface/idle/character_card/components/battle_character_provider_component.tscn" id="3_p4lqy"]
-[ext_resource type="PackedScene" uid="uid://8jx158fdjtqj" path="res://nks-common-godot/rpg_stats/user_interface/base_stats_vbox.tscn" id="4_wwynm"]
+[ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.tscn" id="3_r242m"]
+[ext_resource type="PackedScene" uid="uid://dwovxknfaitdg" path="res://character/user_interface/idle/character_card/components/battle_character_components/battle_menu_card_stats_component.tscn" id="5_q3eyr"]
 [ext_resource type="Script" uid="uid://c5r2m23rh60x8" path="res://character/user_interface/idle/character_card/implementations/remove_character_button.gd" id="5_r242m"]
+[ext_resource type="Script" uid="uid://b468332yg0riu" path="res://character/user_interface/idle/character_card/components/providers/battle_character_provider.gd" id="6_q3eyr"]
 
 [node name="CharacterBattleMenuCard" type="PanelContainer"]
 anchors_preset = 15
@@ -18,10 +19,16 @@ character_drag_preview_scene = ExtResource("2_ok8sw")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="BattleCharacterProviderComponent" parent="VBoxContainer" instance=ExtResource("3_p4lqy")]
+[node name="CharacterNameLabelComponent" parent="VBoxContainer" instance=ExtResource("3_r242m")]
 layout_mode = 2
+size_flags_vertical = 1
 
-[node name="BaseStatsVbox" parent="VBoxContainer/BattleCharacterProviderComponent" instance=ExtResource("4_wwynm")]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("6_q3eyr")
+
+[node name="BattleMenuCardStatsComponent" parent="VBoxContainer/MarginContainer" instance=ExtResource("5_q3eyr")]
 layout_mode = 2
 
 [node name="RemoveCharacterButton" type="Button" parent="VBoxContainer"]

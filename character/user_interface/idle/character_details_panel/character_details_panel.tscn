@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqibvxojupg2f"]
 
-[ext_resource type="Script" uid="uid://whrsxasr2rxp" path="res://character/user_interface/idle/character_details_panel/character_details_panel.gd" id="1_70en7"]
-[ext_resource type="PackedScene" uid="uid://8jx158fdjtqj" path="res://nks-common-godot/rpg_stats/user_interface/base_stats_vbox.tscn" id="2_ggl5k"]
+[ext_resource type="Script" uid="uid://dsp5lk0cisqgb" path="res://character/user_interface/idle/character_card/character_card.gd" id="1_ggl5k"]
+[ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.tscn" id="2_1jlte"]
 
 [node name="CharacterDetailsPanel" type="PanelContainer"]
 anchors_preset = 15
@@ -11,28 +11,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_70en7")
+script = ExtResource("1_ggl5k")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="VBoxContainer"]
-unique_name_in_owner = true
+[node name="CharacterNameLabelComponent" parent="VBoxContainer" instance=ExtResource("2_1jlte")]
 layout_mode = 2
-text = "Name"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="BaseStatsVbox" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_ggl5k")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="BattleStatsPanel" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CommandPanel" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 1

@@ -1,3 +1,4 @@
 TODO:
-	Figure out how to add default starter commands so i can retest battle UI
-	Had to do big UI refactor on the way to character details page in order to do commands
+- Figure out how to add default starter commands so i can retest battle UI
+- Had to do big UI refactor on the way to character details page in order to do commands
+- Refactor UI providers and components: Providers don't actually need saved scenes just use the script

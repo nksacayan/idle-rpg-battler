@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d0kdmb22ukvfg"]
 
-[ext_resource type="Script" uid="uid://b3dbga72qb56f" path="res://character/user_interface/idle/character_card/components/character_name_label_component.gd" id="1_v363b"]
+[ext_resource type="Script" uid="uid://b3dbga72qb56f" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.gd" id="1_v363b"]
 
 [node name="CharacterNameLabelComponent" type="MarginContainer"]
 anchors_preset = 15

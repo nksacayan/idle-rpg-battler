@@ -95,7 +95,18 @@ text = "Fight!"
 
 [node name="OverLayer" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 script = ExtResource("9_8m43x")
+
+[node name="ModalDimmer" type="ColorRect" parent="OverLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.5254902)
 
 [connection signal="text_submitted" from="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow/LineEdit" to="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow/Button" to="MainLayer/PanelContainer/MainColumns/CharacterContainer/CreateCharacterRow" method="_on_button_pressed"]
