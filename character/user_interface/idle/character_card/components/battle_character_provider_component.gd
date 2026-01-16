@@ -31,4 +31,7 @@ func _initialize_components(root: Node) -> void:
 		
 func _setup_component(component: BaseStatsContainer) -> void:
 	# .assign() handles the conversion from untyped to typed safely
-	component.base_stats.assign(battle_character.battle_stats.values())
+	var new_stats: Array[BaseStat]
+	new_stats.assign(battle_character.battle_stats.values())
+	# explicitly assigning to trigger setter as assign() is in place
+	component.base_stats = new_stats

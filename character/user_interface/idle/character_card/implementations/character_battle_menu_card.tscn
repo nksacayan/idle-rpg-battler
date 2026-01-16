@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://3jy0cc64verb"]
+[gd_scene load_steps=6 format=3 uid="uid://3jy0cc64verb"]
 
 [ext_resource type="Script" uid="uid://dsp5lk0cisqgb" path="res://character/user_interface/idle/character_card/character_card.gd" id="1_p4qvo"]
 [ext_resource type="PackedScene" uid="uid://dss7couh086gh" path="res://character/user_interface/idle/character_card/components/character_drag_preview.tscn" id="2_ok8sw"]
 [ext_resource type="PackedScene" uid="uid://ch0noibdyregn" path="res://character/user_interface/idle/character_card/components/battle_character_provider_component.tscn" id="3_p4lqy"]
 [ext_resource type="PackedScene" uid="uid://8jx158fdjtqj" path="res://nks-common-godot/rpg_stats/user_interface/base_stats_vbox.tscn" id="4_wwynm"]
+[ext_resource type="Script" uid="uid://c5r2m23rh60x8" path="res://character/user_interface/idle/character_card/implementations/remove_character_button.gd" id="5_r242m"]
 
 [node name="CharacterBattleMenuCard" type="PanelContainer"]
 anchors_preset = 15
@@ -26,3 +27,6 @@ layout_mode = 2
 [node name="RemoveCharacterButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Remove From Battle"
+script = ExtResource("5_r242m")
+
+[connection signal="pressed" from="VBoxContainer/RemoveCharacterButton" to="VBoxContainer/RemoveCharacterButton" method="_remove_character_from_battle_team"]

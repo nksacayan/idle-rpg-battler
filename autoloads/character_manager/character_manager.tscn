@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_qg315"]
 script = ExtResource("5_nijp8")
 _stat_name = "STRENGTH"
-value = 1
 
 [sub_resource type="Resource" id="Resource_k55lm"]
 script = ExtResource("4_3rdxb")
@@ -18,7 +17,6 @@ stat = SubResource("Resource_qg315")
 [sub_resource type="Resource" id="Resource_shqtg"]
 script = ExtResource("5_nijp8")
 _stat_name = "DEXTERITY"
-value = 1
 
 [sub_resource type="Resource" id="Resource_e4q0a"]
 script = ExtResource("4_3rdxb")
@@ -27,7 +25,6 @@ stat = SubResource("Resource_shqtg")
 [sub_resource type="Resource" id="Resource_qo5qd"]
 script = ExtResource("5_nijp8")
 _stat_name = "CONSTITUTION"
-value = 1
 
 [sub_resource type="Resource" id="Resource_wbv3k"]
 script = ExtResource("4_3rdxb")
@@ -36,7 +33,6 @@ stat = SubResource("Resource_qo5qd")
 [sub_resource type="Resource" id="Resource_yhw4c"]
 script = ExtResource("5_nijp8")
 _stat_name = "WISDOM"
-value = 1
 
 [sub_resource type="Resource" id="Resource_ebvue"]
 script = ExtResource("4_3rdxb")
@@ -45,7 +41,6 @@ stat = SubResource("Resource_yhw4c")
 [sub_resource type="Resource" id="Resource_xuh4m"]
 script = ExtResource("5_nijp8")
 _stat_name = "INTELLIGENCE"
-value = 1
 
 [sub_resource type="Resource" id="Resource_sauth"]
 script = ExtResource("4_3rdxb")
@@ -54,7 +49,6 @@ stat = SubResource("Resource_xuh4m")
 [sub_resource type="Resource" id="Resource_cg8rm"]
 script = ExtResource("5_nijp8")
 _stat_name = "CHARISMA"
-value = 1
 
 [sub_resource type="Resource" id="Resource_fw1xv"]
 script = ExtResource("4_3rdxb")
@@ -76,7 +70,6 @@ metadata/_custom_type_script = "uid://cppn1dvuqyerv"
 [sub_resource type="Resource" id="Resource_52wvh"]
 script = ExtResource("5_nijp8")
 _stat_name = "STRENGTH"
-value = 1
 
 [sub_resource type="Resource" id="Resource_7ufjp"]
 script = ExtResource("4_3rdxb")
@@ -85,7 +78,6 @@ stat = SubResource("Resource_52wvh")
 [sub_resource type="Resource" id="Resource_hd1i6"]
 script = ExtResource("5_nijp8")
 _stat_name = "DEXTERITY"
-value = 1
 
 [sub_resource type="Resource" id="Resource_ptpdj"]
 script = ExtResource("4_3rdxb")
@@ -94,7 +86,6 @@ stat = SubResource("Resource_hd1i6")
 [sub_resource type="Resource" id="Resource_8tb14"]
 script = ExtResource("5_nijp8")
 _stat_name = "CONSTITUTION"
-value = 1
 
 [sub_resource type="Resource" id="Resource_kq8yt"]
 script = ExtResource("4_3rdxb")
@@ -103,7 +94,6 @@ stat = SubResource("Resource_8tb14")
 [sub_resource type="Resource" id="Resource_awah3"]
 script = ExtResource("5_nijp8")
 _stat_name = "WISDOM"
-value = 1
 
 [sub_resource type="Resource" id="Resource_5kuuc"]
 script = ExtResource("4_3rdxb")
@@ -112,7 +102,6 @@ stat = SubResource("Resource_awah3")
 [sub_resource type="Resource" id="Resource_1x0tc"]
 script = ExtResource("5_nijp8")
 _stat_name = "INTELLIGENCE"
-value = 1
 
 [sub_resource type="Resource" id="Resource_3tj70"]
 script = ExtResource("4_3rdxb")
@@ -121,7 +110,6 @@ stat = SubResource("Resource_1x0tc")
 [sub_resource type="Resource" id="Resource_l8ss4"]
 script = ExtResource("5_nijp8")
 _stat_name = "CHARISMA"
-value = 1
 
 [sub_resource type="Resource" id="Resource_ggdwe"]
 script = ExtResource("4_3rdxb")
@@ -143,7 +131,6 @@ metadata/_custom_type_script = "uid://cppn1dvuqyerv"
 [sub_resource type="Resource" id="Resource_j041x"]
 script = ExtResource("5_nijp8")
 _stat_name = "STRENGTH"
-value = 1
 
 [sub_resource type="Resource" id="Resource_l51rk"]
 script = ExtResource("4_3rdxb")
@@ -152,7 +139,6 @@ stat = SubResource("Resource_j041x")
 [sub_resource type="Resource" id="Resource_i58i4"]
 script = ExtResource("5_nijp8")
 _stat_name = "DEXTERITY"
-value = 1
 
 [sub_resource type="Resource" id="Resource_mm7iu"]
 script = ExtResource("4_3rdxb")
@@ -161,7 +147,6 @@ stat = SubResource("Resource_i58i4")
 [sub_resource type="Resource" id="Resource_vqdnl"]
 script = ExtResource("5_nijp8")
 _stat_name = "CONSTITUTION"
-value = 1
 
 [sub_resource type="Resource" id="Resource_2pkwd"]
 script = ExtResource("4_3rdxb")
@@ -170,7 +155,6 @@ stat = SubResource("Resource_vqdnl")
 [sub_resource type="Resource" id="Resource_56lyt"]
 script = ExtResource("5_nijp8")
 _stat_name = "WISDOM"
-value = 1
 
 [sub_resource type="Resource" id="Resource_18w8h"]
 script = ExtResource("4_3rdxb")
@@ -179,7 +163,6 @@ stat = SubResource("Resource_56lyt")
 [sub_resource type="Resource" id="Resource_0pxvc"]
 script = ExtResource("5_nijp8")
 _stat_name = "INTELLIGENCE"
-value = 1
 
 [sub_resource type="Resource" id="Resource_x4bk6"]
 script = ExtResource("4_3rdxb")
@@ -188,7 +171,6 @@ stat = SubResource("Resource_0pxvc")
 [sub_resource type="Resource" id="Resource_4laa0"]
 script = ExtResource("5_nijp8")
 _stat_name = "CHARISMA"
-value = 1
 
 [sub_resource type="Resource" id="Resource_xs8v5"]
 script = ExtResource("4_3rdxb")
