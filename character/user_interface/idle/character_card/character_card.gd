@@ -6,11 +6,15 @@ class_name CharacterCard
 var character: CharacterData:
 	set(p_character_data):
 		character = p_character_data
+		_initialize_components(self)
 
 func _ready() -> void:
 	_initialize_components(self)
 
 func _initialize_components(root: Node) -> void:
+	if not character or not is_node_ready():
+		return
+	
 	for child in root.get_children():
 		# 1. Try to treat the child as a CardComponent
 		var component := child as CharacterCardComponent
