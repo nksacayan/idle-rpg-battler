@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StatRequirement" load_steps=2 format=3 uid="uid://bqvb275xunm3w"]
+
+[ext_resource type="Script" uid="uid://0bue68ghixbu" path="res://character/battle/commands/command_unlocks/unlock_requirements/stat_requirements/stat_requirement.gd" id="1_l44yo"]
+
+[resource]
+script = ExtResource("1_l44yo")
+required_level = 2
+requirement_name = "str min 2"
+metadata/_custom_type_script = "uid://0bue68ghixbu"

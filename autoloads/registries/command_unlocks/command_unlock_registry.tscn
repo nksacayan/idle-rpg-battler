@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8nha3oglpbhw"]
+
+[ext_resource type="Script" uid="uid://b6hk7orpsrbb6" path="res://autoloads/registries/command_unlocks/command_unlock_registry.gd" id="1_7suxd"]
+
+[node name="CommandUnlockRegistry" type="Node"]
+script = ExtResource("1_7suxd")

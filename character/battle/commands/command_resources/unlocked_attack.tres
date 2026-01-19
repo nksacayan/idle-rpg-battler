@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BattleCommand" load_steps=4 format=3 uid="uid://co7a0urev032b"]
+
+[ext_resource type="Script" uid="uid://c85ym5t2umph0" path="res://character/battle/commands/battle_effects/battle_effect.gd" id="1_jk2i4"]
+[ext_resource type="Script" uid="uid://c1uli2rvae5ek" path="res://character/battle/commands/battle_command.gd" id="2_5irx6"]
+[ext_resource type="Resource" uid="uid://d1a1ubaued0fe" path="res://character/battle/commands/battle_effects/subclasses/damage_effects/basic_physical_damage.tres" id="2_ad0jn"]
+
+[resource]
+script = ExtResource("2_5irx6")
+command_name = "unlocked attack"
+target_types = Array[int]([1])
+effects = Array[ExtResource("1_jk2i4")]([ExtResource("2_ad0jn")])
+metadata/_custom_type_script = "uid://c1uli2rvae5ek"

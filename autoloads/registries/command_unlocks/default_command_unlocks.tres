@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CommandUnlockCollection" load_steps=4 format=3 uid="uid://bwmrur7q6x2gx"]
+
+[ext_resource type="Script" uid="uid://s06c7gn4px7t" path="res://character/battle/commands/command_unlocks/command_unlock.gd" id="1_rj6x2"]
+[ext_resource type="Resource" uid="uid://dhs0n7xxj6cwk" path="res://character/battle/commands/command_unlocks/unlocked_attack_by_stats.tres" id="2_h106d"]
+[ext_resource type="Script" uid="uid://cnx74lnul2hky" path="res://autoloads/registries/command_unlocks/command_unlock_collection.gd" id="3_i422a"]
+
+[resource]
+script = ExtResource("3_i422a")
+command_unlocks = Array[ExtResource("1_rj6x2")]([ExtResource("2_h106d")])
+metadata/_custom_type_script = "uid://cnx74lnul2hky"

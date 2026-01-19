@@ -6,3 +6,4 @@ TODO:
 Future stuff:
 - Convert battle stats, especially character resources etc 
   to real resources and use them for the idle stage. Would be a big stat refactor
+- Have some commands work in battle but also have commands that have effects in the idle stage?

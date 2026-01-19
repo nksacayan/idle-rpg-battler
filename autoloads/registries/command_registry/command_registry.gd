@@ -1,5 +1,6 @@
 extends Node
 class_name CommandRegistry
+# TODO: Think about abstracting the registry pattern
 
 @export var command_collection: CommandCollection
 @export var default_attack: BattleCommand

@@ -19,8 +19,8 @@ config/icon="res://icon.svg"
 
 CharacterManagerAutoload="*res://autoloads/character_manager/character_manager.tscn"
 CharacterTaskManagerAutoload="*res://autoloads/character_task_manager/character_task_manager.gd"
-TaskDefinitionRegistryAutoload="*res://autoloads/task_definition_registry/task_definition_registry.tscn"
-CommandRegistryAutoload="*res://autoloads/command_registry/command_registry.tscn"
+TaskDefinitionRegistryAutoload="*res://autoloads/registries/task_definition_registry/task_definition_registry.tscn"
+CommandRegistryAutoload="*res://autoloads/registries/command_registry/command_registry.tscn"
 
 [display]
 

@@ -1,4 +1,4 @@
-extends UnlockRequirement
+extends CommandUnlockRequirement
 class_name StatRequirement
 
 @export var stat_name: CharacterData.STAT_NAMES

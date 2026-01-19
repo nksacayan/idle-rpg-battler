@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CommandUnlock" load_steps=5 format=3 uid="uid://dhs0n7xxj6cwk"]
+
+[ext_resource type="Script" uid="uid://yk3e410docvm" path="res://character/battle/commands/command_unlocks/unlock_requirements/unlock_requirement.gd" id="1_davt0"]
+[ext_resource type="Resource" uid="uid://co7a0urev032b" path="res://character/battle/commands/command_resources/unlocked_attack.tres" id="1_s01x6"]
+[ext_resource type="Script" uid="uid://s06c7gn4px7t" path="res://character/battle/commands/command_unlocks/command_unlock.gd" id="2_cfkbj"]
+[ext_resource type="Resource" uid="uid://bqvb275xunm3w" path="res://character/battle/commands/command_unlocks/unlock_requirements/stat_requirements/str_min_2.tres" id="3_5yr6l"]
+
+[resource]
+script = ExtResource("2_cfkbj")
+unlock_name = "unlocked attack by stats"
+command = ExtResource("1_s01x6")
+requirements = Array[ExtResource("1_davt0")]([ExtResource("3_5yr6l")])
+metadata/_custom_type_script = "uid://s06c7gn4px7t"

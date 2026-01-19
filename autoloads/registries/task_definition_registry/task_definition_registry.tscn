@@ -1,0 +1,11 @@
+[gd_scene load_steps=6 format=3 uid="uid://lirq230aq03n"]
+
+[ext_resource type="Script" uid="uid://bw6kjl321strj" path="res://autoloads/registries/task_definition_registry/task_definition_registry.gd" id="1_ewouj"]
+[ext_resource type="Script" uid="uid://c342rkqm6wre2" path="res://tasks/task_definition.gd" id="2_qm8bk"]
+[ext_resource type="Resource" uid="uid://ck26cjfnmvb2v" path="res://autoloads/registries/task_definition_registry/definitions/strength_training.tres" id="3_ggl7m"]
+[ext_resource type="Resource" uid="uid://dgltjc2wqhadw" path="res://autoloads/registries/task_definition_registry/definitions/dexterity_training.tres" id="4_ggl7m"]
+[ext_resource type="Resource" uid="uid://bjkcbn3po0brx" path="res://autoloads/registries/task_definition_registry/definitions/constitution_training.tres" id="5_1q8pv"]
+
+[node name="TaskDefinitionRegistry" type="Node"]
+script = ExtResource("1_ewouj")
+_definitions = Array[ExtResource("2_qm8bk")]([ExtResource("3_ggl7m"), ExtResource("4_ggl7m"), ExtResource("5_1q8pv")])
