@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqibvxojupg2f"]
+[gd_scene load_steps=11 format=3 uid="uid://dqibvxojupg2f"]
 
 [ext_resource type="Script" uid="uid://b66pn3cfe08vq" path="res://character/user_interface/idle/character_card/card_subclasses/character_detail_card.gd" id="1_5qv7p"]
 [ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.tscn" id="2_1jlte"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://b6xb3b1qoefna" path="res://character/user_interface/idle/character_card/components/providers/base_stat_label_provider.gd" id="3_5qv7p"]
 [ext_resource type="PackedScene" uid="uid://uduiyfl4wlsx" path="res://nks-common-godot/rpg_stats/user_interface/base_stat_label.tscn" id="4_rgacx"]
 [ext_resource type="Script" uid="uid://vr3ci8j6p6bi" path="res://character/user_interface/idle/character_card/components/providers/battle_stat_label_provider.gd" id="7_3qfse"]
+[ext_resource type="Script" uid="uid://bbdh4wsmv08b" path="res://character/user_interface/idle/character_card/components/providers/battle_resource_label_provider.gd" id="8_mvwa7"]
+[ext_resource type="Script" uid="uid://b18kb5srluj78" path="res://nks-common-godot/rpg_stats/user_interface/bounded_stat_label_container.gd" id="9_rnd5m"]
+[ext_resource type="PackedScene" uid="uid://cn6r4ncqx44c8" path="res://nks-common-godot/rpg_stats/user_interface/bounded_stat_label.tscn" id="10_rmkid"]
 
 [node name="CharacterDetailsPanel" type="PanelContainer"]
 anchors_preset = 15
@@ -53,6 +56,16 @@ script = ExtResource("7_3qfse")
 layout_mode = 2
 script = ExtResource("3_1jlte")
 label_packed_scene = ExtResource("4_rgacx")
+
+[node name="BattleResourceLabelProvider" type="MarginContainer" parent="VBoxContainer/BattleCharacterProvider/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("8_mvwa7")
+
+[node name="BattleResourceLabels" type="VBoxContainer" parent="VBoxContainer/BattleCharacterProvider/HBoxContainer/BattleResourceLabelProvider"]
+layout_mode = 2
+script = ExtResource("9_rnd5m")
+label_packed_scene = ExtResource("10_rmkid")
 
 [node name="ClosePanelButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
