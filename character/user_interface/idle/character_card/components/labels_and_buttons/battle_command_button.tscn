@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi3f2evhw3igh"]
+
+[ext_resource type="Script" uid="uid://dxe6q11j7o3ew" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_button.gd" id="1_vpmg7"]
+
+[node name="BattleCommandButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Command Name"
+script = ExtResource("1_vpmg7")
+
+[connection signal="pressed" from="." to="." method="_select_command"]

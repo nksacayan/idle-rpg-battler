@@ -69,6 +69,10 @@ func _init_battle_stats() -> void:
 		battle_stats[battle_stat_id] = new_battle_stat
 
 func _init_battle_commands() -> void:
+	var default_attack_command: BattleCommand = \
+		CommandRegistryAutoload.default_attack.duplicate_deep()
+	default_attack_command.source_character = self
+	local_battle_commands.append(default_attack_command)
 	for command: BattleCommand in character_data.available_battle_commands:
 		var local_command: BattleCommand = command.duplicate_deep()
 		local_command.source_character = self
