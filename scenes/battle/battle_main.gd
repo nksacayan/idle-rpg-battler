@@ -31,7 +31,7 @@ var turn_state: TURN_STATE = TURN_STATE.OTHER:
 # References: Use @onready as a fallback, but we will refresh them
 @onready var _ally_team_container: BattleTeamContainer = %AllyTeamContainer
 @onready var _enemy_team_container: BattleTeamContainer = %EnemyTeamContainer
-@onready var _command_container: BattleCommandContainer = %CommandContainer
+@onready var _command_container: BattleCommandButtonContainer = %CommandContainer
 
 # 1. Lifecycle Agnostic Refresh
 func _enter_tree() -> void:
@@ -79,7 +79,7 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 				return
 			_current_character = p_battle_character
 			_current_character.current_command_ref = null
-			_command_container.setup(p_battle_character.local_battle_commands)
+			_command_container.battle_commands = _current_character.local_battle_commands
 			turn_state = TURN_STATE.SELECTING_COMMAND
 		TURN_STATE.SELECTING_TARGETS:
 			# Attempt to add a target to current command
@@ -100,7 +100,7 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 func _on_command_selected(p_command: BattleCommand) -> void:
 	_current_command = p_command
 	turn_state = TURN_STATE.SELECTING_TARGETS
-	_command_container.clear()
+	_command_container.battle_commands = []
 
 func _submit_commands() -> void:
 	print("submit commands")

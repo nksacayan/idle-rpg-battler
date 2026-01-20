@@ -1,0 +1,36 @@
+extends PanelContainer
+class_name BattleCommandDetailPanel
+
+@onready var name_label := %CommandNameLabel as Label
+@onready var description_label := %CommandDescriptionLabel as Label
+@onready var min_targets_label := %MinTargetsLabel as Label
+@onready var max_targets_label := %MaxTargetsLabel as Label
+@onready var target_types_label := %TargetTypesLabel as Label
+@onready var effects_label := %EffectsLabel as Label
+
+var battle_command: BattleCommand:
+	set(p_command):
+		battle_command = p_command
+		_update_ui()
+
+func _ready() -> void:
+	_update_ui()
+
+func _update_ui() -> void:
+	if not is_node_ready():
+		return
+
+	if not battle_command:
+		name_label.text = ""
+		description_label.text = ""
+		min_targets_label.text = ""
+		max_targets_label.text = ""
+		target_types_label.text = ""
+		effects_label.text = ""
+	else:
+		name_label.text = battle_command.command_name
+		description_label.text = battle_command.command_description
+		min_targets_label.text = str(battle_command.min_targets)
+		max_targets_label.text = str(battle_command.max_targets)
+		target_types_label.text = ", ".join(battle_command.target_types)
+		effects_label.text = "TODO: Effects"

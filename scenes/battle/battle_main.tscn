@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b8ss3h6h6wtx7" path="res://scenes/battle/team_container.gd" id="2_hj4f6"]
 [ext_resource type="PackedScene" uid="uid://b7v8y31r24dpk" path="res://character/user_interface/battle/character_battle_card.tscn" id="3_0jypa"]
 [ext_resource type="PackedScene" uid="uid://bi3f2evhw3igh" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_button.tscn" id="5_7xoa7"]
-[ext_resource type="Script" uid="uid://brdnr7vmom15r" path="res://scenes/battle/command_container.gd" id="9_7m3k1"]
+[ext_resource type="Script" uid="uid://brdnr7vmom15r" path="res://character/user_interface/idle/character_card/components/containers/battle_command_button_container.gd" id="9_7m3k1"]
 [ext_resource type="Script" uid="uid://bgjodnctu768y" path="res://scenes/battle/command_status_label.gd" id="11_r2jbg"]
 
 [node name="BattleMain" type="Node"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://7x4x1hj42to7"]
+
+[ext_resource type="Script" uid="uid://brdnr7vmom15r" path="res://character/user_interface/idle/character_card/components/containers/battle_command_button_container.gd" id="1_37t3h"]
+[ext_resource type="Script" uid="uid://tmyxijn7t5bd" path="res://character/user_interface/idle/character_card/components/battle_character_components/command_display_component.gd" id="1_sqit8"]
+[ext_resource type="PackedScene" uid="uid://765railj77eg" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_detail_panel.tscn" id="3_603yo"]
+[ext_resource type="PackedScene" uid="uid://bi3f2evhw3igh" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_button.tscn" id="3_ryhih"]
+
+[node name="CommandDisplayComponent" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_sqit8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="BattleCommandButtonContainer" type="VBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_37t3h")
+command_button_scene = ExtResource("3_ryhih")
+
+[node name="BattleCommandDetailPanel" parent="HBoxContainer" instance=ExtResource("3_603yo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="command_selected" from="HBoxContainer/BattleCommandButtonContainer" to="." method="_display_command"]
