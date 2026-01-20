@@ -20,3 +20,8 @@ func find_by_name(p_unlock_name: String) -> CommandUnlock:
 			return null
 	
 	return _cache[p_unlock_name]
+
+func get_all() -> Array[CommandUnlock]:
+	var return_array: Array[CommandUnlock]
+	return_array.assign(_cache.values())
+	return return_array

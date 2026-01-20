@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://blgbkc4o0nmsw"]
+
+[ext_resource type="Script" uid="uid://dbnh2vmuice6v" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_unlock_info_panel.gd" id="1_fddmt"]
+
+[node name="BattleCommandUnlockInfoPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fddmt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="UnlockName" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unlock Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RequirementLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Requirement"
+horizontal_alignment = 1
+vertical_alignment = 1

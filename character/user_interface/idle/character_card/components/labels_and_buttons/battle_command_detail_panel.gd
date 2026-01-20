@@ -8,6 +8,11 @@ class_name BattleCommandDetailPanel
 @onready var target_types_label := %TargetTypesLabel as Label
 @onready var effects_label := %EffectsLabel as Label
 
+const MIN_TARGETS_PREFIX := "Min targets: "
+const MAX_TARGETS_PREFIX := "Max targets: "
+const TARGET_TYPES_PREFIX := "Can target: "
+const EFFECT_PREFIX := "Effects: "
+
 var battle_command: BattleCommand:
 	set(p_command):
 		battle_command = p_command
@@ -23,14 +28,14 @@ func _update_ui() -> void:
 	if not battle_command:
 		name_label.text = ""
 		description_label.text = ""
-		min_targets_label.text = ""
-		max_targets_label.text = ""
-		target_types_label.text = ""
-		effects_label.text = ""
+		min_targets_label.text = MIN_TARGETS_PREFIX + ""
+		max_targets_label.text = MAX_TARGETS_PREFIX + ""
+		target_types_label.text = TARGET_TYPES_PREFIX + ""
+		effects_label.text = EFFECT_PREFIX + ""
 	else:
 		name_label.text = battle_command.command_name
 		description_label.text = battle_command.command_description
-		min_targets_label.text = str(battle_command.min_targets)
-		max_targets_label.text = str(battle_command.max_targets)
-		target_types_label.text = ", ".join(battle_command.target_types)
-		effects_label.text = "TODO: Effects"
+		min_targets_label.text = MIN_TARGETS_PREFIX + str(battle_command.min_targets)
+		max_targets_label.text = MAX_TARGETS_PREFIX + str(battle_command.max_targets)
+		target_types_label.text = TARGET_TYPES_PREFIX + ", ".join(battle_command.target_types)
+		effects_label.text = EFFECT_PREFIX + "TODO: Effects"
