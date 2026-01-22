@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqibvxojupg2f"]
+[gd_scene load_steps=14 format=3 uid="uid://dqibvxojupg2f"]
 
 [ext_resource type="Script" uid="uid://b66pn3cfe08vq" path="res://character/user_interface/idle/character_card/card_subclasses/character_detail_card.gd" id="1_5qv7p"]
 [ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.tscn" id="2_1jlte"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://b18kb5srluj78" path="res://nks-common-godot/rpg_stats/user_interface/bounded_stat_label_container.gd" id="9_rnd5m"]
 [ext_resource type="PackedScene" uid="uid://cn6r4ncqx44c8" path="res://nks-common-godot/rpg_stats/user_interface/bounded_stat_label.tscn" id="10_rmkid"]
 [ext_resource type="PackedScene" uid="uid://7x4x1hj42to7" path="res://character/user_interface/idle/character_card/components/battle_character_components/command_display_component.tscn" id="11_sx1ke"]
+[ext_resource type="PackedScene" uid="uid://xuuhfsu7a1wa" path="res://character/user_interface/idle/character_card/components/battle_character_components/command_unlocks_display_component.tscn" id="12_q5gla"]
+[ext_resource type="Script" uid="uid://2ah5ircx5y33" path="res://character/user_interface/idle/character_details_panel/provider_for_command_unlocks_display.gd" id="12_wfoej"]
 
 [node name="CharacterDetailsPanel" type="PanelContainer"]
 anchors_preset = 15
@@ -76,6 +78,14 @@ script = ExtResource("9_rnd5m")
 label_packed_scene = ExtResource("10_rmkid")
 
 [node name="CommandDisplayComponent" parent="VBoxContainer/BattleCharacterProvider/HBoxContainer" instance=ExtResource("11_sx1ke")]
+layout_mode = 2
+
+[node name="ProviderForCommandUnlocksDisplay" type="MarginContainer" parent="VBoxContainer/BattleCharacterProvider/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("12_wfoej")
+
+[node name="CommandUnlocksDisplayComponent" parent="VBoxContainer/BattleCharacterProvider/HBoxContainer/ProviderForCommandUnlocksDisplay" instance=ExtResource("12_q5gla")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="ClosePanelButton" type="Button" parent="VBoxContainer"]
