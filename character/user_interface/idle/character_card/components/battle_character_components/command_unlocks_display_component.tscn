@@ -39,9 +39,15 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="MessageLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
 [node name="UnlockButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Unlock Command"
 
 [connection signal="command_selected" from="HBoxContainer/BattleCommandUnlockButtonContainer" to="." method="_on_unlockable_command_selected"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/UnlockButton" to="." method="_unlock_selected_command"]
