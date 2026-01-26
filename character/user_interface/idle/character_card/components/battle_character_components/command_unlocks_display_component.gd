@@ -12,6 +12,7 @@ var available_unlocks: Array[CommandUnlock]:
 
 var selected_unlock: CommandUnlock:
 	set(p_command_unlock):
+		selected_unlock = p_command_unlock
 		_provide_selected_unlock()
 
 func _set_character(p_character: BattleCharacter) -> void:

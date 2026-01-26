@@ -32,7 +32,7 @@ func _create_button(p_command: BattleCommand) -> void:
 		# Set the data BEFORE adding to child to ensure _ready() 
 		# in the label has the data it needs.
 		new_button.battle_command = p_command
-		new_button.command_selected.connect(command_selected.emit)
+		new_button.command_selected.connect(_on_button_selected)
 		add_child(new_button)
 	else:
 		# Safety: If it's not the right type, free it so we don't leak memory
@@ -43,3 +43,6 @@ func _clear_children() -> void:
 	for child in get_children():
 		remove_child(child)
 		child.queue_free()
+
+func _on_button_selected(p_command: BattleCommand) -> void:
+	command_selected.emit(p_command)
