@@ -38,4 +38,10 @@ func _update_ui() -> void:
 		min_targets_label.text = MIN_TARGETS_PREFIX + str(battle_command.min_targets)
 		max_targets_label.text = MAX_TARGETS_PREFIX + str(battle_command.max_targets)
 		target_types_label.text = TARGET_TYPES_PREFIX + ", ".join(battle_command.target_types)
-		effects_label.text = EFFECT_PREFIX + "TODO: Effects"
+
+		var effect_names: Array[String]
+		effect_names.assign(battle_command.effects.map(
+			func(effect: BattleEffect) -> String: return effect.effect_name
+		))
+		var effects_delimited := ", ".join(effect_names)
+		effects_label.text = EFFECT_PREFIX + effects_delimited
