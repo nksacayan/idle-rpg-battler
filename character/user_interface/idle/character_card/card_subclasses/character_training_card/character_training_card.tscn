@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd757xpqq6gl7"]
+
+[ext_resource type="Script" uid="uid://brsxjws72pv6t" path="res://character/user_interface/idle/character_card/card_subclasses/character_training_card/character_training_card.gd" id="1_pkngo"]
+[ext_resource type="PackedScene" uid="uid://dss7couh086gh" path="res://character/user_interface/idle/character_card/components/character_drag_preview.tscn" id="2_f6c6s"]
+[ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.tscn" id="3_tqauu"]
+[ext_resource type="Script" uid="uid://b6xb3b1qoefna" path="res://character/user_interface/idle/character_card/components/providers/base_stat_label_provider.gd" id="4_vi7kp"]
+[ext_resource type="Script" uid="uid://bsn4u51373iw" path="res://nks-common-godot/rpg_stats/user_interface/base_stat_label_container.gd" id="5_ghoei"]
+[ext_resource type="PackedScene" uid="uid://uduiyfl4wlsx" path="res://nks-common-godot/rpg_stats/user_interface/base_stat_label.tscn" id="6_m81vy"]
+[ext_resource type="PackedScene" uid="uid://btdulj7xc31dn" path="res://character/user_interface/idle/character_card/components/character_data_components/character_card_task_component.tscn" id="7_fefwd"]
+
+[node name="CharacterTrainingCard" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pkngo")
+character_drag_preview_scene = ExtResource("2_f6c6s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CharacterNameLabelComponent" parent="VBoxContainer" instance=ExtResource("3_tqauu")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("4_vi7kp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+script = ExtResource("5_ghoei")
+label_packed_scene = ExtResource("6_m81vy")
+
+[node name="CharacterCardTaskComponent" parent="VBoxContainer" instance=ExtResource("7_fefwd")]
+layout_mode = 2
+size_flags_vertical = 0
+provide_drop_impl = true
+
+[node name="CharacterDetailButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Character Details"
+
+[connection signal="pressed" from="VBoxContainer/CharacterDetailButton" to="." method="_request_character_details"]

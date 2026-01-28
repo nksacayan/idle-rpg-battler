@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dqibvxojupg2f"]
 
-[ext_resource type="Script" uid="uid://b66pn3cfe08vq" path="res://character/user_interface/idle/character_card/card_subclasses/character_detail_card.gd" id="1_5qv7p"]
+[ext_resource type="Script" uid="uid://b66pn3cfe08vq" path="res://character/user_interface/idle/character_card/card_subclasses/character_details_panel/character_detail_card.gd" id="1_5qv7p"]
 [ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.tscn" id="2_1jlte"]
 [ext_resource type="Script" uid="uid://bsn4u51373iw" path="res://nks-common-godot/rpg_stats/user_interface/base_stat_label_container.gd" id="3_1jlte"]
 [ext_resource type="Script" uid="uid://b468332yg0riu" path="res://character/user_interface/idle/character_card/components/providers/battle_character_provider.gd" id="3_2f5vd"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cn6r4ncqx44c8" path="res://nks-common-godot/rpg_stats/user_interface/bounded_stat_label.tscn" id="10_rmkid"]
 [ext_resource type="PackedScene" uid="uid://7x4x1hj42to7" path="res://character/user_interface/idle/character_card/components/battle_character_components/command_display_component.tscn" id="11_sx1ke"]
 [ext_resource type="PackedScene" uid="uid://xuuhfsu7a1wa" path="res://character/user_interface/idle/character_card/components/battle_character_components/command_unlocks_display_component.tscn" id="12_q5gla"]
-[ext_resource type="Script" uid="uid://2ah5ircx5y33" path="res://character/user_interface/idle/character_details_panel/provider_for_command_unlocks_display.gd" id="12_wfoej"]
+[ext_resource type="Script" uid="uid://2ah5ircx5y33" path="res://character/user_interface/idle/character_card/card_subclasses/character_details_panel/provider_for_command_unlocks_display.gd" id="12_wfoej"]
 
 [node name="CharacterDetailsPanel" type="PanelContainer"]
 anchors_preset = 15
