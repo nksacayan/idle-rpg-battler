@@ -63,6 +63,7 @@ func _on_unlockable_command_selected(p_command: BattleCommand) -> void:
 		return
 	selected_unlock = unlockables_of_command[0]
 
+# TODO: Down the road unlocks should probably be moved to some sort of service instead of in this UI
 func _unlock_selected_command() -> void:
 	if not selected_unlock:
 		message_label.text = "No unlockable selected"
