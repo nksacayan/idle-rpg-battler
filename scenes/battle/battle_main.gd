@@ -98,7 +98,8 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 			pass
 
 func _on_command_selected(p_command: BattleCommand) -> void:
-	_current_command = p_command
+	_current_command = p_command.duplicate_deep()
+	_current_command.source_character = p_command.source_character
 	turn_state = TURN_STATE.SELECTING_TARGETS
 	_command_container.battle_commands = []
 
