@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgeii5tu4v8av"]
+
+[ext_resource type="Script" uid="uid://rv3xmsjo218s" path="res://character/user_interface/idle/character_card/card_subclasses/character_battle_card_new/character_battle_card_new.gd" id="1_g1q8k"]
+[ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.tscn" id="2_mcnw5"]
+[ext_resource type="Script" uid="uid://b18kb5srluj78" path="res://nks-common-godot/rpg_stats/user_interface/bounded_stat_label_container.gd" id="3_ew0wk"]
+[ext_resource type="Script" uid="uid://bbdh4wsmv08b" path="res://character/user_interface/idle/character_card/components/providers/battle_resource_label_provider.gd" id="3_k12hj"]
+[ext_resource type="PackedScene" uid="uid://cn6r4ncqx44c8" path="res://nks-common-godot/rpg_stats/user_interface/bounded_stat_label.tscn" id="5_vd7y1"]
+
+[node name="CharacterBattleCardNew" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_g1q8k")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CharacterNameLabelComponent" parent="VBoxContainer" instance=ExtResource("2_mcnw5")]
+layout_mode = 2
+
+[node name="BattleResourceLabelProvider" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_k12hj")
+
+[node name="CharacterResourceLabels" type="VBoxContainer" parent="VBoxContainer/BattleResourceLabelProvider"]
+layout_mode = 2
+script = ExtResource("3_ew0wk")
+label_packed_scene = ExtResource("5_vd7y1")
+
+[node name="SelectCharacterButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Select Character"
+
+[connection signal="pressed" from="VBoxContainer/SelectCharacterButton" to="." method="_on_character_selected"]

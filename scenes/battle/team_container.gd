@@ -12,7 +12,7 @@ var battle_team: Array[BattleCharacter] = []:
 		_update_ui()
 
 ## Holds references to active cards
-var _card_nodes: Array[CharacterBattleCard] = []
+var _card_nodes: Array[SelectableBattleCharacterCard] = []
 
 func _update_ui() -> void:
 	# 1. Immediate removal from tree (Safety)
@@ -27,14 +27,14 @@ func _update_ui() -> void:
 	_card_nodes.clear()
 
 	# 2. Build new UI from the data
-	for data in battle_team:
-		var card := character_battle_card_scene.instantiate() as CharacterBattleCard
-		add_child(card)
+	for battle_character in battle_team:
+		var card := character_battle_card_scene.instantiate() as SelectableBattleCharacterCard
 		
 		# Inject data and connect
-		card.battle_character = data
+		card.battle_character = battle_character
 		card.character_selected.connect(_on_card_selected)
 		
+		add_child(card)
 		_card_nodes.append(card)
 
 func _on_card_selected(p_battle_character: BattleCharacter) -> void:

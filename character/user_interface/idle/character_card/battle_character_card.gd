@@ -1,0 +1,71 @@
+extends Control
+class_name BattleCharacterCard
+
+var battle_character: BattleCharacter:
+	set(p_battle_character):
+		battle_character = p_battle_character
+		_initialize_components(self)
+
+func _ready() -> void:
+	_initialize_components(self)
+
+func _initialize_components(root: Node) -> void:
+	if not battle_character or not is_node_ready():
+		return
+	
+	for child in root.get_children():
+		# 1. Try to treat the child as a CardComponent
+		var component := child as BattleCharacterCardComponent
+		
+		if component:
+			_setup_component(component)
+		
+		# 2. Always recurse to find deeper children (e.g. inside Containers)
+		_initialize_components(child)
+		
+func _setup_component(component: BattleCharacterCardComponent) -> void:
+	component.character = self.battle_character
+	
+	# Compare against the static template instead of creating a new one every time
+	if component.provide_drop_impl:
+		can_drop_data_impl = component.can_drop_data_impl
+		drop_data_impl = component.drop_data_impl
+	
+	if component.provide_drag_impl:
+		get_drag_data_impl = component.get_drag_data_impl
+
+# drag implementations must be provided by children
+# for now only allow 1 implementation. Maybe combo implementations later
+var can_drop_data_impl: Callable:
+	set(p_callable):
+		if can_drop_data_impl.is_valid():
+			push_error("can_drop_data_impl already exists")
+			return
+		can_drop_data_impl = p_callable
+
+var drop_data_impl: Callable:
+	set(p_callable):
+		if drop_data_impl.is_valid():
+			push_error("drop_data_impl already exists")
+			return
+		drop_data_impl = p_callable
+
+var get_drag_data_impl: Callable:
+	set(p_callable):
+		if get_drag_data_impl.is_valid():
+			push_error("get_drag_data_impl already exists")
+		get_drag_data_impl = p_callable
+
+func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+	if can_drop_data_impl.is_valid():
+		return can_drop_data_impl.call(at_position, data)
+	return false
+
+func _drop_data(at_position: Vector2, data: Variant) -> void:
+	if drop_data_impl.is_valid():
+		drop_data_impl.call(at_position, data)
+
+func _get_drag_data(at_position: Vector2) -> Variant:
+	if get_drag_data_impl.is_valid():
+		return get_drag_data_impl.call(at_position)
+	return null
