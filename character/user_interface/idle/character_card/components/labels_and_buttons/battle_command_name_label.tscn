@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdarvp7bmpj4h"]
+
+[ext_resource type="Script" uid="uid://dakjwhqxxlmuk" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_name_label.gd" id="1_1ihe2"]
+
+[node name="BattleCommandNameLabel" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_1ihe2")
