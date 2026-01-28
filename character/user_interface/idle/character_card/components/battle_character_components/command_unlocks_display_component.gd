@@ -67,6 +67,10 @@ func _unlock_selected_command() -> void:
 	if not selected_unlock:
 		message_label.text = "No unlockable selected"
 		return
+	
+	if not selected_unlock.can_unlock(character.character_data):
+		message_label.text = "Requirements not reached"
+		return
 
 	character.character_data.available_battle_commands.append(selected_unlock.command)
 	character.refresh_battle_commands()
