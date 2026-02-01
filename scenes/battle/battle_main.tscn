@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb23gwiqd5wsn"]
+[gd_scene load_steps=8 format=3 uid="uid://bb23gwiqd5wsn"]
 
 [ext_resource type="Script" uid="uid://bqektdm713py3" path="res://scenes/battle/battle_main.gd" id="1_suw5k"]
 [ext_resource type="Script" uid="uid://b8ss3h6h6wtx7" path="res://scenes/battle/team_container.gd" id="2_hj4f6"]
 [ext_resource type="PackedScene" uid="uid://dgeii5tu4v8av" path="res://character/user_interface/idle/character_card/card_subclasses/character_battle_card_new/character_battle_card_new.tscn" id="4_ai12c"]
+[ext_resource type="Script" uid="uid://dxdiccf21ogp" path="res://scenes/battle/command_list_container.gd" id="4_qdqkm"]
 [ext_resource type="PackedScene" uid="uid://bi3f2evhw3igh" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_button.tscn" id="5_7xoa7"]
 [ext_resource type="Script" uid="uid://brdnr7vmom15r" path="res://character/user_interface/idle/character_card/components/containers/battle_command_button_container.gd" id="9_7m3k1"]
 [ext_resource type="Script" uid="uid://bgjodnctu768y" path="res://scenes/battle/command_status_label.gd" id="11_r2jbg"]
@@ -33,6 +34,11 @@ layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_hj4f6")
 character_battle_card_scene = ExtResource("4_ai12c")
+
+[node name="CommandListContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("4_qdqkm")
 
 [node name="MenuContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

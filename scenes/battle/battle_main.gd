@@ -31,7 +31,8 @@ var turn_state: TURN_STATE = TURN_STATE.OTHER:
 # References: Use @onready as a fallback, but we will refresh them
 @onready var _ally_team_container: BattleTeamContainer = %AllyTeamContainer
 @onready var _enemy_team_container: BattleTeamContainer = %EnemyTeamContainer
-@onready var _command_container: BattleCommandButtonContainer = %CommandContainer
+@onready var _character_command_container: BattleCommandButtonContainer = %CommandContainer
+@onready var _command_list_container: Container = %CommandListContainer
 
 # 1. Lifecycle Agnostic Refresh
 func _enter_tree() -> void:
@@ -52,7 +53,7 @@ func _refresh_ui_references() -> void:
 	# if the node structure changed during the cache period
 	_ally_team_container = %AllyTeamContainer
 	_enemy_team_container = %EnemyTeamContainer
-	_command_container = %CommandContainer
+	_character_command_container = %CommandContainer
 
 	# 2. Data Persistence (Setup should be call-able outside tree)
 func setup(p_ally_team: Array[BattleCharacter], p_enemy_team: Array[BattleCharacter]) -> void:
@@ -79,7 +80,7 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 				return
 			_current_character = p_battle_character
 			_current_character.current_command_ref = null
-			_command_container.battle_commands = _current_character.local_battle_commands
+			_character_command_container.battle_commands = _current_character.local_battle_commands
 			turn_state = TURN_STATE.SELECTING_COMMAND
 		TURN_STATE.SELECTING_TARGETS:
 			# Attempt to add a target to current command
@@ -94,14 +95,14 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 		_:
 			push_error("Hit turn state fallback. Attempting reset")
 			turn_state = TURN_STATE.SELECTING_CHARACTER
-			_command_container.clear()
+			_character_command_container.clear()
 			pass
 
 func _on_command_selected(p_command: BattleCommand) -> void:
 	_current_command = p_command.duplicate_deep()
 	_current_command.source_character = p_command.source_character
 	turn_state = TURN_STATE.SELECTING_TARGETS
-	_command_container.battle_commands = []
+	_character_command_container.battle_commands = []
 
 func _submit_commands() -> void:
 	print("submit commands")

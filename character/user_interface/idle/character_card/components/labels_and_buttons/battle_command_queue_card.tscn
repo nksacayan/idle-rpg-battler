@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs1uy7g3tmkhd"]
+[gd_scene load_steps=7 format=3 uid="uid://bs1uy7g3tmkhd"]
 
 [ext_resource type="Script" uid="uid://ccusism6amkry" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_queue_card.gd" id="1_2hakm"]
 [ext_resource type="Script" uid="uid://bd0pdx6ebch63" path="res://character/user_interface/idle/character_card/battle_character_card_new.gd" id="2_6cnkd"]
 [ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.tscn" id="3_3jenl"]
 [ext_resource type="PackedScene" uid="uid://uduiyfl4wlsx" path="res://nks-common-godot/rpg_stats/user_interface/base_stat_label.tscn" id="4_34k01"]
 [ext_resource type="Script" uid="uid://c8ky782kvbkqj" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/single_battle_stat_provider.gd" id="4_anvxj"]
+[ext_resource type="PackedScene" uid="uid://cdarvp7bmpj4h" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_name_label.tscn" id="4_lggsh"]
 
 [node name="BattleCommandQueueCard" type="PanelContainer"]
 anchors_preset = 15
@@ -25,6 +26,10 @@ script = ExtResource("2_6cnkd")
 layout_mode = 2
 
 [node name="CharacterNameLabelComponent" parent="BattleCharacterCard/VBoxContainer" instance=ExtResource("3_3jenl")]
+layout_mode = 2
+
+[node name="BattleCommandNameLabel" parent="BattleCharacterCard/VBoxContainer" instance=ExtResource("4_lggsh")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="SpeedProvider" type="MarginContainer" parent="BattleCharacterCard/VBoxContainer"]
