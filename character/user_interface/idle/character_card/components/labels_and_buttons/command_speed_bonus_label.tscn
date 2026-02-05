@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj1pi1e4xbm4c"]
+
+[ext_resource type="Script" uid="uid://u2wxsb5qrgks" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/command_speed_bonus_label.gd" id="1_scoj5"]
+
+[node name="CommandSpeedBonusLabel" type="Label"]
+text = "Speed Bonus: xxx"
+script = ExtResource("1_scoj5")

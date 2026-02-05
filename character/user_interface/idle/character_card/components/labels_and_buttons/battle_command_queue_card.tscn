@@ -34,8 +34,16 @@ layout_mode = 2
 
 [node name="SpeedProvider" type="MarginContainer" parent="BattleCharacterCard/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 script = ExtResource("4_anvxj")
 provided_stat = 4
 
 [node name="SpeedLabel" parent="BattleCharacterCard/VBoxContainer/SpeedProvider" instance=ExtResource("4_34k01")]
 layout_mode = 2
+
+[node name="CommandPriorityLabel" type="Label" parent="BattleCharacterCard/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Priority: TEST"
+horizontal_alignment = 1
+vertical_alignment = 1

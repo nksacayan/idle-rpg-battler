@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bovjmh1c28tdl"]
+
+[ext_resource type="Script" uid="uid://e7ddrfg2sb2r" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/command_priority_label.gd" id="1_s6ulu"]
+
+[node name="CommandPriorityLabel" type="Label"]
+text = "Priority: "
+script = ExtResource("1_s6ulu")
