@@ -15,6 +15,7 @@ const MAX_TARGETS_PREFIX := "Max targets: "
 const TARGET_TYPES_PREFIX := "Can target: "
 const EFFECT_PREFIX := "Effects: "
 
+#TODO: Description is gonna need a scroll or something
 var battle_command: BattleCommand:
 	set(p_command):
 		battle_command = p_command

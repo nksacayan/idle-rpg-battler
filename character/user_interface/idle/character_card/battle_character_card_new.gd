@@ -13,6 +13,7 @@ var character_data: CharacterData:
 	get = get_character_data,
 	set = set_character_data
 
+# TODO: Might have lifecycle problems in out propogation??
 func get_character_data() -> CharacterData:
 	return _battle_character.character_data
 
