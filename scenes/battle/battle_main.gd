@@ -32,7 +32,7 @@ var turn_state: TURN_STATE = TURN_STATE.OTHER:
 @onready var _ally_team_container: BattleTeamContainer = %AllyTeamContainer
 @onready var _enemy_team_container: BattleTeamContainer = %EnemyTeamContainer
 @onready var _character_command_container: BattleCommandButtonContainer = %CommandContainer
-@onready var _command_list_container: Container = %CommandListContainer
+@onready var _command_list_container: CommandListContainer = %CommandListContainer
 
 # 1. Lifecycle Agnostic Refresh
 func _enter_tree() -> void:
@@ -45,6 +45,7 @@ func _ready() -> void:
 
 	# Initialization logic that must run every time battle "starts"
 	_setup_battle_team_containers()
+	_command_list_container.command_list = command_list # WIP
 	target_provider = CommandTargetProvider.new(ally_battle_team, enemy_battle_team)
 	turn_state = TURN_STATE.SELECTING_CHARACTER
 

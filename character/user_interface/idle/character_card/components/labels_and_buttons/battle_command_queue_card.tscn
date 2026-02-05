@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs1uy7g3tmkhd"]
+[gd_scene load_steps=6 format=3 uid="uid://bs1uy7g3tmkhd"]
 
 [ext_resource type="Script" uid="uid://ccusism6amkry" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_queue_card.gd" id="1_2hakm"]
-[ext_resource type="Script" uid="uid://bd0pdx6ebch63" path="res://character/user_interface/idle/character_card/battle_character_card_new.gd" id="2_6cnkd"]
 [ext_resource type="PackedScene" uid="uid://d0kdmb22ukvfg" path="res://character/user_interface/idle/character_card/components/character_data_components/character_name_label_component.tscn" id="3_3jenl"]
-[ext_resource type="PackedScene" uid="uid://uduiyfl4wlsx" path="res://nks-common-godot/rpg_stats/user_interface/base_stat_label.tscn" id="4_34k01"]
-[ext_resource type="Script" uid="uid://c8ky782kvbkqj" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/single_battle_stat_provider.gd" id="4_anvxj"]
 [ext_resource type="PackedScene" uid="uid://cdarvp7bmpj4h" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_name_label.tscn" id="4_lggsh"]
+[ext_resource type="PackedScene" uid="uid://bovjmh1c28tdl" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/command_priority_label.tscn" id="5_anvxj"]
+[ext_resource type="PackedScene" uid="uid://cf8t55lk5hay1" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/command_effective_speed_label.tscn" id="6_lggsh"]
 
 [node name="BattleCommandQueueCard" type="PanelContainer"]
 anchors_preset = 15
@@ -17,33 +16,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_2hakm")
 
-[node name="BattleCharacterCard" type="MarginContainer" parent="."]
-unique_name_in_owner = true
-layout_mode = 2
-script = ExtResource("2_6cnkd")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BattleCharacterCard"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="CharacterNameLabelComponent" parent="BattleCharacterCard/VBoxContainer" instance=ExtResource("3_3jenl")]
-layout_mode = 2
-
-[node name="BattleCommandNameLabel" parent="BattleCharacterCard/VBoxContainer" instance=ExtResource("4_lggsh")]
+[node name="CharacterNameLabelComponent" parent="VBoxContainer" instance=ExtResource("3_3jenl")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SpeedProvider" type="MarginContainer" parent="BattleCharacterCard/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-script = ExtResource("4_anvxj")
-provided_stat = 4
-
-[node name="SpeedLabel" parent="BattleCharacterCard/VBoxContainer/SpeedProvider" instance=ExtResource("4_34k01")]
+[node name="BattleCommandNameLabel" parent="VBoxContainer" instance=ExtResource("4_lggsh")]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CommandPriorityLabel" type="Label" parent="BattleCharacterCard/VBoxContainer"]
+[node name="CommandPriorityLabel" parent="VBoxContainer" instance=ExtResource("5_anvxj")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 6
-text = "Priority: TEST"
 horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="CommandEffectiveSpeedLabel" parent="VBoxContainer" instance=ExtResource("6_lggsh")]
+unique_name_in_owner = true
+layout_mode = 2

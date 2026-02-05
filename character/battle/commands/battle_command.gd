@@ -26,6 +26,8 @@ var targets: Array[BattleCharacter]
 var source_character: BattleCharacter
 var effective_speed: int:
 	get:
+		if not source_character:
+			return -1
 		return (
 			source_character.battle_stats[BattleCharacter.BATTLE_STAT_NAMES.SPEED].value +
 			speed_bonus

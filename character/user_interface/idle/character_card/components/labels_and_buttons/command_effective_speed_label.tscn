@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf8t55lk5hay1"]
+
+[ext_resource type="Script" uid="uid://cwdsijuhguwxq" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/command_effective_speed_label.gd" id="1_115ih"]
+
+[node name="CommandEffectiveSpeedLabel" type="Label"]
+text = "Effective Speed: xxx"
+horizontal_alignment = 1
+script = ExtResource("1_115ih")
