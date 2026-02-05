@@ -83,7 +83,11 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="BattleTeamContainer" type="VBoxContainer" parent="MainLayer/PanelContainer/MainColumns/TabContainer/Battle Team"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainLayer/PanelContainer/MainColumns/TabContainer/Battle Team"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BattleTeamContainer" type="VBoxContainer" parent="MainLayer/PanelContainer/MainColumns/TabContainer/Battle Team/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

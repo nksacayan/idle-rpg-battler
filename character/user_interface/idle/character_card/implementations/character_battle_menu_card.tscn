@@ -13,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_p4qvo")
 character_drag_preview_scene = ExtResource("2_ok8sw")
 
@@ -23,12 +24,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="BattleCharacterProvider" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("6_q3eyr")
 
-[node name="BattleMenuCardStatsComponent" parent="VBoxContainer/MarginContainer" instance=ExtResource("5_q3eyr")]
+[node name="BattleMenuCardStatsComponent" parent="VBoxContainer/BattleCharacterProvider" instance=ExtResource("5_q3eyr")]
 layout_mode = 2
 
 [node name="RemoveCharacterButton" type="Button" parent="VBoxContainer"]
