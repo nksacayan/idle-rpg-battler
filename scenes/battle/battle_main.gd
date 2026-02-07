@@ -1,7 +1,6 @@
 extends Node
 class_name BattleMain
 
-signal turn_state_changed(p_state: TURN_STATE)
 signal exit_battle_requested
 
 enum TURN_STATE {
@@ -18,13 +17,11 @@ var _current_character: BattleCharacter
 var _current_command: BattleCommand
 var command_list: BattleCommandList = BattleCommandList.new()
 var target_provider: CommandTargetProvider
-var _turn_state: TURN_STATE = TURN_STATE.OTHER
 var turn_state: TURN_STATE = TURN_STATE.OTHER:
-	get:
-		return _turn_state
 	set(p_state):
-		_turn_state = p_state
-		turn_state_changed.emit(_turn_state)
+		turn_state = p_state
+		if _command_status_label:
+			_command_status_label.text = TURN_STATE.find_key(turn_state)
 # get player commands for each character
 # execute commands
 # enemy turn (we'll mess with turn order later)
@@ -33,6 +30,7 @@ var turn_state: TURN_STATE = TURN_STATE.OTHER:
 @onready var _enemy_team_container: BattleTeamContainer = %EnemyTeamContainer
 @onready var _character_command_container: BattleCommandButtonContainer = %CommandContainer
 @onready var _command_list_container: CommandListContainer = %CommandListContainer
+@onready var _command_status_label: Label = %CommandStatusLabel
 
 # 1. Lifecycle Agnostic Refresh
 func _enter_tree() -> void:

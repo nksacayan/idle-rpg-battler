@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bb23gwiqd5wsn"]
+[gd_scene load_steps=8 format=3 uid="uid://bb23gwiqd5wsn"]
 
 [ext_resource type="Script" uid="uid://bqektdm713py3" path="res://scenes/battle/battle_main.gd" id="1_suw5k"]
 [ext_resource type="Script" uid="uid://b8ss3h6h6wtx7" path="res://scenes/battle/team_container.gd" id="2_hj4f6"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bi3f2evhw3igh" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_button.tscn" id="5_7xoa7"]
 [ext_resource type="PackedScene" uid="uid://bs1uy7g3tmkhd" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_queue_card.tscn" id="5_qdqkm"]
 [ext_resource type="Script" uid="uid://brdnr7vmom15r" path="res://character/user_interface/idle/character_card/components/containers/battle_command_button_container.gd" id="9_7m3k1"]
-[ext_resource type="Script" uid="uid://bgjodnctu768y" path="res://scenes/battle/command_status_label.gd" id="11_r2jbg"]
 
 [node name="BattleMain" type="Node"]
 script = ExtResource("1_suw5k")
@@ -63,11 +62,11 @@ script = ExtResource("9_7m3k1")
 command_button_scene = ExtResource("5_7xoa7")
 
 [node name="CommandStatusLabel" type="Label" parent="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 text = "Test"
 horizontal_alignment = 1
-script = ExtResource("11_r2jbg")
 
 [node name="SubmitCommandsButton" type="Button" parent="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer"]
 layout_mode = 2
@@ -79,7 +78,6 @@ layout_mode = 2
 size_flags_vertical = 8
 text = "Exit Battle"
 
-[connection signal="turn_state_changed" from="." to="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer/CommandStatusLabel" method="_on_turn_state_changed"]
 [connection signal="character_selected" from="PanelContainer/VBoxContainer/EnemyTeamContainer" to="." method="_on_battle_character_selected"]
 [connection signal="character_selected" from="PanelContainer/VBoxContainer/AllyTeamContainer" to="." method="_on_battle_character_selected"]
 [connection signal="command_selected" from="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer/CommandScrollContainer/CommandContainer" to="." method="_on_command_selected"]
