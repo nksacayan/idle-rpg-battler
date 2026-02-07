@@ -86,3 +86,7 @@ func _init_battle_commands() -> void:
 func refresh_battle_commands() -> void:
 	battle_commands.clear()
 	_init_battle_commands()
+
+func is_dead() -> bool:
+	return character_resources[RESOURCE_NAMES.HEALTH].current_value \
+		<= character_resources[RESOURCE_NAMES.HEALTH].MIN_VALUE

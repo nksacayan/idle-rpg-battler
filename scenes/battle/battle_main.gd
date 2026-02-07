@@ -49,9 +49,6 @@ func _setup_battle_team_containers() -> void:
 	_ally_team_container.battle_team = ally_battle_team
 	_enemy_team_container.battle_team = enemy_battle_team
 
-func _is_battle_over() -> bool:
-	return false
-
 func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 	match _turn_state:
 		TURN_STATE.SELECTING_CHARACTER, TURN_STATE.SELECTING_COMMAND:
@@ -98,6 +95,18 @@ func _resolve_commands() -> void:
 		command.execute()
 	_command_list.clear()
 	_turn_state = TURN_STATE.SELECTING_CHARACTER
+	_check_battle_end()
 
-func _exit_battle() -> void:
+func _check_battle_end() -> void:
+	if _is_team_dead(ally_battle_team) or _is_team_dead(enemy_battle_team):
+		_end_battle()
+
+func _is_team_dead(p_team: Array[BattleCharacter]) -> bool:
+	for battle_character in p_team:
+		if not battle_character.is_dead():
+			return false
+	return true
+
+func _end_battle() -> void:
+	print("ending battle")
 	exit_battle_requested.emit()
