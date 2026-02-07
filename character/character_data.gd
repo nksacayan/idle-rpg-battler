@@ -16,7 +16,7 @@ enum STAT_NAMES {
 const DEFAULT_NAME := "DEFAULT NAME"
 @export var character_name: String = DEFAULT_NAME
 @export var stats: Dictionary[STAT_NAMES, LeveledStat]
-@export var available_battle_commands: Array[BattleCommand]
+@export var learned_battle_commands: Array[BattleCommand]
 
 func _init(p_character_name: String = DEFAULT_NAME) -> void:
 	character_name = p_character_name

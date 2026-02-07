@@ -38,7 +38,7 @@ func _provide_available_unlocks() -> void:
 	filtered_commands.assign(
 		available_unlocks.map(func(unlock): return unlock.command)
 		.filter(func(command): return command.command_name not in \
-			character.local_battle_commands.map(func(local_command: BattleCommand): 
+			character.battle_commands.map(func(local_command: BattleCommand): 
 				return local_command.command_name))
 	)
 	
@@ -73,7 +73,7 @@ func _unlock_selected_command() -> void:
 		message_label.text = "Requirements not reached"
 		return
 
-	character.character_data.available_battle_commands.append(selected_unlock.command)
+	character.character_data.learned_battle_commands.append(selected_unlock.command)
 	character.refresh_battle_commands()
 	message_label.text = str(selected_unlock.command.command_name, " unlocked")
 	selected_unlock = null

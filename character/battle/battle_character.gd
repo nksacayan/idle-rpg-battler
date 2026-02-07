@@ -1,8 +1,7 @@
 extends RefCounted
 class_name BattleCharacter
 
-signal current_command_changed(p_command: BattleCommand)
-signal local_battle_commands_updated
+signal battle_commands_updated
 
 const BATTLE_STAT_MAX_VALUE := 9999
 
@@ -23,18 +22,12 @@ enum BATTLE_STAT_NAMES {
 var character_data: CharacterData
 var character_resources: Dictionary[RESOURCE_NAMES, BoundedStat]
 var battle_stats: Dictionary[BATTLE_STAT_NAMES, DerivedStat]
-var local_battle_commands: Array[BattleCommand]:
+var battle_commands: Array[BattleCommand]:
 	set(p_battle_commands):
 		# setter will not trigger on modifying array, reassign in place to force setter
-		local_battle_commands = p_battle_commands
-		local_battle_commands_updated.emit()
-var _current_command_ref: BattleCommand
-var current_command_ref: BattleCommand:
-	set(p_command):
-		_current_command_ref = p_command
-		current_command_changed.emit(_current_command_ref)
+		battle_commands = p_battle_commands
+		battle_commands_updated.emit()
 
-# TODO: Battle stats should update if base stats change
 func _init(p_character_data: CharacterData) -> void:
 	character_data = p_character_data
 	_init_resources()
@@ -74,20 +67,22 @@ func _init_battle_stats() -> void:
 		battle_stats[battle_stat_id] = new_battle_stat
 
 func _init_battle_commands() -> void:
+	## Note: Keeping source character assigning logic here for now
+	##  since I can't think of another way to assign defaults anyways
 	# Add defaults
 	var default_attack_command: BattleCommand = \
 		CommandRegistryAutoload.default_attack.duplicate_deep()
 	default_attack_command.source_character = self
-	local_battle_commands.append(default_attack_command)
+	battle_commands.append(default_attack_command)
 
 	# Add known
-	for command: BattleCommand in character_data.available_battle_commands:
+	for command: BattleCommand in character_data.learned_battle_commands:
 		var local_command: BattleCommand = command.duplicate_deep()
 		local_command.source_character = self
-		local_battle_commands.append(local_command)
+		battle_commands.append(local_command)
 	
-	local_battle_commands_updated.emit()
+	battle_commands_updated.emit()
 
 func refresh_battle_commands() -> void:
-	local_battle_commands.clear()
+	battle_commands.clear()
 	_init_battle_commands()
