@@ -82,4 +82,4 @@ text = "Exit Battle"
 [connection signal="character_selected" from="PanelContainer/VBoxContainer/AllyTeamContainer" to="." method="_on_battle_character_selected"]
 [connection signal="command_selected" from="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer/CommandScrollContainer/CommandContainer" to="." method="_on_command_selected"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer/SubmitCommandsButton" to="." method="_submit_commands"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer/ExitBattleTestButton" to="." method="_exit_battle"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MenuContainer/VBoxContainer/ExitBattleTestButton" to="." method="_end_battle"]

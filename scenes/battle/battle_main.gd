@@ -22,10 +22,8 @@ var _turn_state: TURN_STATE = TURN_STATE.OTHER:
 		_turn_state = p_state
 		if _command_status_label:
 			_command_status_label.text = TURN_STATE.find_key(_turn_state)
-# get player commands for each character
-# execute commands
+
 # enemy turn (we'll mess with turn order later)
-# References: Use @onready as a fallback, but we will refresh them
 @onready var _ally_team_container: BattleTeamContainer = %AllyTeamContainer
 @onready var _enemy_team_container: BattleTeamContainer = %EnemyTeamContainer
 @onready var _character_command_container: BattleCommandButtonContainer = %CommandContainer
@@ -34,7 +32,7 @@ var _turn_state: TURN_STATE = TURN_STATE.OTHER:
 
 func _ready() -> void:
 	_setup_battle_team_containers()
-	_command_list_container.command_list = _command_list # WIP
+	_command_list_container.command_list = _command_list
 	_target_provider = CommandTargetProvider.new(ally_battle_team, enemy_battle_team)
 	_turn_state = TURN_STATE.SELECTING_CHARACTER
 
@@ -74,8 +72,6 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 
 func _on_command_selected(p_command: BattleCommand) -> void:
 	_current_command = p_command.duplicate_deep()
-	# TODO: Clean up how source characters are passed around
-	#  Could probably just do it here instead of in characters themselves
 	_current_command.source_character = p_command.source_character
 	_turn_state = TURN_STATE.SELECTING_TARGETS
 	_character_command_container.battle_commands = []
@@ -109,4 +105,11 @@ func _is_team_dead(p_team: Array[BattleCharacter]) -> bool:
 
 func _end_battle() -> void:
 	print("ending battle")
+	_current_character = null
+	_current_command = null
+	ally_battle_team = []
+	enemy_battle_team = []
+	_command_list.clear()
+	_target_provider = null
+	_turn_state = TURN_STATE.OTHER
 	exit_battle_requested.emit()
