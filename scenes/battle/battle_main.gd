@@ -16,6 +16,7 @@ var enemy_battle_team: Array[BattleCharacter]
 var _current_character: BattleCharacter
 var _current_command: BattleCommand
 var _ally_command_list: BattleCommandList = BattleCommandList.new()
+var _enemy_command_list: BattleCommandList = BattleCommandList.new()
 var _target_provider: CommandTargetProvider
 var _turn_state: TURN_STATE = TURN_STATE.OTHER:
 	set(p_state):
