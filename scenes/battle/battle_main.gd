@@ -15,7 +15,7 @@ var ally_battle_team: Array[BattleCharacter]
 var enemy_battle_team: Array[BattleCharacter]
 var _current_character: BattleCharacter
 var _current_command: BattleCommand
-var _command_list: BattleCommandList = BattleCommandList.new()
+var _ally_command_list: BattleCommandList = BattleCommandList.new()
 var _target_provider: CommandTargetProvider
 var _turn_state: TURN_STATE = TURN_STATE.OTHER:
 	set(p_state):
@@ -32,7 +32,7 @@ var _turn_state: TURN_STATE = TURN_STATE.OTHER:
 
 func _ready() -> void:
 	_setup_battle_team_containers()
-	_command_list_container.command_list = _command_list
+	_command_list_container.command_list = _ally_command_list
 	_target_provider = CommandTargetProvider.new(ally_battle_team, enemy_battle_team)
 	_turn_state = TURN_STATE.SELECTING_CHARACTER
 
@@ -62,7 +62,7 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 			var target_success: bool = _target_provider.add_target_to_command(_current_command, p_battle_character)
 			if target_success and _target_provider.has_maximum_targets(_current_command):
 				print("max targets reached")
-				_command_list.add_command(_current_command)
+				_ally_command_list.add_command(_current_command)
 				_current_command = null
 				_turn_state = TURN_STATE.SELECTING_CHARACTER
 		_:
@@ -78,18 +78,18 @@ func _on_command_selected(p_command: BattleCommand) -> void:
 
 func _submit_commands() -> void:
 	print("submit commands")
-	if _command_list.is_complete_and_valid(ally_battle_team + enemy_battle_team):
+	if _ally_command_list.is_complete_and_valid(ally_battle_team):
 		_resolve_commands()
 	else:
 		push_warning("Commands invalid, did not resolve")
 
 func _resolve_commands() -> void:
 	_turn_state = TURN_STATE.RESOLVING_COMMANDS
-	print("_resolve_commands: ", _command_list.commands_view)
-	for command: BattleCommand in _command_list.commands_view:
+	print("_resolve_commands: ", _ally_command_list.commands_view)
+	for command: BattleCommand in _ally_command_list.commands_view:
 		print("resolving command: ", command.command_name, " source: ", command.source_character, " targets: ", command.targets)
 		command.execute()
-	_command_list.clear()
+	_ally_command_list.clear()
 	_turn_state = TURN_STATE.SELECTING_CHARACTER
 	_check_battle_end()
 
@@ -109,7 +109,7 @@ func _end_battle() -> void:
 	_current_command = null
 	ally_battle_team = []
 	enemy_battle_team = []
-	_command_list.clear()
+	_ally_command_list.clear()
 	_target_provider = null
 	_turn_state = TURN_STATE.OTHER
 	exit_battle_requested.emit()

@@ -26,7 +26,6 @@ func add_command(p_command: BattleCommand) -> void:
 	var command_priority_list: Array[BattleCommand] = get_priority_array(p_command.speed_priority)
 	# find speed index to insert at
 	var insert_idx = command_priority_list.size() # Default to the end
-	
 	for i in range(command_priority_list.size()):
 		if p_command.effective_speed > command_priority_list[i].effective_speed:
 			# TODO: Randomize speed ties
@@ -36,12 +35,14 @@ func add_command(p_command: BattleCommand) -> void:
 	command_list_modified.emit()
 
 func remove_command_by_character(p_battle_character: BattleCharacter) -> void:
-	var found_index: int = _normal_commands.find_custom(
-		func(p_command: BattleCommand): return p_command.source_character == p_battle_character
-	)
-	if found_index != -1:
-		_normal_commands.remove_at(found_index)
-		command_list_modified.emit()
+	for command_list in [_fast_commands, _normal_commands, _slow_commands]:
+		var found_index: int = command_list.find_custom(
+			func(p_command: BattleCommand): return p_command.source_character == p_battle_character
+		)
+		if found_index != -1:
+			command_list.remove_at(found_index)
+			command_list_modified.emit()
+			break # early exit to save time since character should only exist once
 
 func get_priority_array(p_priority: BattleCommand.SPEED_PRIORITY) -> Array[BattleCommand]:
 	match p_priority:
@@ -56,18 +57,19 @@ func get_priority_array(p_priority: BattleCommand.SPEED_PRIORITY) -> Array[Battl
 			return []
 
 func clear() -> void:
+	_fast_commands.clear()
 	_normal_commands.clear()
+	_slow_commands.clear()
 	command_list_modified.emit()
 
 func has_command_by_character(p_battle_character: BattleCharacter) -> bool:
-	return _normal_commands.any(func(p_command): return p_command.source_character == p_battle_character)
+	return commands_view.any(func(p_command): return p_command.source_character == p_battle_character)
 
 func is_complete_and_valid(_p_battle_characters: Array[BattleCharacter]) -> bool:
-	if _normal_commands.any(func(p_command): return not p_command.is_valid()):
+	if commands_view.any(func(p_command): return not p_command.is_valid()):
 		push_warning("A command was invalid")
 		return false
-	# Temporarily disabling until enemies are implemented
-	# if _normal_commands.size() != p_battle_characters.size():
-	#     push_warning("Did not have a command per character")
-	#     return false
+	if commands_view.size() != _p_battle_characters.size():
+		push_warning("Did not have a command per character")
+		return false
 	return true
