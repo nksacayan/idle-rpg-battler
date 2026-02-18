@@ -78,11 +78,20 @@ func _on_command_selected(p_command: BattleCommand) -> void:
 	_character_command_container.battle_commands = []
 
 func _submit_commands() -> void:
-	print("submit commands")
-	if _ally_command_list.is_complete_and_valid(ally_battle_team):
-		_resolve_commands()
-	else:
+	if not _ally_command_list.is_complete_and_valid(ally_battle_team):
 		push_warning("Commands invalid, did not resolve")
+		return
+	
+	_randomly_pick_enemy_commands()
+	_resolve_commands()
+
+func _randomly_pick_enemy_commands() -> void:
+	# Do enemy commands here
+	# Iterate through enemies
+	for enemy in enemy_battle_team:
+		var random_command: BattleCommand = enemy.battle_commands.pick_random()
+	# Randomly select a command and fill out targets
+	pass
 
 func _resolve_commands() -> void:
 	_turn_state = TURN_STATE.RESOLVING_COMMANDS
