@@ -86,15 +86,23 @@ func _submit_commands() -> void:
 	_resolve_commands()
 
 func _randomly_pick_enemy_commands() -> void:
-	# Do enemy commands here
-	# Iterate through enemies
 	for enemy in enemy_battle_team:
-		var random_command: BattleCommand = enemy.battle_commands.pick_random()
-	# Randomly select a command and fill out targets
-	pass
+		var random_command: BattleCommand = enemy.battle_commands.pick_random().duplicate_deep()
+		random_command.source_character = enemy
+		for i in random_command.max_targets:
+			if i >= ally_battle_team.size():
+				# Early break if no more units selectable
+				break
+			var add_target_success = false
+			while not add_target_success:
+				# Dumb random add to command until successful
+				_target_provider.add_target_to_command(random_command, ally_battle_team.pick_random())
+				print("adding enemy target, shit could totally infinite here")
+		_enemy_command_list.add_command(random_command)
 
 func _resolve_commands() -> void:
 	_turn_state = TURN_STATE.RESOLVING_COMMANDS
+	var combined_commands = [] # TODO combine commands and resolve
 	print("_resolve_commands: ", _ally_command_list.commands_view)
 	for command: BattleCommand in _ally_command_list.commands_view:
 		print("resolving command: ", command.command_name, " source: ", command.source_character, " targets: ", command.targets)

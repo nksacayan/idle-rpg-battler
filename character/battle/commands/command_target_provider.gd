@@ -19,6 +19,9 @@ func add_target_to_command(p_command: BattleCommand, p_target_character: BattleC
 	if not _is_target_type_valid(p_command, p_target_character):
 		push_warning("Target type not valid")
 		return false
+	if p_target_character in p_command.targets:
+		push_warning("Duplicate targets not allowed (TBD)")
+		return false
 	
 	p_command.targets.append(p_target_character)
 	return true
