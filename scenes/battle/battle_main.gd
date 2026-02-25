@@ -17,6 +17,7 @@ var _current_character: BattleCharacter
 var _current_command: BattleCommand
 var _ally_command_list: BattleCommandList = BattleCommandList.new()
 var _enemy_command_list: BattleCommandList = BattleCommandList.new()
+var _combined_command_list: BattleCommandList = BattleCommandList.new()
 var _target_provider: CommandTargetProvider
 var _turn_state: TURN_STATE = TURN_STATE.OTHER:
 	set(p_state):
@@ -102,12 +103,16 @@ func _randomly_pick_enemy_commands() -> void:
 
 func _resolve_commands() -> void:
 	_turn_state = TURN_STATE.RESOLVING_COMMANDS
-	var combined_commands = [] # TODO combine commands and resolve
-	print("_resolve_commands: ", _ally_command_list.commands_view)
-	for command: BattleCommand in _ally_command_list.commands_view:
-		print("resolving command: ", command.command_name, " source: ", command.source_character, " targets: ", command.targets)
+	# Add commands from allies and enemies one by one for validation
+	# Can combine lists because speed will be re-evaluated on the combined list
+	# TODO: Refactor initial lists? Feels not performant
+	for command in _ally_command_list.commands_view + _enemy_command_list.commands_view:
+		_combined_command_list.add_command(command)
+	for command: BattleCommand in _combined_command_list.commands_view:
 		command.execute()
 	_ally_command_list.clear()
+	_enemy_command_list.clear()
+	_combined_command_list.clear()
 	_turn_state = TURN_STATE.SELECTING_CHARACTER
 	_check_battle_end()
 
