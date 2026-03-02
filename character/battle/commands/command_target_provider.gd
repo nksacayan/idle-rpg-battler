@@ -3,6 +3,7 @@ class_name CommandTargetProvider
 
 # TODO: We currently don't have a way to exit early if num targets
 #  < max but > min
+# TODO: Big rework of target provider, doesn't work well on a flipped POV (selecting enemy commands)
 var ally_battle_team: Array[BattleCharacter]
 var enemy_battle_team: Array[BattleCharacter]
 
@@ -24,6 +25,21 @@ func add_target_to_command(p_command: BattleCommand, p_target_character: BattleC
 		return false
 	
 	p_command.targets.append(p_target_character)
+	return true
+
+func add_random_target_to_command(p_command: BattleCommand, p_target_team: Array[BattleCharacter]) -> bool:
+	var valid_targets: Array[BattleCharacter] = p_target_team.filter(
+		func(p_target): return p_target not in p_command.targets
+	)
+
+	var random_target: BattleCharacter = valid_targets.pick_random()
+
+	if not random_target:
+		push_error("No valid random target")
+		return false
+
+	add_target_to_command(p_command, random_target)
+
 	return true
 
 func _is_target_type_valid(p_command: BattleCommand, p_target_character: BattleCharacter) -> bool:

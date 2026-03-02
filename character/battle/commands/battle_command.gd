@@ -41,8 +41,11 @@ func execute() -> void:
 		effect.apply_effect(source_character, targets)
 
 func is_valid() -> bool:
-	if targets.size() < min_targets or targets.size() > max_targets:
-		push_warning("Does not have max targets")
+	if targets.size() < min_targets:
+		push_warning("Does not have min targets")
+		return false
+	if targets.size() > max_targets:
+		push_warning("Has greater than max targets")
 		return false
 	if not source_character:
 		push_error("Source character not valid")
