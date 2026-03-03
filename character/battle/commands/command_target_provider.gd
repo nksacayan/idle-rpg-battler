@@ -1,9 +1,6 @@
 extends RefCounted
 class_name CommandTargetProvider
 
-# TODO: We currently don't have a way to exit early if num targets
-#  < max but > min
-# TODO: Big rework of target provider, doesn't work well on a flipped POV (selecting enemy commands)
 var ally_battle_team: Array[BattleCharacter]
 var enemy_battle_team: Array[BattleCharacter]
 
@@ -56,6 +53,9 @@ func _is_target_type_valid(p_command: BattleCommand, p_target_character: BattleC
 
 func has_maximum_targets(p_command: BattleCommand) -> bool:
 	return p_command.targets.size() >= p_command.max_targets
+
+func has_minimum_targets(p_command: BattleCommand) -> bool:
+	return p_command.targets.size() >= p_command.min_targets
 
 func _init(p_ally_battle_team: Array[BattleCharacter], p_enemy_battle_team: Array[BattleCharacter]) -> void:
 	ally_battle_team = p_ally_battle_team

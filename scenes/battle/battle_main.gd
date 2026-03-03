@@ -11,14 +11,15 @@ enum TURN_STATE {
 	OTHER
 }
 
-var ally_battle_team: Array[BattleCharacter]
-var enemy_battle_team: Array[BattleCharacter]
+var _ally_battle_team: Array[BattleCharacter]
+var _enemy_battle_team: Array[BattleCharacter]
 var _current_character: BattleCharacter
 var _current_command: BattleCommand
 var _ally_command_list: BattleCommandList = BattleCommandList.new()
 var _enemy_command_list: BattleCommandList = BattleCommandList.new()
 var _combined_command_list: BattleCommandList = BattleCommandList.new()
-var _target_provider: CommandTargetProvider
+var _ally_target_provider: CommandTargetProvider
+var _enemy_target_provider: CommandTargetProvider
 var _turn_state: TURN_STATE = TURN_STATE.OTHER:
 	set(p_state):
 		_turn_state = p_state
@@ -35,24 +36,25 @@ var _turn_state: TURN_STATE = TURN_STATE.OTHER:
 func _ready() -> void:
 	_setup_battle_team_containers()
 	_command_list_container.command_list = _ally_command_list
-	_target_provider = CommandTargetProvider.new(ally_battle_team, enemy_battle_team)
+	_ally_target_provider = CommandTargetProvider.new(_ally_battle_team, _enemy_battle_team)
+	_enemy_target_provider = CommandTargetProvider.new(_enemy_battle_team, _ally_battle_team)
 	_turn_state = TURN_STATE.SELECTING_CHARACTER
 
 func setup(p_ally_team: Array[BattleCharacter], p_enemy_team: Array[BattleCharacter]) -> void:
 	if is_node_ready():
 		push_error("Tried to setup battle_main while it's already ready")
 		return
-	ally_battle_team = p_ally_team
-	enemy_battle_team = p_enemy_team
+	_ally_battle_team = p_ally_team
+	_enemy_battle_team = p_enemy_team
 
 func _setup_battle_team_containers() -> void:
-	_ally_team_container.battle_team = ally_battle_team
-	_enemy_team_container.battle_team = enemy_battle_team
+	_ally_team_container.battle_team = _ally_battle_team
+	_enemy_team_container.battle_team = _enemy_battle_team
 
 func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 	match _turn_state:
 		TURN_STATE.SELECTING_CHARACTER, TURN_STATE.SELECTING_COMMAND:
-			if p_battle_character in enemy_battle_team:
+			if p_battle_character in _enemy_battle_team:
 				push_warning("Can't select enemy characters for commands")
 				return
 			_current_character = p_battle_character
@@ -61,8 +63,8 @@ func _on_battle_character_selected(p_battle_character: BattleCharacter) -> void:
 		TURN_STATE.SELECTING_TARGETS:
 			# Attempt to add a target to current command
 			# Check if this is the last target then lock in the command
-			var target_success: bool = _target_provider.add_target_to_command(_current_command, p_battle_character)
-			if target_success and _target_provider.has_maximum_targets(_current_command):
+			var target_success: bool = _ally_target_provider.add_target_to_command(_current_command, p_battle_character)
+			if target_success and _ally_target_provider.has_maximum_targets(_current_command):
 				print("max targets reached")
 				_ally_command_list.add_command(_current_command)
 				_current_command = null
@@ -79,7 +81,7 @@ func _on_command_selected(p_command: BattleCommand) -> void:
 	_character_command_container.battle_commands = []
 
 func _submit_commands() -> void:
-	if not _ally_command_list.is_complete_and_valid(ally_battle_team):
+	if not _ally_command_list.is_complete_and_valid(_ally_battle_team):
 		push_warning("Commands invalid, did not resolve")
 		return
 	
@@ -87,14 +89,14 @@ func _submit_commands() -> void:
 	_resolve_commands()
 
 func _randomly_pick_enemy_commands() -> void:
-	for enemy in enemy_battle_team:
+	for enemy in _enemy_battle_team:
 		var random_command: BattleCommand = enemy.battle_commands.pick_random().duplicate_deep()
 		random_command.source_character = enemy
 		for i in random_command.max_targets:
-			if i >= ally_battle_team.size():
+			if i >= _ally_battle_team.size():
 				# Early break if no more units selectable
 				break
-			_target_provider.add_random_target_to_command(random_command, ally_battle_team)
+			_enemy_target_provider.add_random_target_to_command(random_command, _ally_battle_team)
 		_enemy_command_list.add_command(random_command)
 		print("Random command targets: ", random_command.targets.size())
 
@@ -114,7 +116,7 @@ func _resolve_commands() -> void:
 	_check_battle_end()
 
 func _check_battle_end() -> void:
-	if _is_team_dead(ally_battle_team) or _is_team_dead(enemy_battle_team):
+	if _is_team_dead(_ally_battle_team) or _is_team_dead(_enemy_battle_team):
 		_end_battle()
 
 func _is_team_dead(p_team: Array[BattleCharacter]) -> bool:
@@ -127,9 +129,10 @@ func _end_battle() -> void:
 	print("ending battle")
 	_current_character = null
 	_current_command = null
-	ally_battle_team = []
-	enemy_battle_team = []
+	_ally_battle_team = []
+	_enemy_battle_team = []
 	_ally_command_list.clear()
-	_target_provider = null
+	_ally_target_provider = null
+	_enemy_target_provider = null
 	_turn_state = TURN_STATE.OTHER
 	exit_battle_requested.emit()
