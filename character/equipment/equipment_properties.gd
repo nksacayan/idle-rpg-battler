@@ -1,0 +1,37 @@
+extends RefCounted
+class_name EquipmentProperties
+
+enum RANGED_OR_MELEE_PROPERTIES {
+	ONE_HANDED,
+	TWO_HANDED,
+	THROWN,
+	WEIGHTED
+}
+
+enum MELEE_PROPERTIES {
+	SHORT,
+	STANDARD,
+	LONG,
+	FLEXIBLE,
+	FIST
+}
+
+enum RANGED_PROPERTIES {
+	TENSION,
+	GUNPOWDER,
+	LOADING
+}
+
+enum DAMAGE_TYPES {
+	SLASHING,
+	PIERCING,
+	BLUNT
+}
+
+enum ARMORS {
+	CLOTH,
+	LIGHT,
+	MEDIUM,
+	HEAVY,
+	SHIELD
+}
