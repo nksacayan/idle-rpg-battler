@@ -10,19 +10,19 @@ class_name StatFormulas
 # resource stat formulas
 # these have to be updated/upkept manually
 static var resource_formula_helpers: Dictionary[BattleCharacter.RESOURCE_NAMES, StatFormulaHelper] = {
-	BattleCharacter.RESOURCE_NAMES.HEALTH: StatFormulaHelper.new(calc_per_constitution, [CharacterData.STAT_NAMES.CONSTITUTION]),
-	BattleCharacter.RESOURCE_NAMES.STAMINA: StatFormulaHelper.new(calc_per_constitution, [CharacterData.STAT_NAMES.CONSTITUTION]),
-	BattleCharacter.RESOURCE_NAMES.MAGIC: StatFormulaHelper.new(calc_per_intelligence, [CharacterData.STAT_NAMES.INTELLIGENCE]),
+	BattleCharacter.RESOURCE_NAMES.HEALTH: StatFormulaHelper.new(calc_per_constitution, [Stats.STAT_NAMES.CONSTITUTION]),
+	BattleCharacter.RESOURCE_NAMES.STAMINA: StatFormulaHelper.new(calc_per_constitution, [Stats.STAT_NAMES.CONSTITUTION]),
+	BattleCharacter.RESOURCE_NAMES.MAGIC: StatFormulaHelper.new(calc_per_intelligence, [Stats.STAT_NAMES.INTELLIGENCE]),
 }
 static func calc_per_constitution(p_base_stats: Array[BaseStat]) -> int:
 	var value_per_constitution := 10
-	var con_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(CharacterData.STAT_NAMES.CONSTITUTION))
+	var con_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(Stats.STAT_NAMES.CONSTITUTION))
 	var value := con_stat.value * value_per_constitution
 	return value
 
 static func calc_per_intelligence(p_base_stats: Array[BaseStat]) -> int:
 	var value_per_intelligence := 10
-	var int_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(CharacterData.STAT_NAMES.INTELLIGENCE))
+	var int_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(Stats.STAT_NAMES.INTELLIGENCE))
 	var value := int_stat.value * value_per_intelligence
 	return value
 
@@ -36,60 +36,60 @@ static var battle_stat_formula_helpers: Dictionary[BattleCharacter.BATTLE_STAT_N
 	BattleCharacter.BATTLE_STAT_NAMES.SPEED: StatFormulaHelper.new(calc_speed, speed_dependencies),
 }
 
-const physical_attack_dependencies: Array[CharacterData.STAT_NAMES] = [
-	CharacterData.STAT_NAMES.STRENGTH,
-	CharacterData.STAT_NAMES.DEXTERITY,
+const physical_attack_dependencies: Array[Stats.STAT_NAMES] = [
+	Stats.STAT_NAMES.STRENGTH,
+	Stats.STAT_NAMES.DEXTERITY,
 ]
 static func calc_physical_attack(p_base_stats: Array[BaseStat]) -> int:
 	var value_per_strength := 8
-	var strength_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(CharacterData.STAT_NAMES.STRENGTH))
+	var strength_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(Stats.STAT_NAMES.STRENGTH))
 	var strength_attack := strength_stat.value * value_per_strength
 	var value_per_dexterity := 2
-	var dexterity_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(CharacterData.STAT_NAMES.DEXTERITY))
+	var dexterity_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(Stats.STAT_NAMES.DEXTERITY))
 	var dexterity_attack := dexterity_stat.value * value_per_dexterity
 	return strength_attack + dexterity_attack
 
-const physical_defense_dependencies: Array[CharacterData.STAT_NAMES] = [
-	CharacterData.STAT_NAMES.STRENGTH,
-	CharacterData.STAT_NAMES.DEXTERITY,
+const physical_defense_dependencies: Array[Stats.STAT_NAMES] = [
+	Stats.STAT_NAMES.STRENGTH,
+	Stats.STAT_NAMES.DEXTERITY,
 ]
 static func calc_physical_defense(p_base_stats: Array[BaseStat]) -> int:
 	var value_per_strength := 2
-	var strength_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(CharacterData.STAT_NAMES.STRENGTH))
+	var strength_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(Stats.STAT_NAMES.STRENGTH))
 	var strength_defense := strength_stat.value * value_per_strength
 	
 	var value_per_dexterity := 8
-	var dexterity_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(CharacterData.STAT_NAMES.DEXTERITY))
+	var dexterity_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(Stats.STAT_NAMES.DEXTERITY))
 	var dexterity_defense := dexterity_stat.value * value_per_dexterity
 	
 	return strength_defense + dexterity_defense
 
-const magical_attack_dependencies: Array[CharacterData.STAT_NAMES] = [
-	CharacterData.STAT_NAMES.INTELLIGENCE,
-	CharacterData.STAT_NAMES.WISDOM,
+const magical_attack_dependencies: Array[Stats.STAT_NAMES] = [
+	Stats.STAT_NAMES.INTELLIGENCE,
+	Stats.STAT_NAMES.WISDOM,
 ]
 static func calc_magical_attack(p_base_stats: Array[BaseStat]) -> int:
 	var value_per_intelligence := 10
-	var intelligence_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(CharacterData.STAT_NAMES.INTELLIGENCE))
+	var intelligence_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(Stats.STAT_NAMES.INTELLIGENCE))
 	var intelligence_magic := intelligence_stat.value * value_per_intelligence
 	return intelligence_magic
 
-const magical_defense_dependencies: Array[CharacterData.STAT_NAMES] = [
-	CharacterData.STAT_NAMES.INTELLIGENCE,
-	CharacterData.STAT_NAMES.WISDOM,
+const magical_defense_dependencies: Array[Stats.STAT_NAMES] = [
+	Stats.STAT_NAMES.INTELLIGENCE,
+	Stats.STAT_NAMES.WISDOM,
 ]
 static func calc_magical_defense(p_base_stats: Array[BaseStat]) -> int:
 	var value_per_wisdom := 10
-	var wisdom_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(CharacterData.STAT_NAMES.WISDOM))
+	var wisdom_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(Stats.STAT_NAMES.WISDOM))
 	var wisdom_defense := wisdom_stat.value * value_per_wisdom
 	return wisdom_defense
 
-const speed_dependencies: Array[CharacterData.STAT_NAMES] = [
-	CharacterData.STAT_NAMES.DEXTERITY
+const speed_dependencies: Array[Stats.STAT_NAMES] = [
+	Stats.STAT_NAMES.DEXTERITY
 ]
 static func calc_speed(p_base_stats: Array[BaseStat]) -> int:
 	var value_per_dexterity := 10
-	var dexterity_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(CharacterData.STAT_NAMES.DEXTERITY))
+	var dexterity_stat: BaseStat = _find_stat_by_name(p_base_stats, _get_base_stat_name(Stats.STAT_NAMES.DEXTERITY))
 	var speed_value := dexterity_stat.value * value_per_dexterity
 	return speed_value
 
@@ -100,5 +100,5 @@ static func _find_stat_by_name(p_base_stats: Array[BaseStat], p_stat_name: Strin
 		return filtered[0]
 	return null
 
-static func _get_base_stat_name(p_stat_name: CharacterData.STAT_NAMES) -> String:
-	return CharacterData.STAT_NAMES.find_key(p_stat_name)
+static func _get_base_stat_name(p_stat_name: Stats.STAT_NAMES) -> String:
+	return Stats.STAT_NAMES.find_key(p_stat_name)

@@ -1,7 +1,7 @@
 extends CommandUnlockRequirement
 class_name StatRequirement
 
-@export var stat_name: CharacterData.STAT_NAMES
+@export var stat_name: Stats.STAT_NAMES
 @export var required_level: int
 
 func is_satisfied(p_character: CharacterData) -> bool:
