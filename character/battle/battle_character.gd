@@ -5,23 +5,9 @@ signal battle_commands_updated
 
 const BATTLE_STAT_MAX_VALUE := 9999
 
-enum RESOURCE_NAMES {
-	HEALTH,
-	STAMINA,
-	MAGIC,
-}
-
-enum BATTLE_STAT_NAMES {
-	PHYSICAL_ATTACK,
-	PHYSICAL_DEFENSE,
-	MAGICAL_ATTACK,
-	MAGICAL_DEFENSE,
-	SPEED,
-}
-
 var character_data: CharacterData
-var character_resources: Dictionary[RESOURCE_NAMES, BoundedStat]
-var battle_stats: Dictionary[BATTLE_STAT_NAMES, DerivedStat]
+var character_resources: Dictionary[Stats.RESOURCE_NAMES, BoundedStat]
+var battle_stats: Dictionary[Stats.BATTLE_STAT_NAMES, DerivedStat]
 var battle_commands: Array[BattleCommand]:
 	set(p_battle_commands):
 		# setter will not trigger on modifying array, reassign in place to force setter
@@ -35,8 +21,8 @@ func _init(p_character_data: CharacterData) -> void:
 	_init_battle_commands()
 
 func _init_resources() -> void:
-	for resource_name in RESOURCE_NAMES:
-		var resource_id := RESOURCE_NAMES[resource_name] as RESOURCE_NAMES
+	for resource_name in Stats.RESOURCE_NAMES:
+		var resource_id := Stats.RESOURCE_NAMES[resource_name] as Stats.RESOURCE_NAMES
 		var resource_formula_helper := StatFormulas.resource_formula_helpers[resource_id]
 		var applicable_stats: Array[BaseStat]
 		for stat in resource_formula_helper.base_stats:
@@ -51,8 +37,8 @@ func _init_resources() -> void:
 		character_resources[resource_id] = new_stat
 
 func _init_battle_stats() -> void:
-	for stat_name in BATTLE_STAT_NAMES:
-		var battle_stat_id := BATTLE_STAT_NAMES[stat_name] as BATTLE_STAT_NAMES
+	for stat_name in Stats.BATTLE_STAT_NAMES:
+		var battle_stat_id := Stats.BATTLE_STAT_NAMES[stat_name] as Stats.BATTLE_STAT_NAMES
 		var stat_formula_helper := StatFormulas.battle_stat_formula_helpers[battle_stat_id]
 		var applicable_stats: Array[BaseStat]
 		for stat in stat_formula_helper.base_stats:
@@ -88,5 +74,5 @@ func refresh_battle_commands() -> void:
 	_init_battle_commands()
 
 func is_dead() -> bool:
-	return character_resources[RESOURCE_NAMES.HEALTH].current_value \
-		<= character_resources[RESOURCE_NAMES.HEALTH].MIN_VALUE
+	return character_resources[Stats.RESOURCE_NAMES.HEALTH].current_value \
+		<= character_resources[Stats.RESOURCE_NAMES.HEALTH].MIN_VALUE

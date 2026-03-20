@@ -9,7 +9,7 @@ enum DAMAGE_TYPES {
 
 @export var base_power: int
 # no clue how i want scaling and shit to work so come back later
-@export var additive_stat: BattleCharacter.BATTLE_STAT_NAMES
+@export var additive_stat: Stats.BATTLE_STAT_NAMES
 @export var additive_stat_factor: float
 @export var damage_type: DAMAGE_TYPES
 
@@ -21,16 +21,16 @@ func apply_effect(_p_source_character: BattleCharacter, _p_targets: Array[Battle
 			additive_stat_factor
 		)
 	)
-	var defending_stat: BattleCharacter.BATTLE_STAT_NAMES = (
-		BattleCharacter.BATTLE_STAT_NAMES.PHYSICAL_DEFENSE if
+	var defending_stat: Stats.BATTLE_STAT_NAMES = (
+		Stats.BATTLE_STAT_NAMES.PHYSICAL_DEFENSE if
 		damage_type == DAMAGE_TYPES.PHYSICAL else
-		BattleCharacter.BATTLE_STAT_NAMES.MAGICAL_DEFENSE
+		Stats.BATTLE_STAT_NAMES.MAGICAL_DEFENSE
 	)
 	for target: BattleCharacter in _p_targets:
 		var defending_stat_value: int = target.battle_stats[defending_stat].value
 		print("defending value for ", target, " is ", defending_stat_value)
 		var damage = max(total_power - defending_stat_value, 0)
-		target.character_resources[BattleCharacter.RESOURCE_NAMES.HEALTH].current_value -= damage
+		target.character_resources[Stats.RESOURCE_NAMES.HEALTH].current_value -= damage
 		print("dealt ", damage, " to ", target);
 	print_debug("applying effect ", effect_name, "from source ", _p_source_character, "to target ", _p_targets)
 

@@ -29,7 +29,7 @@ var effective_speed: int:
 		if not source_character:
 			return -1
 		return (
-			source_character.battle_stats[BattleCharacter.BATTLE_STAT_NAMES.SPEED].value +
+			source_character.battle_stats[Stats.BATTLE_STAT_NAMES.SPEED].value +
 			speed_bonus
 		)
 

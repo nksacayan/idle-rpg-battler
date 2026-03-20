@@ -9,10 +9,10 @@ class_name StatFormulas
 
 # resource stat formulas
 # these have to be updated/upkept manually
-static var resource_formula_helpers: Dictionary[BattleCharacter.RESOURCE_NAMES, StatFormulaHelper] = {
-	BattleCharacter.RESOURCE_NAMES.HEALTH: StatFormulaHelper.new(calc_per_constitution, [Stats.STAT_NAMES.CONSTITUTION]),
-	BattleCharacter.RESOURCE_NAMES.STAMINA: StatFormulaHelper.new(calc_per_constitution, [Stats.STAT_NAMES.CONSTITUTION]),
-	BattleCharacter.RESOURCE_NAMES.MAGIC: StatFormulaHelper.new(calc_per_intelligence, [Stats.STAT_NAMES.INTELLIGENCE]),
+static var resource_formula_helpers: Dictionary[Stats.RESOURCE_NAMES, StatFormulaHelper] = {
+	Stats.RESOURCE_NAMES.HEALTH: StatFormulaHelper.new(calc_per_constitution, [Stats.STAT_NAMES.CONSTITUTION]),
+	Stats.RESOURCE_NAMES.STAMINA: StatFormulaHelper.new(calc_per_constitution, [Stats.STAT_NAMES.CONSTITUTION]),
+	Stats.RESOURCE_NAMES.MAGIC: StatFormulaHelper.new(calc_per_intelligence, [Stats.STAT_NAMES.INTELLIGENCE]),
 }
 static func calc_per_constitution(p_base_stats: Array[BaseStat]) -> int:
 	var value_per_constitution := 10
@@ -28,12 +28,12 @@ static func calc_per_intelligence(p_base_stats: Array[BaseStat]) -> int:
 
 # battle stat formulas
 # these have to be updated/upkept manually
-static var battle_stat_formula_helpers: Dictionary[BattleCharacter.BATTLE_STAT_NAMES, StatFormulaHelper] = {
-	BattleCharacter.BATTLE_STAT_NAMES.PHYSICAL_ATTACK: StatFormulaHelper.new(calc_physical_attack, physical_attack_dependencies),
-	BattleCharacter.BATTLE_STAT_NAMES.PHYSICAL_DEFENSE: StatFormulaHelper.new(calc_physical_defense, physical_defense_dependencies),
-	BattleCharacter.BATTLE_STAT_NAMES.MAGICAL_ATTACK: StatFormulaHelper.new(calc_magical_attack, magical_attack_dependencies),
-	BattleCharacter.BATTLE_STAT_NAMES.MAGICAL_DEFENSE: StatFormulaHelper.new(calc_magical_defense, magical_defense_dependencies),
-	BattleCharacter.BATTLE_STAT_NAMES.SPEED: StatFormulaHelper.new(calc_speed, speed_dependencies),
+static var battle_stat_formula_helpers: Dictionary[Stats.BATTLE_STAT_NAMES, StatFormulaHelper] = {
+	Stats.BATTLE_STAT_NAMES.PHYSICAL_ATTACK: StatFormulaHelper.new(calc_physical_attack, physical_attack_dependencies),
+	Stats.BATTLE_STAT_NAMES.PHYSICAL_DEFENSE: StatFormulaHelper.new(calc_physical_defense, physical_defense_dependencies),
+	Stats.BATTLE_STAT_NAMES.MAGICAL_ATTACK: StatFormulaHelper.new(calc_magical_attack, magical_attack_dependencies),
+	Stats.BATTLE_STAT_NAMES.MAGICAL_DEFENSE: StatFormulaHelper.new(calc_magical_defense, magical_defense_dependencies),
+	Stats.BATTLE_STAT_NAMES.SPEED: StatFormulaHelper.new(calc_speed, speed_dependencies),
 }
 
 const physical_attack_dependencies: Array[Stats.STAT_NAMES] = [

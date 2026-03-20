@@ -1,6 +1,6 @@
 extends BattleCharacterCardComponent
 
-@export var provided_stat: BattleCharacter.BATTLE_STAT_NAMES
+@export var provided_stat: Stats.BATTLE_STAT_NAMES
 
 func _enter_tree() -> void:
 	provide_drag_impl = false
