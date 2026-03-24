@@ -3,7 +3,7 @@ class_name EquipmentProperties
 
 # Using a collated enum for now since idk how to keep categories but let me
 #  add these to gear in editor
-enum ALL_PROPERTIES {
+enum ALL {
 	ONE_HANDED,
 	TWO_HANDED,
 	THROWN,
@@ -26,38 +26,13 @@ enum ALL_PROPERTIES {
 	SHIELD,
 }
 
-# Remember that enums are ints not their strings
-enum RANGED_OR_MELEE_PROPERTIES {
-	ONE_HANDED,
-	TWO_HANDED,
-	THROWN,
-	WEIGHTED
-}
+# Using arrays to collect enum into groups
+const WEAPON_PROPERTIES: Array[ALL] = [ALL.ONE_HANDED, ALL.TWO_HANDED, ALL.THROWN, ALL.WEIGHTED]
 
-enum MELEE_PROPERTIES {
-	SHORT,
-	STANDARD,
-	LONG,
-	FLEXIBLE,
-	FIST
-}
+const MELEE_PROPERTIES: Array[ALL] = [ALL.SHORT, ALL.STANDARD, ALL.LONG, ALL.FLEXIBLE, ALL.FIST]
 
-enum RANGED_PROPERTIES {
-	TENSION,
-	GUNPOWDER,
-	LOADING
-}
+const RANGED_PROPERTIES: Array[ALL] = [ALL.TENSION, ALL.GUNPOWDER, ALL.LOADING]
 
-enum DAMAGE_TYPES {
-	SLASHING,
-	PIERCING,
-	BLUNT
-}
+const DAMAGE_TYPES: Array[ALL] = [ALL.SLASHING, ALL.PIERCING, ALL.BLUNT]
 
-enum ARMORS {
-	CLOTH,
-	LIGHT,
-	MEDIUM,
-	HEAVY,
-	SHIELD
-}
+const ARMORS: Array[ALL] = [ALL.CLOTH, ALL.LIGHT, ALL.MEDIUM, ALL.HEAVY, ALL.SHIELD]
