@@ -9,6 +9,7 @@ const DEFAULT_NAME := "DEFAULT NAME"
 @export var stats: Dictionary[Stats.STAT_NAMES, LeveledStat]
 @export var masteries: Dictionary[String, BaseStat]
 @export var learned_battle_commands: Array[BattleCommand]
+@export var equipment: Array[Equipment]
 
 func _init(p_character_name: String = DEFAULT_NAME) -> void:
 	character_name = p_character_name
