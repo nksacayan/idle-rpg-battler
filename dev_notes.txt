@@ -1,6 +1,7 @@
 TODO:
 	Don't get distracted, remember this is a vertical slice
 	Now that battle works, get some basic multiplayer working
+	Scratch the web browser stuff. Do desktop only and you can use ENet client P2P
 
 Future stuff:
 - Convert battle stats, especially character resources etc 
