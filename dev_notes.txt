@@ -1,4 +1,6 @@
 TODO:
+	Don't get distracted, remember this is a vertical slice
+	Now that battle works, get some basic multiplayer working
 
 Future stuff:
 - Convert battle stats, especially character resources etc 
