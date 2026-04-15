@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bb23gwiqd5wsn"]
 
-[ext_resource type="Script" uid="uid://bqektdm713py3" path="res://scenes/battle/battle_main.gd" id="1_suw5k"]
+[ext_resource type="Script" uid="uid://bqektdm713py3" path="res://scenes/battle/singleplayer/battle_main.gd" id="1_suw5k"]
 [ext_resource type="Script" uid="uid://b8ss3h6h6wtx7" path="res://scenes/battle/team_container.gd" id="2_hj4f6"]
 [ext_resource type="PackedScene" uid="uid://dgeii5tu4v8av" path="res://character/user_interface/idle/character_card/card_subclasses/character_battle_card_new/character_battle_card_new.tscn" id="4_ai12c"]
 [ext_resource type="Script" uid="uid://dxdiccf21ogp" path="res://scenes/battle/command_list_container.gd" id="4_qdqkm"]

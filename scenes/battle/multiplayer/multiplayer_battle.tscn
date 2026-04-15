@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bobdpiveu2p6"]
+
+[ext_resource type="Script" uid="uid://7ec80qeaqndh" path="res://scenes/battle/multiplayer/multiplayer_battle.gd" id="1_h1yeu"]
+
+[node name="MultiplayerBattle" type="Node"]
+script = ExtResource("1_h1yeu")
