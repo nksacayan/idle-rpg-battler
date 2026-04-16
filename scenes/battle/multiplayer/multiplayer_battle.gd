@@ -4,6 +4,9 @@ class_name MultiplayerBattle
 const PORT = 4433
 const ADDRESS = "127.0.0.1"
 
+var _team_1: Array[BattleCharacter]
+var _team_2: Array[BattleCharacter]
+
 func _ready():
 	# These signals are emitted by the global MultiplayerAPI
 	multiplayer.peer_connected.connect(_on_peer_connected)
