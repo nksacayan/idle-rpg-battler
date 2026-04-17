@@ -1,27 +1,108 @@
-[gd_scene load_steps=2 format=3 uid="uid://bobdpiveu2p6"]
+[gd_scene load_steps=13 format=3 uid="uid://bobdpiveu2p6"]
 
 [ext_resource type="Script" uid="uid://7ec80qeaqndh" path="res://scenes/battle/multiplayer/multiplayer_battle.gd" id="1_h1yeu"]
+[ext_resource type="Script" uid="uid://b8ss3h6h6wtx7" path="res://scenes/battle/team_container.gd" id="2_baj6j"]
+[ext_resource type="Script" uid="uid://cppn1dvuqyerv" path="res://character/character_data.gd" id="2_kkhh2"]
+[ext_resource type="PackedScene" uid="uid://dgeii5tu4v8av" path="res://character/user_interface/idle/character_card/card_subclasses/character_battle_card_new/character_battle_card_new.tscn" id="3_fc6o2"]
+[ext_resource type="Resource" uid="uid://b25bnkwyv7ibo" path="res://character/test_characters/test1.tres" id="3_qq6y2"]
+[ext_resource type="Script" uid="uid://dxdiccf21ogp" path="res://scenes/battle/command_list_container.gd" id="4_0eeip"]
+[ext_resource type="Resource" uid="uid://hddahaw6lhkm" path="res://character/test_characters/test2.tres" id="4_am2aa"]
+[ext_resource type="PackedScene" uid="uid://bs1uy7g3tmkhd" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_queue_card.tscn" id="5_kilcm"]
+[ext_resource type="Resource" uid="uid://bp82mch00bvjb" path="res://character/test_characters/test3.tres" id="5_x3n8a"]
+[ext_resource type="Resource" uid="uid://buu0sfjhj5rxo" path="res://character/test_characters/test4.tres" id="6_igt5l"]
+[ext_resource type="Script" uid="uid://brdnr7vmom15r" path="res://character/user_interface/idle/character_card/components/containers/battle_command_button_container.gd" id="6_je8in"]
+[ext_resource type="PackedScene" uid="uid://bi3f2evhw3igh" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_button.tscn" id="7_kkhh2"]
 
 [node name="MultiplayerBattle" type="Node"]
 script = ExtResource("1_h1yeu")
+_team_1 = Array[ExtResource("2_kkhh2")]([ExtResource("3_qq6y2"), ExtResource("4_am2aa")])
+_team_2 = Array[ExtResource("2_kkhh2")]([ExtResource("5_x3n8a"), ExtResource("6_igt5l")])
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="ConnectMenu" type="PanelContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ConnectMenu"]
 layout_mode = 2
 
-[node name="CreateServerButton" type="Button" parent="PanelContainer/HBoxContainer"]
+[node name="CreateServerButton" type="Button" parent="ConnectMenu/HBoxContainer"]
 layout_mode = 2
 text = "Create Server"
 
-[node name="ConnectButton" type="Button" parent="PanelContainer/HBoxContainer"]
+[node name="ConnectButton" type="Button" parent="ConnectMenu/HBoxContainer"]
 layout_mode = 2
 text = "Connect"
 
-[connection signal="pressed" from="PanelContainer/HBoxContainer/CreateServerButton" to="." method="create_server"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/ConnectButton" to="." method="create_client"]
+[node name="BattlePanel" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattlePanel"]
+layout_mode = 2
+
+[node name="EnemyTeamContainer" type="HBoxContainer" parent="BattlePanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_baj6j")
+character_battle_card_scene = ExtResource("3_fc6o2")
+
+[node name="AllyTeamContainer" type="HBoxContainer" parent="BattlePanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_baj6j")
+character_battle_card_scene = ExtResource("3_fc6o2")
+
+[node name="CommandListContainer" type="HBoxContainer" parent="BattlePanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("4_0eeip")
+command_card_scene = ExtResource("5_kilcm")
+
+[node name="MenuContainer" type="PanelContainer" parent="BattlePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattlePanel/VBoxContainer/MenuContainer"]
+layout_mode = 2
+
+[node name="CommandScrollContainer" type="ScrollContainer" parent="BattlePanel/VBoxContainer/MenuContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CommandContainer" type="GridContainer" parent="BattlePanel/VBoxContainer/MenuContainer/VBoxContainer/CommandScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+script = ExtResource("6_je8in")
+command_button_scene = ExtResource("7_kkhh2")
+
+[node name="CommandStatusLabel" type="Label" parent="BattlePanel/VBoxContainer/MenuContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "Test"
+horizontal_alignment = 1
+
+[node name="SubmitCommandsButton" type="Button" parent="BattlePanel/VBoxContainer/MenuContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Submit Commands"
+
+[node name="ExitBattleTestButton" type="Button" parent="BattlePanel/VBoxContainer/MenuContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Exit Battle"
+
+[connection signal="pressed" from="ConnectMenu/HBoxContainer/CreateServerButton" to="." method="create_server"]
+[connection signal="pressed" from="ConnectMenu/HBoxContainer/ConnectButton" to="." method="create_client"]

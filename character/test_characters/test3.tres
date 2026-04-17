@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=18 format=3 uid="uid://bp82mch00bvjb"]
+
+[ext_resource type="Script" uid="uid://7xo4017080h5" path="res://character/equipment/equipment.gd" id="1_ll3bx"]
+[ext_resource type="Script" uid="uid://c1uli2rvae5ek" path="res://character/battle/commands/battle_command.gd" id="2_t5ylu"]
+[ext_resource type="Script" uid="uid://dxleu3drvafb7" path="res://nks-common-godot/rpg_stats/base_stat.gd" id="3_he6ml"]
+[ext_resource type="Script" uid="uid://cppn1dvuqyerv" path="res://character/character_data.gd" id="4_hw724"]
+[ext_resource type="Script" uid="uid://0s5eonlhsruj" path="res://nks-common-godot/rpg_stats/leveled_stat.gd" id="5_fmdnk"]
+
+[sub_resource type="Resource" id="Resource_wsv1m"]
+script = ExtResource("3_he6ml")
+_stat_name = "STRENGTH"
+value = 1
+
+[sub_resource type="Resource" id="Resource_k8xe4"]
+script = ExtResource("5_fmdnk")
+stat = SubResource("Resource_wsv1m")
+
+[sub_resource type="Resource" id="Resource_gcvkx"]
+script = ExtResource("3_he6ml")
+_stat_name = "DEXTERITY"
+value = 1
+
+[sub_resource type="Resource" id="Resource_hqdrt"]
+script = ExtResource("5_fmdnk")
+stat = SubResource("Resource_gcvkx")
+
+[sub_resource type="Resource" id="Resource_sd0yg"]
+script = ExtResource("3_he6ml")
+_stat_name = "CONSTITUTION"
+value = 1
+
+[sub_resource type="Resource" id="Resource_740fm"]
+script = ExtResource("5_fmdnk")
+stat = SubResource("Resource_sd0yg")
+
+[sub_resource type="Resource" id="Resource_ltbi3"]
+script = ExtResource("3_he6ml")
+_stat_name = "WISDOM"
+value = 1
+
+[sub_resource type="Resource" id="Resource_rrgd7"]
+script = ExtResource("5_fmdnk")
+stat = SubResource("Resource_ltbi3")
+
+[sub_resource type="Resource" id="Resource_djor6"]
+script = ExtResource("3_he6ml")
+_stat_name = "INTELLIGENCE"
+value = 1
+
+[sub_resource type="Resource" id="Resource_5yugo"]
+script = ExtResource("5_fmdnk")
+stat = SubResource("Resource_djor6")
+
+[sub_resource type="Resource" id="Resource_ui88n"]
+script = ExtResource("3_he6ml")
+_stat_name = "CHARISMA"
+value = 1
+
+[sub_resource type="Resource" id="Resource_7lkga"]
+script = ExtResource("5_fmdnk")
+stat = SubResource("Resource_ui88n")
+
+[resource]
+script = ExtResource("4_hw724")
+character_name = "test3"
+stats = Dictionary[int, ExtResource("5_fmdnk")]({
+0: SubResource("Resource_k8xe4"),
+1: SubResource("Resource_hqdrt"),
+2: SubResource("Resource_740fm"),
+3: SubResource("Resource_rrgd7"),
+4: SubResource("Resource_5yugo"),
+5: SubResource("Resource_7lkga")
+})
+equipment = Dictionary[int, ExtResource("1_ll3bx")]({
+0: null,
+1: null,
+2: null,
+3: null,
+4: null,
+5: null,
+6: null
+})
+metadata/_custom_type_script = "uid://cppn1dvuqyerv"
