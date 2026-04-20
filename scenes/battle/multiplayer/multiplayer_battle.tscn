@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bobdpiveu2p6"]
+[gd_scene load_steps=12 format=3 uid="uid://bobdpiveu2p6"]
 
 [ext_resource type="Script" uid="uid://7ec80qeaqndh" path="res://scenes/battle/multiplayer/multiplayer_battle.gd" id="1_h1yeu"]
 [ext_resource type="Script" uid="uid://b8ss3h6h6wtx7" path="res://scenes/battle/team_container.gd" id="2_baj6j"]
@@ -9,14 +9,12 @@
 [ext_resource type="Resource" uid="uid://hddahaw6lhkm" path="res://character/test_characters/test2.tres" id="4_am2aa"]
 [ext_resource type="PackedScene" uid="uid://bs1uy7g3tmkhd" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_queue_card.tscn" id="5_kilcm"]
 [ext_resource type="Resource" uid="uid://bp82mch00bvjb" path="res://character/test_characters/test3.tres" id="5_x3n8a"]
-[ext_resource type="Resource" uid="uid://buu0sfjhj5rxo" path="res://character/test_characters/test4.tres" id="6_igt5l"]
 [ext_resource type="Script" uid="uid://brdnr7vmom15r" path="res://character/user_interface/idle/character_card/components/containers/battle_command_button_container.gd" id="6_je8in"]
 [ext_resource type="PackedScene" uid="uid://bi3f2evhw3igh" path="res://character/user_interface/idle/character_card/components/labels_and_buttons/battle_command_button.tscn" id="7_kkhh2"]
 
 [node name="MultiplayerBattle" type="Node"]
 script = ExtResource("1_h1yeu")
-_team_1 = Array[ExtResource("2_kkhh2")]([ExtResource("3_qq6y2"), ExtResource("4_am2aa")])
-_team_2 = Array[ExtResource("2_kkhh2")]([ExtResource("5_x3n8a"), ExtResource("6_igt5l")])
+_my_team = Array[ExtResource("2_kkhh2")]([ExtResource("3_qq6y2"), ExtResource("4_am2aa"), ExtResource("5_x3n8a")])
 
 [node name="ConnectMenu" type="PanelContainer" parent="."]
 anchors_preset = 15
