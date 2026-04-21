@@ -105,3 +105,6 @@ text = "Exit Battle"
 
 [connection signal="pressed" from="ConnectMenu/HBoxContainer/CreateServerButton" to="." method="create_server"]
 [connection signal="pressed" from="ConnectMenu/HBoxContainer/ConnectButton" to="." method="create_client"]
+[connection signal="character_selected" from="BattlePanel/VBoxContainer/EnemyTeamContainer" to="." method="_on_battle_character_selected"]
+[connection signal="character_selected" from="BattlePanel/VBoxContainer/AllyTeamContainer" to="." method="_on_battle_character_selected"]
+[connection signal="command_selected" from="BattlePanel/VBoxContainer/MenuContainer/VBoxContainer/CommandScrollContainer/CommandContainer" to="." method="_on_command_selected"]

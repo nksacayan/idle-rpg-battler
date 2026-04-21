@@ -114,6 +114,7 @@ func _populate_team_ui() -> void:
 func start_battle() -> void:
 	_convert_data_teams_to_battle_teams()
 	_populate_team_ui()
+	_command_list_container.command_list = _ally_command_list
 	_target_provider = CommandTargetProvider.new(_my_battle_team, _opponent_battle_team)
 	_turn_state = TURN_STATE.SELECTING_CHARACTER
 	connect_menu.hide()
@@ -153,7 +154,7 @@ func _submit_commands() -> void:
 		push_warning("Commands invalid, did not resolve")
 		return
 	print("valid commands, send over network here")
-	
+
 # Make sure to rework this to make it server authoritative
 func _resolve_commands() -> void:
 	_turn_state = TURN_STATE.RESOLVING_COMMANDS
