@@ -18,8 +18,10 @@ enum TURN_STATE {
 #   "command_name": String,
 #   "target_indices": Array[int],   # indices into the *opposing* team
 #   "speed_priority": int, "speed_bonus": int }
+@export var _test_team_data_1: Array[CharacterData]
+@export var _test_team_data_2: Array[CharacterData]
 
-@export var _my_team_data: Array[CharacterData]
+var _my_team_data: Array[CharacterData]
 var _my_battle_team: Array[BattleCharacter]
 var _opponent_team_data: Array[CharacterData]
 var _opponent_battle_team: Array[BattleCharacter]
@@ -57,6 +59,7 @@ func _ready():
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.connection_failed.connect(_on_connection_failed)
+
 
 func create_server():
 	var peer = ENetMultiplayerPeer.new()
@@ -406,3 +409,11 @@ func _end_battle() -> void:
 	print("Battle ended")
 	_turn_state = TURN_STATE.OTHER
 	# TODO: show result screen, return to lobby, etc.
+
+# In _ready() or a setup function
+func _get_test_team() -> void:
+	var args = OS.get_cmdline_args()
+	for arg in args:
+		if arg.begins_with("--player="):
+			var player_num = int(arg.get_slice("=", 1))
+			_load_team_for_player(player_num)
