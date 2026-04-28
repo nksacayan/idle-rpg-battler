@@ -229,8 +229,8 @@ func _server_receive_commands(p_peer_id: int, p_commands: Array) -> void:
 # -------------------------------------------------------------------------
 
 func _server_resolve_and_broadcast() -> void:
-	# Build a flat result list: Array of { "source_peer": int, "source_idx": int,
-	#   "command_name": String, "target_results": Array[{ "target_peer": int,
+	# Build a flat result list: Array of { "source_peer_id": int, "source_idx": int,
+	#   "command_name": String, "target_results": Array[{ "target_peer_id": int,
 	#   "target_idx": int, "hp_delta": int, "new_hp": int }] }
 	#
 	# The server owns ground-truth BattleCharacter state for both sides.
@@ -290,26 +290,45 @@ func _execute_and_record(p_cmd: BattleCommand) -> Dictionary:
 		var target: BattleCharacter = p_cmd.targets[i]
 		var new_hp: int = target.character_resources[Stats.RESOURCE_NAMES.HEALTH].current_value
 		var delta: int = new_hp - pre_hp[i]
-		# Identify target by which team + index (server knows both teams)
-		var team_key: String = "my" if target in _my_battle_team else "opponent"
-		var idx: int = (_my_battle_team if team_key == "my" else _opponent_battle_team).find(target)
+		var target_peer_id: int = _peer_id_for_battle_character(target)
+		var idx: int = (_my_battle_team if target_peer_id == multiplayer.get_unique_id() else _opponent_battle_team).find(target)
 		target_results.append({
-			"team": team_key,
+			"target_peer_id": target_peer_id,
 			"idx": idx,
 			"hp_delta": delta,
 			"new_hp": new_hp,
 		})
 
-	var source_team: String = "my" if p_cmd.source_character in _my_battle_team else "opponent"
-	var source_idx: int = (_my_battle_team if source_team == "my" \
+	var source_peer_id: int = _peer_id_for_battle_character(p_cmd.source_character)
+	var source_idx: int = (_my_battle_team if source_peer_id == multiplayer.get_unique_id() \
 		else _opponent_battle_team).find(p_cmd.source_character)
 
 	return {
 		"command_name": p_cmd.command_name,
-		"source_team": source_team,
+		"source_peer_id": source_peer_id,
 		"source_idx": source_idx,
 		"target_results": target_results,
 	}
+
+func _get_remote_peer_id() -> int:
+	for id in _expected_peers:
+		if id != multiplayer.get_unique_id():
+			return id
+
+	var peers: Array = multiplayer.get_peers()
+	if peers.size() > 0:
+		return peers[0]
+
+	return 0
+
+func _peer_id_for_battle_character(p_character: BattleCharacter) -> int:
+	if p_character in _my_battle_team:
+		return multiplayer.get_unique_id()
+	if p_character in _opponent_battle_team:
+		return _get_remote_peer_id()
+
+	push_error("Unknown team for battle character when resolving peer id.")
+	return 0
 
 # -------------------------------------------------------------------------
 # Client: receive and apply results
@@ -324,20 +343,24 @@ func _rpc_battle_ended(p_winner: String) -> void:
 	_end_battle(p_winner)
 
 func _apply_results(p_result_log: Array) -> void:
-	# Apply hp deltas to local BattleCharacter instances
-	# "my" team = _my_battle_team, "opponent" = _opponent_battle_team
+	# Apply hp deltas to local BattleCharacter instances by peer ownership.
+	var local_peer_id: int = multiplayer.get_unique_id()
 	for entry in p_result_log:
 		var target_results: Array = entry["target_results"]
 		for target_result in target_results:
+			var is_local_target: bool = target_result["target_peer_id"] == local_peer_id
 			var team: Array[BattleCharacter] = \
-				_my_battle_team if target_result["team"] == "my" else _opponent_battle_team
+				_my_battle_team if is_local_target else _opponent_battle_team
 			if target_result["idx"] < team.size():
 				var target: BattleCharacter = team[target_result["idx"]]
 				target.character_resources[Stats.RESOURCE_NAMES.HEALTH].current_value = target_result["new_hp"]
-				print("Applied result: %s[%d] HP -> %d (delta %d)" % [
-					target_result["team"], target_result["idx"], target_result["new_hp"], target_result["hp_delta"]
+				print("Applied result: peer %d %s[%d] HP -> %d (delta %d)" % [
+					target_result["target_peer_id"],
+					"local" if is_local_target else "remote",
+					target_result["idx"],
+					target_result["new_hp"],
+					target_result["hp_delta"]
 				])
-
 	_ally_command_list.clear()
 	_combined_command_list.clear()
 	_turn_state = TURN_STATE.SELECTING_CHARACTER
