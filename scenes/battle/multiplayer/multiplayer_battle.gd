@@ -55,6 +55,7 @@ var _turn_state: TURN_STATE = TURN_STATE.OTHER:
 # -------------------------------------------------------------------------
 
 func _ready():
+	_get_test_team()
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
@@ -412,8 +413,17 @@ func _end_battle() -> void:
 
 # In _ready() or a setup function
 func _get_test_team() -> void:
+	print_debug("Getting test team from command line args")
 	var args = OS.get_cmdline_args()
 	for arg in args:
 		if arg.begins_with("--player="):
 			var player_num = int(arg.get_slice("=", 1))
 			_load_team_for_player(player_num)
+
+func _load_team_for_player(player_num: int) -> void:
+	if player_num == 1:
+		_my_team_data = _test_team_data_1
+	elif player_num == 2:
+		_my_team_data = _test_team_data_2
+	else:
+		push_error("Invalid player number in command line args: ", player_num)
