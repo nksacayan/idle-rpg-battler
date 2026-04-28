@@ -256,6 +256,19 @@ func _server_resolve_and_broadcast() -> void:
 		var cmd_result: Dictionary = _execute_and_record(battle_cmd)
 		result_log.append(cmd_result)
 
+	# Check for battle end
+	var battle_ended: bool = _is_team_dead(_my_battle_team) or _is_team_dead(_opponent_battle_team)
+	var winner: String = ""
+	if battle_ended:
+		if _is_team_dead(_my_battle_team):
+			winner = "opponent"
+		elif _is_team_dead(_opponent_battle_team):
+			winner = "my"
+		else:
+			winner = "draw"
+		_rpc_battle_ended.rpc(winner)
+		_end_battle(winner)
+
 	# Broadcast results to all peers (including self via local call)
 	var result_log_typed: Array = result_log # plain Array is RPC-safe
 	_rpc_receive_results.rpc(result_log_typed)
@@ -306,6 +319,10 @@ func _execute_and_record(p_cmd: BattleCommand) -> Dictionary:
 func _rpc_receive_results(p_result_log: Array) -> void:
 	_apply_results(p_result_log)
 
+@rpc("authority", "call_remote", "reliable")
+func _rpc_battle_ended(p_winner: String) -> void:
+	_end_battle(p_winner)
+
 func _apply_results(p_result_log: Array) -> void:
 	# Apply hp deltas to local BattleCharacter instances
 	# "my" team = _my_battle_team, "opponent" = _opponent_battle_team
@@ -324,7 +341,6 @@ func _apply_results(p_result_log: Array) -> void:
 	_ally_command_list.clear()
 	_combined_command_list.clear()
 	_turn_state = TURN_STATE.SELECTING_CHARACTER
-	_check_battle_end()
 
 # -------------------------------------------------------------------------
 # Serialization helpers
@@ -406,8 +422,8 @@ func _is_team_dead(p_team: Array[BattleCharacter]) -> bool:
 			return false
 	return true
 
-func _end_battle() -> void:
-	print("Battle ended")
+func _end_battle(p_winner: String = "") -> void:
+	print("Battle ended, winner: ", p_winner)
 	_turn_state = TURN_STATE.OTHER
 	# TODO: show result screen, return to lobby, etc.
 
