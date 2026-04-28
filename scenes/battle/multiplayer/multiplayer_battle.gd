@@ -258,16 +258,24 @@ func _server_resolve_and_broadcast() -> void:
 
 	# Check for battle end
 	var battle_ended: bool = _is_team_dead(_my_battle_team) or _is_team_dead(_opponent_battle_team)
-	var winner: String = ""
 	if battle_ended:
+		var battle_result: Dictionary
 		if _is_team_dead(_my_battle_team):
-			winner = "opponent"
+			battle_result = {
+				"result": "peer_id",
+				"winner_peer_id": _get_remote_peer_id(),
+			}
 		elif _is_team_dead(_opponent_battle_team):
-			winner = "my"
+			battle_result = {
+				"result": "peer_id",
+				"winner_peer_id": multiplayer.get_unique_id(),
+			}
 		else:
-			winner = "draw"
-		_rpc_battle_ended.rpc(winner)
-		_end_battle(winner)
+			battle_result = {
+				"result": "draw",
+			}
+		_rpc_battle_ended.rpc(battle_result)
+		_end_battle(battle_result)
 
 	# Broadcast results to all peers (including self via local call)
 	var result_log_typed: Array = result_log # plain Array is RPC-safe
@@ -339,8 +347,8 @@ func _rpc_receive_results(p_result_log: Array) -> void:
 	_apply_results(p_result_log)
 
 @rpc("authority", "call_remote", "reliable")
-func _rpc_battle_ended(p_winner: String) -> void:
-	_end_battle(p_winner)
+func _rpc_battle_ended(p_result: Dictionary) -> void:
+	_end_battle(p_result)
 
 func _apply_results(p_result_log: Array) -> void:
 	# Apply hp deltas to local BattleCharacter instances by peer ownership.
@@ -445,8 +453,16 @@ func _is_team_dead(p_team: Array[BattleCharacter]) -> bool:
 			return false
 	return true
 
-func _end_battle(p_winner: String = "") -> void:
-	print("Battle ended, winner: ", p_winner)
+func _end_battle(p_result = null) -> void:
+	var winner_text: String = ""
+	if p_result:
+		var result_type: String = p_result.get("result", "")
+		if result_type == "draw":
+			winner_text = "draw"
+		elif result_type == "peer_id":
+			winner_text = "my" if p_result.get("winner_peer_id", -1) == multiplayer.get_unique_id() else "opponent"
+
+	print("Battle ended, winner: ", winner_text, " Peer ID: ", multiplayer.get_unique_id())
 	_turn_state = TURN_STATE.OTHER
 	# TODO: show result screen, return to lobby, etc.
 
