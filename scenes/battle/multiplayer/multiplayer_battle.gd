@@ -413,6 +413,8 @@ func _end_battle() -> void:
 
 # In _ready() or a setup function
 func _get_test_team() -> void:
+	if _my_team_data.size() > 0:
+		return # already set, don't override
 	print_debug("Getting test team from command line args")
 	var args = OS.get_cmdline_args()
 	for arg in args:
