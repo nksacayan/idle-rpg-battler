@@ -37,6 +37,12 @@ func execute() -> void:
 	if not is_valid():
 		push_warning("Tried to execute non-valid command")
 		return
+	
+	# Cancel command if source character died before execution
+	if source_character.is_dead():
+		push_warning("Command from dead character cancelled")
+		return
+	
 	for effect: BattleEffect in effects:
 		effect.apply_effect(source_character, targets)
 

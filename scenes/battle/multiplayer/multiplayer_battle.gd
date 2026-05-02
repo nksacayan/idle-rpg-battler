@@ -160,6 +160,10 @@ func _on_battle_character_selected(p_selected_character: BattleCharacter) -> voi
 			if p_selected_character in _opponent_battle_team:
 				push_warning("Can't select enemies during command selection")
 				return
+			# Prevent dead characters from submitting commands
+			if p_selected_character.is_dead():
+				push_warning("Dead character cannot submit a command")
+				return
 			_selected_character = p_selected_character
 			_character_command_container.battle_commands = _selected_character.battle_commands
 			_turn_state = TURN_STATE.SELECTING_COMMAND
@@ -286,6 +290,9 @@ func _server_resolve_and_broadcast() -> void:
 	_pending_commands.clear()
 
 func _execute_and_record(p_cmd: BattleCommand) -> Dictionary:
+	# Check if source character is dead (command will be cancelled)
+	var was_cancelled: bool = p_cmd.source_character.is_dead()
+	
 	# Before execution snapshot target HP, then execute, then diff
 	var pre_hp: Array = []
 	for target: BattleCharacter in p_cmd.targets:
@@ -316,6 +323,7 @@ func _execute_and_record(p_cmd: BattleCommand) -> Dictionary:
 		"source_peer_id": source_peer_id,
 		"source_idx": source_idx,
 		"target_results": target_results,
+		"was_cancelled": was_cancelled,
 	}
 
 func _get_remote_peer_id() -> int:
@@ -354,6 +362,21 @@ func _apply_results(p_result_log: Array) -> void:
 	# Apply hp deltas to local BattleCharacter instances by peer ownership.
 	var local_peer_id: int = multiplayer.get_unique_id()
 	for entry in p_result_log:
+		# Check if command was cancelled due to source being dead
+		var was_cancelled: bool = entry.get("was_cancelled", false)
+		if was_cancelled:
+			# Get source character for display
+			var is_local_source: bool = entry["source_peer_id"] == local_peer_id
+			var source_team: Array[BattleCharacter] = \
+				_my_battle_team if is_local_source else _opponent_battle_team
+			if entry["source_idx"] < source_team.size():
+				var source_character: BattleCharacter = source_team[entry["source_idx"]]
+				print("Command cancelled: %s's %s was cancelled (character is dead)" % [
+					source_character.character_data.character_name,
+					entry["command_name"]
+				])
+			continue  # Skip target result processing for cancelled commands
+		
 		var target_results: Array = entry["target_results"]
 		for target_result in target_results:
 			var is_local_target: bool = target_result["target_peer_id"] == local_peer_id

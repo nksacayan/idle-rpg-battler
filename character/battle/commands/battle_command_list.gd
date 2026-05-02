@@ -69,7 +69,14 @@ func is_complete_and_valid(_p_battle_characters: Array[BattleCharacter]) -> bool
 	if commands_view.any(func(p_command): return not p_command.is_valid()):
 		push_warning("A command was invalid")
 		return false
-	if commands_view.size() != _p_battle_characters.size():
-		push_warning("Did not have a command per character")
+	
+	# Count only alive characters (dead characters don't need to submit commands)
+	var alive_characters: Array[BattleCharacter] = []
+	for character in _p_battle_characters:
+		if not character.is_dead():
+			alive_characters.append(character)
+	
+	if commands_view.size() != alive_characters.size():
+		push_warning("Did not have a command per alive character")
 		return false
 	return true
