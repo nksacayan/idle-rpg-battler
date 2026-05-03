@@ -1,6 +1,8 @@
 extends Node
 class_name MultiplayerBattle
 
+signal exit_battle_requested()
+
 const PORT = 4433
 const ADDRESS = "127.0.0.1"
 
@@ -61,6 +63,8 @@ func _ready():
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.connection_failed.connect(_on_connection_failed)
 
+func setup(p_team_data: Array[CharacterData]) -> void:
+	_my_team_data = p_team_data
 
 func create_server():
 	var peer = ENetMultiplayerPeer.new()
@@ -113,6 +117,7 @@ func _receive_team(p_team: Array) -> void:
 
 func _check_ready_to_start() -> void:
 	if _my_team_data.is_empty() or _opponent_team_data.is_empty():
+		print("ready check failed")
 		return
 	print("Both teams ready, starting battle!")
 	start_battle()
@@ -492,6 +497,7 @@ func _end_battle(p_result = null) -> void:
 # In _ready() or a setup function
 func _get_test_team() -> void:
 	if _my_team_data.size() > 0:
+		print("team already provided, skipping test team setup")
 		return # already set, don't override
 	print_debug("Getting test team from command line args")
 	var args = OS.get_cmdline_args()
@@ -507,3 +513,6 @@ func _load_team_for_player(player_num: int) -> void:
 		_my_team_data = _test_team_data_2
 	else:
 		push_error("Invalid player number in command line args: ", player_num)
+
+func _request_exit_battle() -> void:
+	exit_battle_requested.emit()
