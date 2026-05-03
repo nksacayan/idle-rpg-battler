@@ -49,6 +49,9 @@ func _is_target_type_valid(p_command: BattleCommand, p_target_character: BattleC
 	if enemy_battle_team.has(p_target_character) and not p_command.target_types.has(BattleCommand.TARGET_TYPE.ENEMY):
 		push_warning("Tried to add ENEMY to invalid command")
 		return false;
+	if p_target_character.is_dead() and not p_command.target_types.has(BattleCommand.TARGET_TYPE.DEAD):
+		push_warning("Tried to add DEAD to invalid command")
+		return false;
 	return true
 
 func has_maximum_targets(p_command: BattleCommand) -> bool:

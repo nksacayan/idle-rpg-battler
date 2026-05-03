@@ -4,7 +4,8 @@ class_name BattleCommand
 enum TARGET_TYPE {
 	ALLY,
 	ENEMY,
-	SELF
+	SELF,
+	DEAD
 }
 
 enum SPEED_PRIORITY {
